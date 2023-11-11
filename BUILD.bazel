@@ -1,0 +1,4 @@
+java_library(
+    name = "foo",
+    runtime_deps = ["@com_google_googleapis//google/devtools/build/v1:build_java_proto"],
+)

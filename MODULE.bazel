@@ -1,0 +1,13 @@
+bazel_dep(name = "com_google_googleapis", version = "0.0.0")
+git_override(
+    module_name = "com_google_googleapis",
+    remote = "git@github.com:googleapis/googleapis.git",
+    commit = "56b0279",
+    patches = [
+        ":github_googleapis_googleapis_pr_855.patch",
+    ],
+    patch_strip = 1,
+)
+
+switched_rules = use_extension("@com_google_googleapis//:extensions.bzl", "switched_rules")
+switched_rules.use_languages(java = True)
