@@ -1,4 +1,15 @@
-java_library(
+java_binary(
     name = "foo",
-    runtime_deps = ["@com_google_googleapis//google/devtools/build/v1:build_java_proto"],
+    srcs = glob(["src/main/java/**/*.java"]),
+    main_class = "nickbreen.bes.Main",
+    runtime_deps = [
+        "@io_grpc_grpc_java//netty",
+    ],
+    deps = [
+        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
+        "@com_google_protobuf//java/core",
+        "@io_grpc_grpc_java//api",
+        "@io_grpc_grpc_java//stub",
+    ],
 )
