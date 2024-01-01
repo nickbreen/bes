@@ -20,9 +20,9 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 # Pull down rules to generate a Java protobuf and gRPC library using java_library
 http_archive(
     name = "rules_proto_grpc",
-    #sha256 = "928e4205f701b7798ce32f3d2171c1918b363e9a600390a25c876f075f1efc0a",
-    strip_prefix = "rules_proto_grpc-4.5.0",
-    url = "https://github.com/rules-proto-grpc/rules_proto_grpc/releases/download/4.5.0/rules_proto_grpc-4.5.0.tar.gz",
+    sha256 = "2a0860a336ae836b54671cbbe0710eec17c64ef70c4c5a88ccfd47ea6e3739bd",
+    strip_prefix = "rules_proto_grpc-4.6.0",
+    url = "https://github.com/rules-proto-grpc/rules_proto_grpc/releases/download/4.6.0/rules_proto_grpc-4.6.0.tar.gz",
 )
 
 load("@rules_proto_grpc//:repositories.bzl", "rules_proto_grpc_repos", "rules_proto_grpc_toolchains")
@@ -69,4 +69,11 @@ switched_rules_by_language(
     name = "com_google_googleapis_imports",
     grpc = True,
     java = True,
+)
+
+http_archive(
+    name = "bazel",
+    sha256 = "09704f53cb92b09694e82338e8717f97e9821ce44b945c913f0b2a669ea71738",
+    strip_prefix = "bazel-6.4.0",
+    url = "https://github.com/bazelbuild/bazel/archive/refs/tags/6.4.0.tar.gz",
 )
