@@ -1,98 +1,57 @@
 package nickbreen.bes;
 
-import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
+import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.devtools.build.v1.PublishBuildToolEventStreamRequest;
 import com.google.devtools.build.v1.PublishLifecycleEventRequest;
 import com.google.protobuf.Any;
-import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 
-import java.io.PrintStream;
+import java.util.function.Consumer;
+
+import static nickbreen.bes.Util.testAndConsume;
 
 class BuildEventConsumer
 {
-    private final PrintStream out;
+    private final Consumer<Message> logger;
+    private final Consumer<Any> anyDelegate;
 
-    public BuildEventConsumer(final PrintStream out)
+    public BuildEventConsumer(final Consumer<Message> logger, final Consumer<Any> anyDelegate)
     {
-        this.out = out;
+        this.logger = logger;
+        this.anyDelegate = anyDelegate;
     }
 
     public void accept(final PublishBuildToolEventStreamRequest request)
     {
-        on(request);
-        demux(request.getOrderedBuildEvent().getEvent());
+        logger.accept(request);
+        testAndConsume(request::hasOrderedBuildEvent, request::getOrderedBuildEvent, this::accept);
     }
 
     public void accept(final PublishLifecycleEventRequest request)
     {
-        on(request);
-        demux(request.getBuildEvent().getEvent());
+        logger.accept(request);
+        testAndConsume(request::hasBuildEvent, request::getBuildEvent, this::accept);
     }
 
-    private void demux(final BuildEvent buildEvent)
+    private void accept(final OrderedBuildEvent orderedBuildEvent)
     {
-        if (buildEvent.hasInvocationAttemptStarted())
-        {
-            on(buildEvent.getInvocationAttemptStarted());
-        }
-        if (buildEvent.hasInvocationAttemptFinished())
-        {
-            on(buildEvent.getInvocationAttemptFinished());
-        }
-        if (buildEvent.hasBuildEnqueued())
-        {
-            on(buildEvent.getBuildEnqueued());
-        }
-        if (buildEvent.hasBuildFinished())
-        {
-            on(buildEvent.getBuildFinished());
-        }
-        if (buildEvent.hasConsoleOutput())
-        {
-            on(buildEvent.getConsoleOutput());
-        }
-        if (buildEvent.hasComponentStreamFinished())
-        {
-            on(buildEvent.getComponentStreamFinished());
-        }
-        if (buildEvent.hasBazelEvent())
-        {
-            on("BazelEvent", buildEvent.getBazelEvent());
-            try
-            {
-                if (buildEvent.getBazelEvent().is(BuildEventStreamProtos.BuildEvent.class))
-                {
-                    on("BazelEvent", buildEvent.getBazelEvent().unpack(BuildEventStreamProtos.BuildEvent.class));
-                }
-            } catch (InvalidProtocolBufferException e)
-            {
-                throw new RuntimeException(e);
-            }
-        }
-        if (buildEvent.hasBuildExecutionEvent())
-        {
-            on("BuildExecutionEvent", buildEvent.getBuildExecutionEvent());
-        }
-        if (buildEvent.hasSourceFetchEvent())
-        {
-            on("SourceFetchEvent", buildEvent.getSourceFetchEvent());
-        }
+        logger.accept(orderedBuildEvent);
+        testAndConsume(orderedBuildEvent::hasEvent, orderedBuildEvent::getEvent, this::accept);
     }
 
-    private void on(final Object arg)
+    @SuppressWarnings("DuplicatedCode")
+    private void accept(final BuildEvent buildEvent)
     {
-        on(arg.getClass().getSimpleName(), arg);
-    }
-
-    private void on(final String what, final Object arg)
-    {
-        out.printf("*** %s ***:\n%s", what, arg);
-    }
-
-    private void on(final String what, final Any any)
-    {
-        out.printf("*** %s *** %s ***:\n%s", what, any.getTypeUrl(), any);
+        testAndConsume(buildEvent::hasInvocationAttemptStarted, buildEvent::getInvocationAttemptStarted, logger);
+        testAndConsume(buildEvent::hasInvocationAttemptFinished, buildEvent::getInvocationAttemptFinished, logger);
+        testAndConsume(buildEvent::hasBuildEnqueued, buildEvent::getBuildEnqueued, logger);
+        testAndConsume(buildEvent::hasBuildFinished, buildEvent::getBuildFinished, logger);
+        testAndConsume(buildEvent::hasConsoleOutput, buildEvent::getConsoleOutput, logger);
+        testAndConsume(buildEvent::hasComponentStreamFinished, buildEvent::getComponentStreamFinished, logger);
+        testAndConsume(buildEvent::hasBuildExecutionEvent, buildEvent::getBuildExecutionEvent, anyDelegate);
+        testAndConsume(buildEvent::hasSourceFetchEvent, buildEvent::getSourceFetchEvent, anyDelegate);
+        testAndConsume(buildEvent::hasBazelEvent, buildEvent::getBazelEvent, anyDelegate);
     }
 
 }
