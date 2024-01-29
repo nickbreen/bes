@@ -13,7 +13,6 @@ import java.util.function.Consumer;
 
 class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventImplBase
 {
-
     private final Consumer<PublishLifecycleEventRequest> publishLifecycleEventRequestConsumer;
     private final Consumer<PublishBuildToolEventStreamRequest> publishBuildToolEventStreamRequestConsumer;
 

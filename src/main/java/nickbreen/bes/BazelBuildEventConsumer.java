@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 import static nickbreen.bes.Util.testAndConsume;
 import static nickbreen.bes.Util.unpackAndConsume;
 
-public class BazelBuildEventConsumer
+public class BazelBuildEventConsumer implements Consumer<Any>
 {
     private final Consumer<Message> consumer;
 
@@ -18,6 +18,7 @@ public class BazelBuildEventConsumer
         this.consumer = consumer;
     }
 
+    @Override
     public void accept(final Any any)
     {
         unpackAndConsume(BuildEventStreamProtos.BuildEvent.class, any, this::accept);

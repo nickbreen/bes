@@ -28,7 +28,7 @@ public interface Util
             }
         } catch (final InvalidProtocolBufferException e)
         {
-            throw new RuntimeException(e);
+            throw new Error(e);
         }
     }
 }
