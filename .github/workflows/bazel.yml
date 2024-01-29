@@ -15,10 +15,10 @@ jobs:
       - name: Bazel RC
         run: |
           echo "build --config=ci" >> ~/.bazelrc
-          echo "build --disk_cache=~/.cache/bazel.disk" >> ~/.bazelrc
+          echo "build --disk_cache=${{runner.temp}}/bazel.disk" >> ~/.bazelrc
       - uses: actions/cache@v3
         with:
-          path: ${{github.workspace}}/.cache/bazel.disk
+          path: ${{runner.temp}}/bazel.disk
           key: bazel
       - uses: actions/checkout@v3
       - name: Bazel Test
