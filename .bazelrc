@@ -5,3 +5,6 @@ build:ci --build_metadata=ROLE=CI
 build:bes --build_event_binary_file=bes.bin
 build:bes --build_event_json_file=bes.json
 build:bes --build_event_text_file=bes.txt
+
+build --java_language_version=11
+build --tool_java_language_version=11
