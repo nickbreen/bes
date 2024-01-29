@@ -21,8 +21,8 @@ jobs:
           path: ${{github.workspace}}/.cache/bazel.disk
           key: bazel
       - uses: actions/checkout@v3
-      - name: Bazel Build
-        run: bazel build ...
+      - name: Bazel Test
+        run: bazel test ...
       - name: Work around https://github.com/actions/upload-artifact/issues/92
         run: echo "bazel_out=$(bazel info output_path)" >> $GITHUB_ENV
       - uses: actions/upload-artifact@v3

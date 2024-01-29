@@ -1,0 +1,2886 @@
+event {
+id {
+  started {
+  }
+}
+children {
+  progress {
+  }
+}
+children {
+  unstructured_command_line {
+  }
+}
+children {
+  structured_command_line {
+    command_line_label: "original"
+  }
+}
+children {
+  structured_command_line {
+    command_line_label: "canonical"
+  }
+}
+children {
+  structured_command_line {
+    command_line_label: "tool"
+  }
+}
+children {
+  build_metadata {
+  }
+}
+children {
+  options_parsed {
+  }
+}
+children {
+  workspace_status {
+  }
+}
+children {
+  pattern {
+    pattern: "..."
+  }
+}
+children {
+  build_finished {
+  }
+}
+started {
+  uuid: "f6a5e727-0032-4a84-a959-61e4ecb294e9"
+  start_time_millis: 1706512952652
+  build_tool_version: "6.4.0"
+  options_description: "--noenable_bzlmod --announce_rc --java_language_version=11 --tool_java_language_version=11 --bes_backend=grpc://localhost:8888 --bes_results_url=http://localhost:8080 --config=bes --build_event_binary_file=bes.bin --build_event_json_file=bes.jsonl --build_event_text_file=bes.txt"
+  command: "build"
+  working_directory: "/home/nick/src/bes"
+  workspace_directory: "/home/nick/src/bes"
+  server_pid: 57969
+  start_time {
+    seconds: 1706512952
+    nanos: 652000000
+  }
+}
+}
+
+event {
+id {
+  structured_command_line {
+    command_line_label: "original"
+  }
+}
+structured_command_line {
+  command_line_label: "original"
+  sections {
+    section_label: "executable"
+    chunk_list {
+      chunk: "bazel"
+    }
+  }
+  sections {
+    section_label: "startup options"
+    option_list {
+    }
+  }
+  sections {
+    section_label: "command"
+    chunk_list {
+      chunk: "build"
+    }
+  }
+  sections {
+    section_label: "command options"
+    option_list {
+      option {
+        combined_form: "--rc_source=client"
+        option_name: "rc_source"
+        option_value: "client"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=0:common=--isatty=1"
+        option_name: "default_override"
+        option_value: "0:common=--isatty=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=0:common=--terminal_columns=181"
+        option_name: "default_override"
+        option_value: "0:common=--terminal_columns=181"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--rc_source=/home/nick/src/bes/.bazelrc"
+        option_name: "rc_source"
+        option_value: "/home/nick/src/bes/.bazelrc"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--rc_source=/home/nick/.bazelrc"
+        option_name: "rc_source"
+        option_value: "/home/nick/.bazelrc"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build=--java_language_version=11"
+        option_name: "default_override"
+        option_value: "1:build=--java_language_version=11"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build=--tool_java_language_version=11"
+        option_name: "default_override"
+        option_value: "1:build=--tool_java_language_version=11"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:bes=--build_event_binary_file=bes.bin"
+        option_name: "default_override"
+        option_value: "1:build:bes=--build_event_binary_file=bes.bin"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:bes=--build_event_json_file=bes.jsonl"
+        option_name: "default_override"
+        option_value: "1:build:bes=--build_event_json_file=bes.jsonl"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:bes=--build_event_text_file=bes.txt"
+        option_name: "default_override"
+        option_value: "1:build:bes=--build_event_text_file=bes.txt"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:ci=--build_metadata=ROLE=CI"
+        option_name: "default_override"
+        option_value: "1:build:ci=--build_metadata=ROLE=CI"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:test:ci=--test_output=all"
+        option_name: "default_override"
+        option_value: "1:test:ci=--test_output=all"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:common=--noenable_bzlmod"
+        option_name: "default_override"
+        option_value: "1:common=--noenable_bzlmod"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/"
+        option_name: "default_override"
+        option_value: "2:build:remote=--bes_results_url=http://white:8080/invocation/"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--bes_backend=grpc://white:1985"
+        option_name: "default_override"
+        option_value: "2:build:remote=--bes_backend=grpc://white:1985"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_cache=grpc://white:1985"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_cache=grpc://white:1985"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_timeout=120"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_timeout=120"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_executor=grpc://white:1985"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_executor=grpc://white:1985"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/"
+        option_name: "default_override"
+        option_value: "2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io"
+        option_name: "default_override"
+        option_value: "2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_timeout=3600"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_timeout=3600"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:common=--announce_rc"
+        option_name: "default_override"
+        option_value: "2:common=--announce_rc"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--startup_time=6"
+        option_name: "startup_time"
+        option_value: "6"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--command_wait_time=0"
+        option_name: "command_wait_time"
+        option_value: "0"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--extract_data_time=0"
+        option_name: "extract_data_time"
+        option_value: "0"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin/bazel"
+        option_name: "binary_path"
+        option_value: "/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin/bazel"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SHELL=/bin/bash"
+        option_name: "client_env"
+        option_value: "SHELL=/bin/bash"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3290,unix/walnut:/tmp/.ICE-unix/3290"
+        option_name: "client_env"
+        option_value: "SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3290,unix/walnut:/tmp/.ICE-unix/3290"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=QT_ACCESSIBILITY=1"
+        option_name: "client_env"
+        option_value: "QT_ACCESSIBILITY=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_REVISION=473"
+        option_name: "client_env"
+        option_value: "SNAP_REVISION=473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg"
+        option_name: "client_env"
+        option_value: "XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SSH_AGENT_LAUNCHER=openssh"
+        option_name: "client_env"
+        option_value: "SSH_AGENT_LAUNCHER=openssh"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_MENU_PREFIX=gnome-"
+        option_name: "client_env"
+        option_value: "XDG_MENU_PREFIX=gnome-"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated"
+        option_name: "client_env"
+        option_value: "GNOME_DESKTOP_SESSION_ID=this-is-deprecated"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_REAL_HOME=/home/nick"
+        option_name: "client_env"
+        option_value: "SNAP_REAL_HOME=/home/nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm"
+        option_name: "client_env"
+        option_value: "TERMINAL_EMULATOR=JetBrains-JediTerm"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common"
+        option_name: "client_env"
+        option_value: "SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GNOME_SHELL_SESSION_MODE=ubuntu"
+        option_name: "client_env"
+        option_value: "GNOME_SHELL_SESSION_MODE=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh"
+        option_name: "client_env"
+        option_value: "SSH_AUTH_SOCK=/run/user/1000/keyring/ssh"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=TERM_SESSION_ID=12e926ab-bffe-4090-ae4e-59c8f2223524"
+        option_name: "client_env"
+        option_value: "TERM_SESSION_ID=12e926ab-bffe-4090-ae4e-59c8f2223524"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_INSTANCE_KEY="
+        option_name: "client_env"
+        option_value: "SNAP_INSTANCE_KEY="
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XMODIFIERS=@im=ibus"
+        option_name: "client_env"
+        option_value: "XMODIFIERS=@im=ibus"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DESKTOP_SESSION=ubuntu"
+        option_name: "client_env"
+        option_value: "DESKTOP_SESSION=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        option_name: "client_env"
+        option_value: "BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GTK_MODULES=gail:atk-bridge"
+        option_name: "client_env"
+        option_value: "GTK_MODULES=gail:atk-bridge"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_EUID=1000"
+        option_name: "client_env"
+        option_value: "SNAP_EUID=1000"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=PWD=/home/nick/src/bes"
+        option_name: "client_env"
+        option_value: "PWD=/home/nick/src/bes"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_SESSION_DESKTOP=ubuntu"
+        option_name: "client_env"
+        option_value: "XDG_SESSION_DESKTOP=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LOGNAME=nick"
+        option_name: "client_env"
+        option_value: "LOGNAME=nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_SESSION_TYPE=wayland"
+        option_name: "client_env"
+        option_value: "XDG_SESSION_TYPE=wayland"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SYSTEMD_EXEC_PID=3311"
+        option_name: "client_env"
+        option_value: "SYSTEMD_EXEC_PID=3311"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.LXDDI2"
+        option_name: "client_env"
+        option_value: "XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.LXDDI2"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        option_name: "client_env"
+        option_value: "DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        option_name: "client_env"
+        option_value: "SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG"
+        option_name: "client_env"
+        option_value: "GJS_DEBUG_TOPICS=JS ERROR;JS LOG"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=HOME=/home/nick"
+        option_name: "client_env"
+        option_value: "HOME=/home/nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=USERNAME=nick"
+        option_name: "client_env"
+        option_value: "USERNAME=nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=IM_CONFIG_PHASE=1"
+        option_name: "client_env"
+        option_value: "IM_CONFIG_PHASE=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LANG=en_US.UTF-8"
+        option_name: "client_env"
+        option_value: "LANG=en_US.UTF-8"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:"
+        option_name: "client_env"
+        option_value: "LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME"
+        option_name: "client_env"
+        option_value: "XDG_CURRENT_DESKTOP=ubuntu:GNOME"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=WAYLAND_DISPLAY=wayland-0"
+        option_name: "client_env"
+        option_value: "WAYLAND_DISPLAY=wayland-0"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_ARCH=amd64"
+        option_name: "client_env"
+        option_value: "SNAP_ARCH=amd64"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate"
+        option_name: "client_env"
+        option_value: "SNAP_INSTANCE_NAME=intellij-idea-ultimate"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473"
+        option_name: "client_env"
+        option_value: "SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=INVOCATION_ID=930d2f62c98549c981194e8d0d345ee9"
+        option_name: "client_env"
+        option_value: "INVOCATION_ID=930d2f62c98549c981194e8d0d345ee9"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=MANAGERPID=3054"
+        option_name: "client_env"
+        option_value: "MANAGERPID=3054"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_REEXEC="
+        option_name: "client_env"
+        option_value: "SNAP_REEXEC="
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_UID=1000"
+        option_name: "client_env"
+        option_value: "SNAP_UID=1000"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GJS_DEBUG_OUTPUT=stderr"
+        option_name: "client_env"
+        option_value: "GJS_DEBUG_OUTPUT=stderr"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GNOME_SETUP_DISPLAY=:1"
+        option_name: "client_env"
+        option_value: "GNOME_SETUP_DISPLAY=:1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        option_name: "client_env"
+        option_value: "XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s"
+        option_name: "client_env"
+        option_value: "LESSCLOSE=/usr/bin/lesspipe %s %s"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_SESSION_CLASS=user"
+        option_name: "client_env"
+        option_value: "XDG_SESSION_CLASS=user"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=TERM=xterm-256color"
+        option_name: "client_env"
+        option_value: "TERM=xterm-256color"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LESSOPEN=| /usr/bin/lesspipe %s"
+        option_name: "client_env"
+        option_value: "LESSOPEN=| /usr/bin/lesspipe %s"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=USER=nick"
+        option_name: "client_env"
+        option_value: "USER=nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP=/snap/intellij-idea-ultimate/473"
+        option_name: "client_env"
+        option_value: "SNAP=/snap/intellij-idea-ultimate/473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common"
+        option_name: "client_env"
+        option_value: "SNAP_COMMON=/var/snap/intellij-idea-ultimate/common"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_VERSION=2023.3.3"
+        option_name: "client_env"
+        option_value: "SNAP_VERSION=2023.3.3"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DISPLAY=:0"
+        option_name: "client_env"
+        option_value: "DISPLAY=:0"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SHLVL=1"
+        option_name: "client_env"
+        option_value: "SHLVL=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void"
+        option_name: "client_env"
+        option_value: "SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        option_name: "client_env"
+        option_value: "SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=QT_IM_MODULE=ibus"
+        option_name: "client_env"
+        option_value: "QT_IM_MODULE=ibus"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473"
+        option_name: "client_env"
+        option_value: "SNAP_DATA=/var/snap/intellij-idea-ultimate/473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_RUNTIME_DIR=/run/user/1000"
+        option_name: "client_env"
+        option_value: "XDG_RUNTIME_DIR=/run/user/1000"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com "
+        option_name: "client_env"
+        option_value: "DEBUGINFOD_URLS=https://debuginfod.ubuntu.com "
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_NAME=intellij-idea-ultimate"
+        option_name: "client_env"
+        option_value: "SNAP_NAME=intellij-idea-ultimate"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=JOURNAL_STREAM=8:27232"
+        option_name: "client_env"
+        option_value: "JOURNAL_STREAM=8:27232"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"
+        option_name: "client_env"
+        option_value: "XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin"
+        option_name: "client_env"
+        option_value: "PATH=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GDMSESSION=ubuntu"
+        option_name: "client_env"
+        option_value: "GDMSESSION=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+        option_name: "client_env"
+        option_value: "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=56114"
+        option_name: "client_env"
+        option_value: "GIO_LAUNCHED_DESKTOP_FILE_PID=56114"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        option_name: "client_env"
+        option_value: "GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=_=/usr/local/bin/bazel"
+        option_name: "client_env"
+        option_value: "_=/usr/local/bin/bazel"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=BAZELISK_SKIP_WRAPPER=true"
+        option_name: "client_env"
+        option_value: "BAZELISK_SKIP_WRAPPER=true"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_cwd=/home/nick/src/bes"
+        option_name: "client_cwd"
+        option_value: "/home/nick/src/bes"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--bes_backend=grpc://localhost:8888"
+        option_name: "bes_backend"
+        option_value: "grpc://localhost:8888"
+        effect_tags: AFFECTS_OUTPUTS
+      }
+      option {
+        combined_form: "--bes_results_url=http://localhost:8080"
+        option_name: "bes_results_url"
+        option_value: "http://localhost:8080"
+        effect_tags: TERMINAL_OUTPUT
+      }
+      option {
+        combined_form: "--config=bes"
+        option_name: "config"
+        option_value: "bes"
+        effect_tags: UNKNOWN
+      }
+    }
+  }
+  sections {
+    section_label: "residual"
+    chunk_list {
+      chunk: "..."
+    }
+  }
+}
+}
+
+event {
+id {
+  structured_command_line {
+    command_line_label: "canonical"
+  }
+}
+structured_command_line {
+  command_line_label: "canonical"
+  sections {
+    section_label: "executable"
+    chunk_list {
+      chunk: "bazel"
+    }
+  }
+  sections {
+    section_label: "startup options"
+    option_list {
+      option {
+        combined_form: "--max_idle_secs=10800"
+        option_name: "max_idle_secs"
+        option_value: "10800"
+        effect_tags: EAGERNESS_TO_EXIT
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--noshutdown_on_low_sys_mem"
+        option_name: "shutdown_on_low_sys_mem"
+        option_value: "0"
+        effect_tags: EAGERNESS_TO_EXIT
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--connect_timeout_secs=30"
+        option_name: "connect_timeout_secs"
+        option_value: "30"
+        effect_tags: BAZEL_INTERNAL_CONFIGURATION
+      }
+      option {
+        combined_form: "--output_user_root=/home/nick/.cache/bazel/_bazel_nick"
+        option_name: "output_user_root"
+        option_value: "/home/nick/.cache/bazel/_bazel_nick"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--install_base=/home/nick/.cache/bazel/_bazel_nick/install/117cee491f5c7d83be6e3c6d6b5b8ca4"
+        option_name: "install_base"
+        option_value: "/home/nick/.cache/bazel/_bazel_nick/install/117cee491f5c7d83be6e3c6d6b5b8ca4"
+        effect_tags: CHANGES_INPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--install_md5=117cee491f5c7d83be6e3c6d6b5b8ca4"
+        option_name: "install_md5"
+        option_value: "117cee491f5c7d83be6e3c6d6b5b8ca4"
+        effect_tags: LOSES_INCREMENTAL_STATE
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--output_base=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411"
+        option_name: "output_base"
+        option_value: "/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--workspace_directory=/home/nick/src/bes"
+        option_name: "workspace_directory"
+        option_value: "/home/nick/src/bes"
+        effect_tags: CHANGES_INPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_system_javabase=/usr/lib/jvm/java-17-openjdk-amd64"
+        option_name: "default_system_javabase"
+        option_value: "/usr/lib/jvm/java-17-openjdk-amd64"
+        effect_tags: CHANGES_INPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--failure_detail_out=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto"
+        option_name: "failure_detail_out"
+        option_value: "/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--expand_configs_in_place"
+        option_name: "expand_configs_in_place"
+        option_value: "1"
+        effect_tags: NO_OP
+        metadata_tags: DEPRECATED
+      }
+      option {
+        combined_form: "--idle_server_tasks"
+        option_name: "idle_server_tasks"
+        option_value: "1"
+        effect_tags: LOSES_INCREMENTAL_STATE
+        effect_tags: HOST_MACHINE_RESOURCE_OPTIMIZATIONS
+      }
+      option {
+        combined_form: "--write_command_log"
+        option_name: "write_command_log"
+        option_value: "1"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--nowatchfs"
+        option_name: "watchfs"
+        option_value: "0"
+        effect_tags: UNKNOWN
+        metadata_tags: DEPRECATED
+      }
+      option {
+        combined_form: "--nofatal_event_bus_exceptions"
+        option_name: "fatal_event_bus_exceptions"
+        option_value: "0"
+        effect_tags: EAGERNESS_TO_EXIT
+        effect_tags: LOSES_INCREMENTAL_STATE
+      }
+      option {
+        combined_form: "--nowindows_enable_symlinks"
+        option_name: "windows_enable_symlinks"
+        option_value: "0"
+        effect_tags: BAZEL_INTERNAL_CONFIGURATION
+      }
+      option {
+        combined_form: "--client_debug=false"
+        option_name: "client_debug"
+        option_value: "false"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+      }
+      option {
+        combined_form: "--product_name=Bazel"
+        option_name: "product_name"
+        option_value: "Bazel"
+        effect_tags: LOSES_INCREMENTAL_STATE
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--option_sources="
+        option_name: "option_sources"
+        effect_tags: AFFECTS_OUTPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--ignore_all_rc_files"
+        option_name: "ignore_all_rc_files"
+        option_value: "1"
+        effect_tags: CHANGES_INPUTS
+      }
+    }
+  }
+  sections {
+    section_label: "command"
+    chunk_list {
+      chunk: "build"
+    }
+  }
+  sections {
+    section_label: "command options"
+    option_list {
+      option {
+        combined_form: "--isatty=1"
+        option_name: "isatty"
+        option_value: "1"
+        effect_tags: UNKNOWN
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--terminal_columns=181"
+        option_name: "terminal_columns"
+        option_value: "181"
+        effect_tags: UNKNOWN
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--noenable_bzlmod"
+        option_name: "enable_bzlmod"
+        option_value: "0"
+        effect_tags: LOADING_AND_ANALYSIS
+      }
+      option {
+        combined_form: "--announce_rc"
+        option_name: "announce_rc"
+        option_value: "1"
+        effect_tags: AFFECTS_OUTPUTS
+      }
+      option {
+        combined_form: "--java_language_version=11"
+        option_name: "java_language_version"
+        option_value: "11"
+        effect_tags: UNKNOWN
+      }
+      option {
+        combined_form: "--tool_java_language_version=11"
+        option_name: "tool_java_language_version"
+        option_value: "11"
+        effect_tags: UNKNOWN
+      }
+      option {
+        combined_form: "--rc_source=client"
+        option_name: "rc_source"
+        option_value: "client"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=0:common=--isatty=1"
+        option_name: "default_override"
+        option_value: "0:common=--isatty=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=0:common=--terminal_columns=181"
+        option_name: "default_override"
+        option_value: "0:common=--terminal_columns=181"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--rc_source=/home/nick/src/bes/.bazelrc"
+        option_name: "rc_source"
+        option_value: "/home/nick/src/bes/.bazelrc"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--rc_source=/home/nick/.bazelrc"
+        option_name: "rc_source"
+        option_value: "/home/nick/.bazelrc"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build=--java_language_version=11"
+        option_name: "default_override"
+        option_value: "1:build=--java_language_version=11"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build=--tool_java_language_version=11"
+        option_name: "default_override"
+        option_value: "1:build=--tool_java_language_version=11"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:bes=--build_event_binary_file=bes.bin"
+        option_name: "default_override"
+        option_value: "1:build:bes=--build_event_binary_file=bes.bin"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:bes=--build_event_json_file=bes.jsonl"
+        option_name: "default_override"
+        option_value: "1:build:bes=--build_event_json_file=bes.jsonl"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:bes=--build_event_text_file=bes.txt"
+        option_name: "default_override"
+        option_value: "1:build:bes=--build_event_text_file=bes.txt"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:build:ci=--build_metadata=ROLE=CI"
+        option_name: "default_override"
+        option_value: "1:build:ci=--build_metadata=ROLE=CI"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:test:ci=--test_output=all"
+        option_name: "default_override"
+        option_value: "1:test:ci=--test_output=all"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=1:common=--noenable_bzlmod"
+        option_name: "default_override"
+        option_value: "1:common=--noenable_bzlmod"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/"
+        option_name: "default_override"
+        option_value: "2:build:remote=--bes_results_url=http://white:8080/invocation/"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--bes_backend=grpc://white:1985"
+        option_name: "default_override"
+        option_value: "2:build:remote=--bes_backend=grpc://white:1985"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_cache=grpc://white:1985"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_cache=grpc://white:1985"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_timeout=120"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_timeout=120"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_executor=grpc://white:1985"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_executor=grpc://white:1985"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o"
+        option_name: "default_override"
+        option_value: "2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/"
+        option_name: "default_override"
+        option_value: "2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io"
+        option_name: "default_override"
+        option_value: "2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_timeout=3600"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_timeout=3600"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC"
+        option_name: "default_override"
+        option_value: "2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--default_override=2:common=--announce_rc"
+        option_name: "default_override"
+        option_value: "2:common=--announce_rc"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--startup_time=6"
+        option_name: "startup_time"
+        option_value: "6"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--command_wait_time=0"
+        option_name: "command_wait_time"
+        option_value: "0"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--extract_data_time=0"
+        option_name: "extract_data_time"
+        option_value: "0"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin/bazel"
+        option_name: "binary_path"
+        option_value: "/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin/bazel"
+        effect_tags: AFFECTS_OUTPUTS
+        effect_tags: BAZEL_MONITORING
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SHELL=/bin/bash"
+        option_name: "client_env"
+        option_value: "SHELL=/bin/bash"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3290,unix/walnut:/tmp/.ICE-unix/3290"
+        option_name: "client_env"
+        option_value: "SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3290,unix/walnut:/tmp/.ICE-unix/3290"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=QT_ACCESSIBILITY=1"
+        option_name: "client_env"
+        option_value: "QT_ACCESSIBILITY=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_REVISION=473"
+        option_name: "client_env"
+        option_value: "SNAP_REVISION=473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg"
+        option_name: "client_env"
+        option_value: "XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SSH_AGENT_LAUNCHER=openssh"
+        option_name: "client_env"
+        option_value: "SSH_AGENT_LAUNCHER=openssh"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_MENU_PREFIX=gnome-"
+        option_name: "client_env"
+        option_value: "XDG_MENU_PREFIX=gnome-"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated"
+        option_name: "client_env"
+        option_value: "GNOME_DESKTOP_SESSION_ID=this-is-deprecated"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_REAL_HOME=/home/nick"
+        option_name: "client_env"
+        option_value: "SNAP_REAL_HOME=/home/nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm"
+        option_name: "client_env"
+        option_value: "TERMINAL_EMULATOR=JetBrains-JediTerm"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common"
+        option_name: "client_env"
+        option_value: "SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GNOME_SHELL_SESSION_MODE=ubuntu"
+        option_name: "client_env"
+        option_value: "GNOME_SHELL_SESSION_MODE=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh"
+        option_name: "client_env"
+        option_value: "SSH_AUTH_SOCK=/run/user/1000/keyring/ssh"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=TERM_SESSION_ID=12e926ab-bffe-4090-ae4e-59c8f2223524"
+        option_name: "client_env"
+        option_value: "TERM_SESSION_ID=12e926ab-bffe-4090-ae4e-59c8f2223524"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_INSTANCE_KEY="
+        option_name: "client_env"
+        option_value: "SNAP_INSTANCE_KEY="
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XMODIFIERS=@im=ibus"
+        option_name: "client_env"
+        option_value: "XMODIFIERS=@im=ibus"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DESKTOP_SESSION=ubuntu"
+        option_name: "client_env"
+        option_value: "DESKTOP_SESSION=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        option_name: "client_env"
+        option_value: "BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GTK_MODULES=gail:atk-bridge"
+        option_name: "client_env"
+        option_value: "GTK_MODULES=gail:atk-bridge"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_EUID=1000"
+        option_name: "client_env"
+        option_value: "SNAP_EUID=1000"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=PWD=/home/nick/src/bes"
+        option_name: "client_env"
+        option_value: "PWD=/home/nick/src/bes"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_SESSION_DESKTOP=ubuntu"
+        option_name: "client_env"
+        option_value: "XDG_SESSION_DESKTOP=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LOGNAME=nick"
+        option_name: "client_env"
+        option_value: "LOGNAME=nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_SESSION_TYPE=wayland"
+        option_name: "client_env"
+        option_value: "XDG_SESSION_TYPE=wayland"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SYSTEMD_EXEC_PID=3311"
+        option_name: "client_env"
+        option_value: "SYSTEMD_EXEC_PID=3311"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.LXDDI2"
+        option_name: "client_env"
+        option_value: "XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.LXDDI2"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        option_name: "client_env"
+        option_value: "DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        option_name: "client_env"
+        option_value: "SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG"
+        option_name: "client_env"
+        option_value: "GJS_DEBUG_TOPICS=JS ERROR;JS LOG"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=HOME=/home/nick"
+        option_name: "client_env"
+        option_value: "HOME=/home/nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=USERNAME=nick"
+        option_name: "client_env"
+        option_value: "USERNAME=nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=IM_CONFIG_PHASE=1"
+        option_name: "client_env"
+        option_value: "IM_CONFIG_PHASE=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LANG=en_US.UTF-8"
+        option_name: "client_env"
+        option_value: "LANG=en_US.UTF-8"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:"
+        option_name: "client_env"
+        option_value: "LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME"
+        option_name: "client_env"
+        option_value: "XDG_CURRENT_DESKTOP=ubuntu:GNOME"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=WAYLAND_DISPLAY=wayland-0"
+        option_name: "client_env"
+        option_value: "WAYLAND_DISPLAY=wayland-0"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_ARCH=amd64"
+        option_name: "client_env"
+        option_value: "SNAP_ARCH=amd64"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate"
+        option_name: "client_env"
+        option_value: "SNAP_INSTANCE_NAME=intellij-idea-ultimate"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473"
+        option_name: "client_env"
+        option_value: "SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=INVOCATION_ID=930d2f62c98549c981194e8d0d345ee9"
+        option_name: "client_env"
+        option_value: "INVOCATION_ID=930d2f62c98549c981194e8d0d345ee9"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=MANAGERPID=3054"
+        option_name: "client_env"
+        option_value: "MANAGERPID=3054"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_REEXEC="
+        option_name: "client_env"
+        option_value: "SNAP_REEXEC="
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_UID=1000"
+        option_name: "client_env"
+        option_value: "SNAP_UID=1000"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GJS_DEBUG_OUTPUT=stderr"
+        option_name: "client_env"
+        option_value: "GJS_DEBUG_OUTPUT=stderr"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GNOME_SETUP_DISPLAY=:1"
+        option_name: "client_env"
+        option_value: "GNOME_SETUP_DISPLAY=:1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        option_name: "client_env"
+        option_value: "XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s"
+        option_name: "client_env"
+        option_value: "LESSCLOSE=/usr/bin/lesspipe %s %s"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_SESSION_CLASS=user"
+        option_name: "client_env"
+        option_value: "XDG_SESSION_CLASS=user"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=TERM=xterm-256color"
+        option_name: "client_env"
+        option_value: "TERM=xterm-256color"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=LESSOPEN=| /usr/bin/lesspipe %s"
+        option_name: "client_env"
+        option_value: "LESSOPEN=| /usr/bin/lesspipe %s"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=USER=nick"
+        option_name: "client_env"
+        option_value: "USER=nick"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP=/snap/intellij-idea-ultimate/473"
+        option_name: "client_env"
+        option_value: "SNAP=/snap/intellij-idea-ultimate/473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common"
+        option_name: "client_env"
+        option_value: "SNAP_COMMON=/var/snap/intellij-idea-ultimate/common"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_VERSION=2023.3.3"
+        option_name: "client_env"
+        option_value: "SNAP_VERSION=2023.3.3"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DISPLAY=:0"
+        option_name: "client_env"
+        option_value: "DISPLAY=:0"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SHLVL=1"
+        option_name: "client_env"
+        option_value: "SHLVL=1"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void"
+        option_name: "client_env"
+        option_value: "SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        option_name: "client_env"
+        option_value: "SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=QT_IM_MODULE=ibus"
+        option_name: "client_env"
+        option_value: "QT_IM_MODULE=ibus"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473"
+        option_name: "client_env"
+        option_value: "SNAP_DATA=/var/snap/intellij-idea-ultimate/473"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_RUNTIME_DIR=/run/user/1000"
+        option_name: "client_env"
+        option_value: "XDG_RUNTIME_DIR=/run/user/1000"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com "
+        option_name: "client_env"
+        option_value: "DEBUGINFOD_URLS=https://debuginfod.ubuntu.com "
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=SNAP_NAME=intellij-idea-ultimate"
+        option_name: "client_env"
+        option_value: "SNAP_NAME=intellij-idea-ultimate"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=JOURNAL_STREAM=8:27232"
+        option_name: "client_env"
+        option_value: "JOURNAL_STREAM=8:27232"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"
+        option_name: "client_env"
+        option_value: "XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin"
+        option_name: "client_env"
+        option_value: "PATH=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GDMSESSION=ubuntu"
+        option_name: "client_env"
+        option_value: "GDMSESSION=ubuntu"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+        option_name: "client_env"
+        option_value: "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=56114"
+        option_name: "client_env"
+        option_value: "GIO_LAUNCHED_DESKTOP_FILE_PID=56114"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        option_name: "client_env"
+        option_value: "GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=_=/usr/local/bin/bazel"
+        option_name: "client_env"
+        option_value: "_=/usr/local/bin/bazel"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_env=BAZELISK_SKIP_WRAPPER=true"
+        option_name: "client_env"
+        option_value: "BAZELISK_SKIP_WRAPPER=true"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--client_cwd=/home/nick/src/bes"
+        option_name: "client_cwd"
+        option_value: "/home/nick/src/bes"
+        effect_tags: CHANGES_INPUTS
+        metadata_tags: HIDDEN
+      }
+      option {
+        combined_form: "--bes_backend=grpc://localhost:8888"
+        option_name: "bes_backend"
+        option_value: "grpc://localhost:8888"
+        effect_tags: AFFECTS_OUTPUTS
+      }
+      option {
+        combined_form: "--bes_results_url=http://localhost:8080"
+        option_name: "bes_results_url"
+        option_value: "http://localhost:8080"
+        effect_tags: TERMINAL_OUTPUT
+      }
+      option {
+        combined_form: "--config=bes"
+        option_name: "config"
+        option_value: "bes"
+        effect_tags: UNKNOWN
+      }
+      option {
+        combined_form: "--build_event_binary_file=bes.bin"
+        option_name: "build_event_binary_file"
+        option_value: "bes.bin"
+        effect_tags: AFFECTS_OUTPUTS
+      }
+      option {
+        combined_form: "--build_event_json_file=bes.jsonl"
+        option_name: "build_event_json_file"
+        option_value: "bes.jsonl"
+        effect_tags: AFFECTS_OUTPUTS
+      }
+      option {
+        combined_form: "--build_event_text_file=bes.txt"
+        option_name: "build_event_text_file"
+        option_value: "bes.txt"
+        effect_tags: AFFECTS_OUTPUTS
+      }
+    }
+  }
+  sections {
+    section_label: "residual"
+    chunk_list {
+      chunk: "..."
+    }
+  }
+}
+}
+
+event {
+id {
+  structured_command_line {
+    command_line_label: "tool"
+  }
+}
+structured_command_line {
+}
+}
+
+event {
+id {
+  build_metadata {
+  }
+}
+build_metadata {
+}
+}
+
+event {
+id {
+  unstructured_command_line {
+  }
+}
+unstructured_command_line {
+  args: "build"
+  args: "--startup_time=6"
+  args: "--command_wait_time=0"
+  args: "--extract_data_time=0"
+  args: "--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin/bazel"
+  args: "--rc_source=client"
+  args: "--default_override=0:common=--isatty=1"
+  args: "--default_override=0:common=--terminal_columns=181"
+  args: "--rc_source=/home/nick/src/bes/.bazelrc"
+  args: "--rc_source=/home/nick/.bazelrc"
+  args: "--default_override=1:build=--java_language_version=11"
+  args: "--default_override=1:build=--tool_java_language_version=11"
+  args: "--default_override=1:build:bes=--build_event_binary_file=bes.bin"
+  args: "--default_override=1:build:bes=--build_event_json_file=bes.jsonl"
+  args: "--default_override=1:build:bes=--build_event_text_file=bes.txt"
+  args: "--default_override=1:build:ci=--build_metadata=ROLE=CI"
+  args: "--default_override=1:test:ci=--test_output=all"
+  args: "--default_override=1:common=--noenable_bzlmod"
+  args: "--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/"
+  args: "--default_override=2:build:remote=--bes_backend=grpc://white:1985"
+  args: "--default_override=2:build:remote=--remote_cache=grpc://white:1985"
+  args: "--default_override=2:build:remote=--remote_timeout=120"
+  args: "--default_override=2:build:remote=--remote_executor=grpc://white:1985"
+  args: "--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o"
+  args: "--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/"
+  args: "--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io"
+  args: "--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io"
+  args: "--default_override=2:build:bb=--remote_timeout=3600"
+  args: "--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io"
+  args: "--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC"
+  args: "--default_override=2:common=--announce_rc"
+  args: "--client_env=SHELL=/bin/bash"
+  args: "--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3290,unix/walnut:/tmp/.ICE-unix/3290"
+  args: "--client_env=QT_ACCESSIBILITY=1"
+  args: "--client_env=SNAP_REVISION=473"
+  args: "--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg"
+  args: "--client_env=SSH_AGENT_LAUNCHER=openssh"
+  args: "--client_env=XDG_MENU_PREFIX=gnome-"
+  args: "--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated"
+  args: "--client_env=SNAP_REAL_HOME=/home/nick"
+  args: "--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm"
+  args: "--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common"
+  args: "--client_env=GNOME_SHELL_SESSION_MODE=ubuntu"
+  args: "--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh"
+  args: "--client_env=TERM_SESSION_ID=12e926ab-bffe-4090-ae4e-59c8f2223524"
+  args: "--client_env=SNAP_INSTANCE_KEY="
+  args: "--client_env=XMODIFIERS=@im=ibus"
+  args: "--client_env=DESKTOP_SESSION=ubuntu"
+  args: "--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+  args: "--client_env=GTK_MODULES=gail:atk-bridge"
+  args: "--client_env=SNAP_EUID=1000"
+  args: "--client_env=PWD=/home/nick/src/bes"
+  args: "--client_env=XDG_SESSION_DESKTOP=ubuntu"
+  args: "--client_env=LOGNAME=nick"
+  args: "--client_env=XDG_SESSION_TYPE=wayland"
+  args: "--client_env=SYSTEMD_EXEC_PID=3311"
+  args: "--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.LXDDI2"
+  args: "--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+  args: "--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+  args: "--client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG"
+  args: "--client_env=HOME=/home/nick"
+  args: "--client_env=USERNAME=nick"
+  args: "--client_env=IM_CONFIG_PHASE=1"
+  args: "--client_env=LANG=en_US.UTF-8"
+  args: "--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:"
+  args: "--client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME"
+  args: "--client_env=WAYLAND_DISPLAY=wayland-0"
+  args: "--client_env=SNAP_ARCH=amd64"
+  args: "--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate"
+  args: "--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473"
+  args: "--client_env=INVOCATION_ID=930d2f62c98549c981194e8d0d345ee9"
+  args: "--client_env=MANAGERPID=3054"
+  args: "--client_env=SNAP_REEXEC="
+  args: "--client_env=SNAP_UID=1000"
+  args: "--client_env=GJS_DEBUG_OUTPUT=stderr"
+  args: "--client_env=GNOME_SETUP_DISPLAY=:1"
+  args: "--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3311-9-walnut_TIME100253657"
+  args: "--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s"
+  args: "--client_env=XDG_SESSION_CLASS=user"
+  args: "--client_env=TERM=xterm-256color"
+  args: "--client_env=LESSOPEN=| /usr/bin/lesspipe %s"
+  args: "--client_env=USER=nick"
+  args: "--client_env=SNAP=/snap/intellij-idea-ultimate/473"
+  args: "--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common"
+  args: "--client_env=SNAP_VERSION=2023.3.3"
+  args: "--client_env=DISPLAY=:0"
+  args: "--client_env=SHLVL=1"
+  args: "--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void"
+  args: "--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X"
+  args: "--client_env=QT_IM_MODULE=ibus"
+  args: "--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473"
+  args: "--client_env=XDG_RUNTIME_DIR=/run/user/1000"
+  args: "--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com "
+  args: "--client_env=SNAP_NAME=intellij-idea-ultimate"
+  args: "--client_env=JOURNAL_STREAM=8:27232"
+  args: "--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop"
+  args: "--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/79e4f370efa6e31717b486af5d9efd95864d0ef13da138582224ac9b2a1bad86/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin"
+  args: "--client_env=GDMSESSION=ubuntu"
+  args: "--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+  args: "--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=56114"
+  args: "--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop"
+  args: "--client_env=_=/usr/local/bin/bazel"
+  args: "--client_env=BAZELISK_SKIP_WRAPPER=true"
+  args: "--client_cwd=/home/nick/src/bes"
+  args: "--bes_backend=grpc://localhost:8888"
+  args: "--bes_results_url=http://localhost:8080"
+  args: "--config=bes"
+  args: "..."
+}
+}
+
+event {
+id {
+  options_parsed {
+  }
+}
+options_parsed {
+  startup_options: "--max_idle_secs=10800"
+  startup_options: "--noshutdown_on_low_sys_mem"
+  startup_options: "--connect_timeout_secs=30"
+  startup_options: "--output_user_root=/home/nick/.cache/bazel/_bazel_nick"
+  startup_options: "--output_base=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411"
+  startup_options: "--failure_detail_out=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto"
+  startup_options: "--expand_configs_in_place"
+  startup_options: "--idle_server_tasks"
+  startup_options: "--write_command_log"
+  startup_options: "--nowatchfs"
+  startup_options: "--nofatal_event_bus_exceptions"
+  startup_options: "--nowindows_enable_symlinks"
+  startup_options: "--noclient_debug"
+  cmd_line: "--noenable_bzlmod"
+  cmd_line: "--announce_rc"
+  cmd_line: "--java_language_version=11"
+  cmd_line: "--tool_java_language_version=11"
+  cmd_line: "--bes_backend=grpc://localhost:8888"
+  cmd_line: "--bes_results_url=http://localhost:8080"
+  cmd_line: "--config=bes"
+  cmd_line: "--build_event_binary_file=bes.bin"
+  cmd_line: "--build_event_json_file=bes.jsonl"
+  cmd_line: "--build_event_text_file=bes.txt"
+  explicit_cmd_line: "--bes_backend=grpc://localhost:8888"
+  explicit_cmd_line: "--bes_results_url=http://localhost:8080"
+  explicit_cmd_line: "--config=bes"
+  invocation_policy {
+  }
+}
+}
+
+event {
+id {
+  pattern {
+    pattern: "..."
+  }
+}
+children {
+  target_configured {
+    label: "//src/main:main"
+  }
+}
+children {
+  target_configured {
+    label: "//src/test:test"
+  }
+}
+children {
+  target_configured {
+    label: "//src/test-support:test-support"
+  }
+}
+children {
+  target_configured {
+    label: "//:bes"
+  }
+}
+expanded {
+}
+}
+
+event {
+id {
+  progress {
+  }
+}
+children {
+  progress {
+    opaque_count: 1
+  }
+}
+children {
+  workspace {
+  }
+}
+progress {
+  stderr: "\033[32mINFO: \033[0mStreaming build results to: http://localhost:8080/f6a5e727-0032-4a84-a959-61e4ecb294e9\n\033[32mINFO: \033[0mOptions provided by the client:\n  Inherited \'common\' options: --isatty=1 --terminal_columns=181\n\033[32mINFO: \033[0mReading rc options for \'build\' from /home/nick/src/bes/.bazelrc:\n  Inherited \'common\' options: --noenable_bzlmod\n\033[32mINFO: \033[0mReading rc options for \'build\' from /home/nick/.bazelrc:\n  Inherited \'common\' options: --announce_rc\n\033[32mINFO: \033[0mReading rc options for \'build\' from /home/nick/src/bes/.bazelrc:\n  \'build\' options: --java_language_version=11 --tool_java_language_version=11\n\033[32mINFO: \033[0mFound applicable config definition build:bes in file /home/nick/src/bes/.bazelrc: --build_event_binary_file=bes.bin --build_event_json_file=bes.jsonl --build_event_text_file=bes.txt\n\033[32mLoading:\033[0m \n\r\033[1A\033[K\033[32mLoading:\033[0m \n\r\033[1A\033[K\033[32mLoading:\033[0m 0 packages loaded\n"
+}
+}
+
+event {
+id {
+  workspace {
+  }
+}
+workspace_info {
+  local_exec_root: "/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__"
+}
+}
+
+event {
+id {
+  progress {
+    opaque_count: 1
+  }
+}
+children {
+  progress {
+    opaque_count: 2
+  }
+}
+children {
+  configuration {
+    id: "f30a52e711c76879d003859864ffb1dbca262e7f13e38571506c6755535121df"
+  }
+}
+progress {
+}
+}
+
+event {
+id {
+  configuration {
+    id: "f30a52e711c76879d003859864ffb1dbca262e7f13e38571506c6755535121df"
+  }
+}
+configuration {
+  mnemonic: "k8-fastbuild"
+  platform_name: "k8"
+  cpu: "k8"
+  make_variable {
+    key: "BINDIR"
+    value: "bazel-out/k8-fastbuild/bin"
+  }
+  make_variable {
+    key: "COMPILATION_MODE"
+    value: "fastbuild"
+  }
+  make_variable {
+    key: "GENDIR"
+    value: "bazel-out/k8-fastbuild/bin"
+  }
+  make_variable {
+    key: "TARGET_CPU"
+    value: "k8"
+  }
+}
+}
+
+event {
+id {
+  progress {
+    opaque_count: 2
+  }
+}
+children {
+  progress {
+    opaque_count: 3
+  }
+}
+children {
+  configuration {
+    id: "6f4f2faacbec9269ef11bc0a1860425761dd9f2a89b36d0d7bd9e90747c6cbdb"
+  }
+}
+progress {
+}
+}
+
+event {
+id {
+  configuration {
+    id: "6f4f2faacbec9269ef11bc0a1860425761dd9f2a89b36d0d7bd9e90747c6cbdb"
+  }
+}
+configuration {
+  mnemonic: "k8-fastbuild"
+  platform_name: "k8"
+  cpu: "k8"
+  make_variable {
+    key: "BINDIR"
+    value: "bazel-out/k8-fastbuild/bin"
+  }
+  make_variable {
+    key: "COMPILATION_MODE"
+    value: "fastbuild"
+  }
+  make_variable {
+    key: "GENDIR"
+    value: "bazel-out/k8-fastbuild/bin"
+  }
+  make_variable {
+    key: "TARGET_CPU"
+    value: "k8"
+  }
+}
+}
+
+event {
+id {
+  target_configured {
+    label: "//src/main:main"
+  }
+}
+children {
+  target_completed {
+    label: "//src/main:main"
+    configuration {
+      id: "6f4f2faacbec9269ef11bc0a1860425761dd9f2a89b36d0d7bd9e90747c6cbdb"
+    }
+  }
+}
+configured {
+  target_kind: "java_binary rule"
+}
+}
+
+event {
+id {
+  target_configured {
+    label: "//src/test:test"
+  }
+}
+children {
+  target_completed {
+    label: "//src/test:test"
+    configuration {
+      id: "f30a52e711c76879d003859864ffb1dbca262e7f13e38571506c6755535121df"
+    }
+  }
+}
+configured {
+  target_kind: "java_test rule"
+  test_size: MEDIUM
+}
+}
+
+event {
+id {
+  target_configured {
+    label: "//src/test-support:test-support"
+  }
+}
+children {
+  target_completed {
+    label: "//src/test-support:test-support"
+    configuration {
+      id: "6f4f2faacbec9269ef11bc0a1860425761dd9f2a89b36d0d7bd9e90747c6cbdb"
+    }
+  }
+}
+configured {
+  target_kind: "java_library rule"
+}
+}
+
+event {
+id {
+  target_configured {
+    label: "//:bes"
+  }
+}
+children {
+  target_completed {
+    label: "//:bes"
+    configuration {
+      id: "f30a52e711c76879d003859864ffb1dbca262e7f13e38571506c6755535121df"
+    }
+  }
+}
+configured {
+  target_kind: "alias rule"
+}
+}
+
+event {
+id {
+  progress {
+    opaque_count: 3
+  }
+}
+children {
+  progress {
+    opaque_count: 4
+  }
+}
+children {
+  named_set {
+    id: "0"
+  }
+}
+progress {
+  stderr: "\r\033[1A\033[K\033[32mAnalyzing:\033[0m 4 targets (0 packages loaded, 0 targets configured)\n\r\033[1A\033[K\033[32mINFO: \033[0mAnalyzed 4 targets (0 packages loaded, 0 targets configured).\n\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO: \033[0mFound 4 targets...\n\033[0m checking cached actions\n"
+}
+}
+
+event {
+id {
+  named_set {
+    id: "0"
+  }
+}
+named_set_of_files {
+  files {
+    name: "src/main/main.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/main/main.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "485b42c6ff5bbb351c29f88d6117cd833fe499d84f6f6d5ad702131e96ca92b9"
+    length: 12048
+  }
+  files {
+    name: "src/main/main"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/main/main"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "b5155aa87f3aba530356e1fe374752e6faafe5f6993f0e58bfac38b08c11599a"
+    length: 18422
+  }
+}
+}
+
+event {
+id {
+  target_completed {
+    label: "//src/main:main"
+    configuration {
+      id: "6f4f2faacbec9269ef11bc0a1860425761dd9f2a89b36d0d7bd9e90747c6cbdb"
+    }
+  }
+}
+completed {
+  success: true
+  output_group {
+    name: "default"
+    file_sets {
+      id: "0"
+    }
+  }
+  important_output {
+    name: "src/main/main.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/main/main.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "485b42c6ff5bbb351c29f88d6117cd833fe499d84f6f6d5ad702131e96ca92b9"
+    length: 12048
+  }
+  important_output {
+    name: "src/main/main"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/main/main"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "b5155aa87f3aba530356e1fe374752e6faafe5f6993f0e58bfac38b08c11599a"
+    length: 18422
+  }
+}
+}
+
+event {
+id {
+  progress {
+    opaque_count: 4
+  }
+}
+children {
+  progress {
+    opaque_count: 5
+  }
+}
+children {
+  named_set {
+    id: "1"
+  }
+}
+progress {
+}
+}
+
+event {
+id {
+  named_set {
+    id: "1"
+  }
+}
+named_set_of_files {
+  files {
+    name: "src/test/test.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/test/test.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "10a80777133162cbfa0fbac9a673c02f2d643ccea785c298932956cc177bd4e3"
+    length: 47259
+  }
+  files {
+    name: "src/test/test"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/test/test"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "0ada5ba56fec9cb2432a31cd583edcf332b572e30268bcf10f4c1eb08589ce21"
+    length: 13927
+  }
+}
+}
+
+event {
+id {
+  target_completed {
+    label: "//src/test:test"
+    configuration {
+      id: "f30a52e711c76879d003859864ffb1dbca262e7f13e38571506c6755535121df"
+    }
+  }
+}
+completed {
+  success: true
+  output_group {
+    name: "default"
+    file_sets {
+      id: "1"
+    }
+  }
+  important_output {
+    name: "src/test/test.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/test/test.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "10a80777133162cbfa0fbac9a673c02f2d643ccea785c298932956cc177bd4e3"
+    length: 47259
+  }
+  important_output {
+    name: "src/test/test"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/test/test"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "0ada5ba56fec9cb2432a31cd583edcf332b572e30268bcf10f4c1eb08589ce21"
+    length: 13927
+  }
+}
+}
+
+event {
+id {
+  progress {
+    opaque_count: 5
+  }
+}
+children {
+  progress {
+    opaque_count: 6
+  }
+}
+children {
+  named_set {
+    id: "2"
+  }
+}
+progress {
+  stderr: "\r\033[1A\033[K\033[32m[0 / 1]\033[0m [Prepa] BazelWorkspaceStatusAction stable-status.txt\n"
+}
+}
+
+event {
+id {
+  named_set {
+    id: "2"
+  }
+}
+named_set_of_files {
+  files {
+    name: "src/test-support/libtest-support.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/test-support/libtest-support.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "b640330fef2ca7fd5e7e8d8c4beac0bef2e4b669989b428495d75acbb077aa38"
+    length: 888
+  }
+}
+}
+
+event {
+id {
+  target_completed {
+    label: "//src/test-support:test-support"
+    configuration {
+      id: "6f4f2faacbec9269ef11bc0a1860425761dd9f2a89b36d0d7bd9e90747c6cbdb"
+    }
+  }
+}
+completed {
+  success: true
+  output_group {
+    name: "default"
+    file_sets {
+      id: "2"
+    }
+  }
+  important_output {
+    name: "src/test-support/libtest-support.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/test-support/libtest-support.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "b640330fef2ca7fd5e7e8d8c4beac0bef2e4b669989b428495d75acbb077aa38"
+    length: 888
+  }
+}
+}
+
+event {
+id {
+  workspace_status {
+  }
+}
+workspace_status {
+  item {
+    key: "BUILD_EMBED_LABEL"
+  }
+  item {
+    key: "BUILD_HOST"
+    value: "walnut"
+  }
+  item {
+    key: "BUILD_TIMESTAMP"
+    value: "1706512952"
+  }
+  item {
+    key: "BUILD_USER"
+    value: "nick"
+  }
+  item {
+    key: "FORMATTED_DATE"
+    value: "2024 Jan 29 07 22 32 Mon"
+  }
+}
+}
+
+event {
+id {
+  target_completed {
+    label: "//:bes"
+    configuration {
+      id: "f30a52e711c76879d003859864ffb1dbca262e7f13e38571506c6755535121df"
+    }
+  }
+}
+completed {
+  success: true
+  output_group {
+    name: "default"
+    file_sets {
+      id: "0"
+    }
+  }
+  important_output {
+    name: "src/main/main.jar"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/main/main.jar"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "485b42c6ff5bbb351c29f88d6117cd833fe499d84f6f6d5ad702131e96ca92b9"
+    length: 12048
+  }
+  important_output {
+    name: "src/main/main"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/src/main/main"
+    path_prefix: "bazel-out"
+    path_prefix: "k8-fastbuild"
+    path_prefix: "bin"
+    digest: "b5155aa87f3aba530356e1fe374752e6faafe5f6993f0e58bfac38b08c11599a"
+    length: 18422
+  }
+}
+}
+
+event {
+id {
+  build_finished {
+  }
+}
+children {
+  build_tool_logs {
+  }
+}
+children {
+  build_metrics {
+  }
+}
+finished {
+  overall_success: true
+  finish_time_millis: 1706512952704
+  exit_code {
+    name: "SUCCESS"
+  }
+  finish_time {
+    seconds: 1706512952
+    nanos: 704000000
+  }
+}
+}
+
+event {
+id {
+  build_metrics {
+  }
+}
+build_metrics {
+  action_summary {
+    actions_executed: 1
+    action_data {
+      mnemonic: "BazelWorkspaceStatusAction"
+      actions_executed: 1
+      first_started_ms: 1706512952702
+      last_ended_ms: 1706512952704
+    }
+    runner_count {
+      name: "total"
+      count: 1
+    }
+    runner_count {
+      name: "internal"
+      count: 1
+    }
+    action_cache_statistics {
+      size_in_bytes: 132568
+      misses: 1
+      miss_details {
+      }
+      miss_details {
+        reason: DIFFERENT_DEPS
+      }
+      miss_details {
+        reason: DIFFERENT_ENVIRONMENT
+      }
+      miss_details {
+        reason: DIFFERENT_FILES
+      }
+      miss_details {
+        reason: CORRUPTED_CACHE_ENTRY
+      }
+      miss_details {
+        reason: NOT_CACHED
+      }
+      miss_details {
+        reason: UNCONDITIONAL_EXECUTION
+        count: 1
+      }
+    }
+  }
+  memory_metrics {
+  }
+  target_metrics {
+  }
+  package_metrics {
+  }
+  timing_metrics {
+    cpu_time_in_ms: 160
+    wall_time_in_ms: 45
+    analysis_phase_time_in_ms: 2
+  }
+  cumulative_metrics {
+    num_analyses: 46
+    num_builds: 42
+  }
+  artifact_metrics {
+    source_artifacts_read {
+    }
+    output_artifacts_seen {
+      size_in_bytes: 120
+      count: 2
+    }
+    output_artifacts_from_action_cache {
+    }
+    top_level_artifacts {
+    }
+  }
+  build_graph_metrics {
+    post_invocation_skyframe_node_count: 16376
+  }
+  worker_metrics {
+    worker_id: 1
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706512932396
+    }
+  }
+  worker_metrics {
+    worker_id: 2
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706502592975
+    }
+  }
+  worker_metrics {
+    worker_id: 3
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706502593038
+    }
+  }
+  worker_metrics {
+    worker_id: 4
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706502592976
+    }
+  }
+  worker_metrics {
+    worker_id: 5
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706502593016
+    }
+  }
+  worker_metrics {
+    worker_id: 6
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706502592976
+    }
+  }
+  worker_metrics {
+    worker_id: 7
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706512618153
+    }
+  }
+  worker_metrics {
+    worker_id: 8
+    process_id: 59821
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 1404760
+      last_action_start_time_in_ms: 1706502593056
+    }
+  }
+  worker_metrics {
+    worker_id: 9
+    process_id: 69886
+    mnemonic: "JavaPackageManifest"
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 72996
+      last_action_start_time_in_ms: 1706499134016
+    }
+  }
+  worker_metrics {
+    worker_id: 10
+    process_id: 69888
+    mnemonic: "JavaPackageManifest"
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 76956
+      last_action_start_time_in_ms: 1706512618153
+    }
+  }
+  worker_metrics {
+    worker_id: 11
+    process_id: 69887
+    mnemonic: "JavaPackageManifest"
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 72384
+      last_action_start_time_in_ms: 1706512724755
+    }
+  }
+  worker_metrics {
+    worker_id: 12
+    process_id: 69891
+    mnemonic: "JavaPackageManifest"
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 70096
+      last_action_start_time_in_ms: 1706499133845
+    }
+  }
+  worker_metrics {
+    worker_id: 13
+    process_id: 83559
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 960528
+      last_action_start_time_in_ms: 1706502143788
+    }
+  }
+  worker_metrics {
+    worker_id: 14
+    process_id: 83559
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 960528
+      last_action_start_time_in_ms: 1706502143291
+    }
+  }
+  worker_metrics {
+    worker_id: 15
+    process_id: 83559
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 960528
+      last_action_start_time_in_ms: 1706502145718
+    }
+  }
+  worker_metrics {
+    worker_id: 16
+    process_id: 83559
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 960528
+      last_action_start_time_in_ms: 1706502145691
+    }
+  }
+  worker_metrics {
+    worker_id: 17
+    process_id: 83559
+    mnemonic: "Javac"
+    is_multiplex: true
+    is_measurable: true
+    worker_stats {
+      collect_time_in_ms: 1706512952719
+      worker_memory_in_kb: 960528
+      last_action_start_time_in_ms: 1706502143292
+    }
+  }
+}
+}
+
+event {
+id {
+  progress {
+    opaque_count: 6
+  }
+}
+progress {
+  stderr: "\r\033[1A\033[K\033[32mINFO: \033[0mElapsed time: 0.052s, Critical Path: 0.00s\n\033[32m[1 / 1]\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO: \033[0m1 process: 1 internal.\n\033[32m[1 / 1]\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO:\033[0m Build completed successfully, 1 total action\n"
+}
+}
+
+event {
+id {
+  build_tool_logs {
+  }
+}
+last_message: true
+build_tool_logs {
+  log {
+    name: "elapsed time"
+    contents: "0.052000"
+  }
+  log {
+    name: "critical path"
+    contents: "Critical Path: 0.00s, Remote (0.00% of the time): [parse: 0.00%, queue: 0.00%, network: 0.00%, upload: 0.00%, setup: 0.00%, process: 0.00%, fetch: 0.00%, retry: 0.00%, processOutputs: 0.00%, other: 0.00%, input files: 0, input bytes: 0, memory bytes: 0, input files limit: 0, input bytes limit: 0, output files limit: 0, output bytes limit: 0, memory limit: 0, time limit: 0 seconds]\n  0.00s action \'BazelWorkspaceStatusAction stable-status.txt\'"
+  }
+  log {
+    name: "process stats"
+    contents: "1 process: 1 internal."
+  }
+  log {
+    name: "command.profile.gz"
+    uri: "file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/command.profile.gz"
+  }
+}
+}
+

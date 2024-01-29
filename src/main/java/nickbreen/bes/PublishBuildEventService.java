@@ -33,7 +33,7 @@ class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventIm
     @Override
     public StreamObserver<PublishBuildToolEventStreamRequest> publishBuildToolEventStream(final StreamObserver<PublishBuildToolEventStreamResponse> responseObserver)
     {
-        return new StreamObserver<PublishBuildToolEventStreamRequest>()
+        return new StreamObserver<>()
         {
             @Override
             public void onNext(PublishBuildToolEventStreamRequest request)

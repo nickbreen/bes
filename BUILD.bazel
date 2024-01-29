@@ -1,16 +1,4 @@
-java_binary(
+alias(
     name = "bes",
-    srcs = glob(["src/main/java/**/*.java"]),
-    main_class = "nickbreen.bes.Main",
-    runtime_deps = [
-        "@io_grpc_grpc_java//netty",
-    ],
-    deps = [
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        "@io_grpc_grpc_java//api",
-        "@io_grpc_grpc_java//stub",
-    ],
+    actual = "//src/main",
 )

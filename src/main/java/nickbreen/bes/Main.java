@@ -18,7 +18,7 @@ import java.util.function.Function;
 
 public class Main
 {
-    private static final Map<String, Function<URI, Consumer<Message>>> MESSAGE_CONSUMER_FACTORIES = Map.of(
+    private static final Map<String, Function<URI, Consumer<Message>>> SINK_FACTORIES = Map.of(
             "file", uri -> {
                 try
                 {
@@ -36,7 +36,7 @@ public class Main
 
     private static BindableService createService(final URI uri)
     {
-        final Consumer<Message> sink = MESSAGE_CONSUMER_FACTORIES.get(uri.getScheme()).apply(uri);
+        final Consumer<Message> sink = SINK_FACTORIES.get(uri.getScheme()).apply(uri);
         final Consumer<Any> bazelBuildEventConsumer = new BazelBuildEventConsumer(sink);
         final BuildEventConsumer buildEventConsumer = new DelegatingBuildEventConsumer(bazelBuildEventConsumer, sink);
         return new PublishBuildEventService(buildEventConsumer::accept, buildEventConsumer::accept);

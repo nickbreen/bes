@@ -13,51 +13,46 @@ import static nickbreen.bes.Util.testAndConsume;
 
 class DelegatingBuildEventConsumer implements BuildEventConsumer
 {
-    protected final Consumer<Any> anyDelegate;
-    private final Consumer<Message> logger;
+    private final Consumer<Any> anyDelegate;
+    private final Consumer<Message> delegate;
 
-    public DelegatingBuildEventConsumer(final Consumer<Any> anyDelegate, final Consumer<Message> logger)
+    public DelegatingBuildEventConsumer(final Consumer<Any> anyDelegate, final Consumer<Message> delegate)
     {
         this.anyDelegate = anyDelegate;
-        this.logger = logger;
+        this.delegate = delegate;
     }
 
     @Override
     public void accept(final PublishBuildToolEventStreamRequest request)
     {
-        logger.accept(request);
+        delegate.accept(request);
         testAndConsume(request::hasOrderedBuildEvent, request::getOrderedBuildEvent, this::accept);
     }
 
     @Override
     public void accept(final PublishLifecycleEventRequest request)
     {
-        logger.accept(request);
+        delegate.accept(request);
         testAndConsume(request::hasBuildEvent, request::getBuildEvent, this::accept);
     }
 
     private void accept(final OrderedBuildEvent orderedBuildEvent)
     {
-        logger.accept(orderedBuildEvent);
+        delegate.accept(orderedBuildEvent);
         testAndConsume(orderedBuildEvent::hasEvent, orderedBuildEvent::getEvent, this::accept);
     }
 
     @SuppressWarnings("DuplicatedCode")
     private void accept(final BuildEvent buildEvent)
     {
-        testAndConsume(buildEvent::hasInvocationAttemptStarted, buildEvent::getInvocationAttemptStarted, this::accept);
-        testAndConsume(buildEvent::hasInvocationAttemptFinished, buildEvent::getInvocationAttemptFinished, this::accept);
-        testAndConsume(buildEvent::hasBuildEnqueued, buildEvent::getBuildEnqueued, this::accept);
-        testAndConsume(buildEvent::hasBuildFinished, buildEvent::getBuildFinished, this::accept);
-        testAndConsume(buildEvent::hasConsoleOutput, buildEvent::getConsoleOutput, this::accept);
-        testAndConsume(buildEvent::hasComponentStreamFinished, buildEvent::getComponentStreamFinished, this::accept);
+        testAndConsume(buildEvent::hasInvocationAttemptStarted, buildEvent::getInvocationAttemptStarted, delegate);
+        testAndConsume(buildEvent::hasInvocationAttemptFinished, buildEvent::getInvocationAttemptFinished, delegate);
+        testAndConsume(buildEvent::hasBuildEnqueued, buildEvent::getBuildEnqueued, delegate);
+        testAndConsume(buildEvent::hasBuildFinished, buildEvent::getBuildFinished, delegate);
+        testAndConsume(buildEvent::hasConsoleOutput, buildEvent::getConsoleOutput, delegate);
+        testAndConsume(buildEvent::hasComponentStreamFinished, buildEvent::getComponentStreamFinished, delegate);
         testAndConsume(buildEvent::hasBuildExecutionEvent, buildEvent::getBuildExecutionEvent, anyDelegate);
         testAndConsume(buildEvent::hasSourceFetchEvent, buildEvent::getSourceFetchEvent, anyDelegate);
         testAndConsume(buildEvent::hasBazelEvent, buildEvent::getBazelEvent, anyDelegate);
-    }
-
-    private void accept(final Message message)
-    {
-        logger.accept(message);
     }
 }
