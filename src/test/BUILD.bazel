@@ -10,7 +10,7 @@ java_test(
     ],
     deps = [
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
+        #        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("javax.json:javax.json_api"),
         artifact("junit:junit"),
