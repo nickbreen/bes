@@ -4,15 +4,16 @@ import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
+import com.google.protobuf.util.JsonFormat;
 import org.hamcrest.*;
 import org.junit.Test;
 
 import javax.json.Json;
 import javax.json.JsonObject;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 import static nickbreen.bes.Util.unpack;
@@ -27,6 +28,15 @@ public class FixturesCompatibilityTest
     public void shouldReadAllJsonEventsAsJsonObjects()
     {
         assertThat("are all objects", Json.createParser(FixturesCompatibilityTest.class.getResourceAsStream("/bes.jsonl")).getValueStream().allMatch(JsonObject.class::isInstance));
+    }
+
+    @Test
+    public void shouldReadAllJsonEventsAsBazelBuildEvents() throws IOException
+    {
+        final List<BuildEventStreamProtos.BuildEvent> events = loadJsonl("/bes.jsonl", BuildEventStreamProtos.BuildEvent.newBuilder());
+
+        assertThat(events, hasSize(33));
+        assertThat(events, everyItem(notNullValue()));
     }
 
     @Test
@@ -157,6 +167,21 @@ public class FixturesCompatibilityTest
             for (T message = parseDelimitedFrom.parseDelimitedFrom(bes); null != message; message = parseDelimitedFrom.parseDelimitedFrom(bes))
             {
                 events.add(message);
+            }
+        }
+        return events;
+    }
+
+    private static List<BuildEventStreamProtos.BuildEvent> loadJsonl(final String name, final BuildEventStreamProtos.BuildEvent.Builder builder) throws IOException
+    {
+        final List<BuildEventStreamProtos.BuildEvent> events = new ArrayList<>();
+        final JsonFormat.Parser parser = JsonFormat.parser();
+        try (final BufferedReader r = new BufferedReader(new InputStreamReader(Objects.requireNonNull(FixturesCompatibilityTest.class.getResourceAsStream(name)))))
+        {
+            for (String json = r.readLine(); null != json; json = r.readLine())
+            {
+                parser.merge(json, builder.clear());
+                events.add(builder.build());
             }
         }
         return events;

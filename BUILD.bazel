@@ -32,7 +32,7 @@ java_test(
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
         artifact("com.google.protobuf:protobuf-java-util"),
-        artifact("javax.json:javax.json_api"),
+        artifact("javax.json:javax.json-api"),
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
     ],
