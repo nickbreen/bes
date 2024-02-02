@@ -36,6 +36,7 @@ public interface Util
 
     static <T extends Message> void unpackAndConsume(final Class<T> type, final Any any, final Consumer<T> consume)
     {
+
         try
         {
             if (any.is(type))

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static nickbreen.bes.Util.unpack;
 import static org.hamcrest.CoreMatchers.everyItem;
@@ -93,16 +94,17 @@ public class FixturesCompatibilityTest
 
     private static class MessageMatcher<T extends Message, U> extends TypeSafeMatcher<T>
     {
-        private final Function<T, Boolean> filter;
+        private final Predicate<T> filter;
         private final Function<T, U> transform;
         private final Matcher<U> matcher;
 
         public MessageMatcher(final Class<T> t, final Function<T, U> transform, final Matcher<U> matcher)
         {
             this(t, o -> true, transform, matcher);
+
         }
 
-        public MessageMatcher(final Class<T> t, final Function<T, Boolean> filter, final Function<T, U> transform, final Matcher<U> matcher)
+        public MessageMatcher(final Class<T> t, final Predicate<T> filter, final Function<T, U> transform, final Matcher<U> matcher)
         {
             super(t);
             this.filter = filter;
@@ -113,7 +115,7 @@ public class FixturesCompatibilityTest
         @Override
         protected boolean matchesSafely(final T t)
         {
-            return filter.apply(t) && matcher.matches(transform.apply(t));
+            return filter.test(t) && matcher.matches(transform.apply(t));
         }
 
         @Override
@@ -126,11 +128,11 @@ public class FixturesCompatibilityTest
     private static class AnyMatcher<T extends Message, U extends Message> extends TypeSafeMatcher<T>
     {
         private final Class<U> any;
-        private final Function<T, Boolean> filter;
+        private final Predicate<T> filter;
         private final Function<T, Any> transform;
         private final Matcher<U> matcher;
 
-        public AnyMatcher(final Class<T> t, final Class<U> any, final Function<T, Boolean> filter, final Function<T, Any> transform, final Matcher<U> matcher)
+        public AnyMatcher(final Class<T> t, final Class<U> any, final Predicate<T> filter, final Function<T, Any> transform, final Matcher<U> matcher)
         {
             super(t);
             this.any = any;
@@ -142,7 +144,7 @@ public class FixturesCompatibilityTest
         @Override
         protected boolean matchesSafely(final T t)
         {
-            return filter.apply(t) && unpack(this.any, transform.apply(t)).map(matcher::matches).orElse(false);
+            return filter.test(t) && unpack(this.any, transform.apply(t)).map(matcher::matches).orElse(false);
         }
 
         @Override
