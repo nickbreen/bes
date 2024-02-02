@@ -1,6 +1,7 @@
 package nickbreen.bes;
 
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
+import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 
@@ -9,51 +10,64 @@ import java.util.function.Consumer;
 import static nickbreen.bes.Util.testAndConsume;
 import static nickbreen.bes.Util.unpackAndConsume;
 
-public class BazelBuildEventConsumer implements Consumer<Any>
+public class BazelBuildEventConsumer extends BaseBuildEventConsumer
 {
-    private final Consumer<Message> consumer;
+    private final Consumer<Message> sink;
 
-    public BazelBuildEventConsumer(final Consumer<Message> consumer)
+    public BazelBuildEventConsumer(final Consumer<Message> sink)
     {
-        this.consumer = consumer;
+        this.sink = sink;
     }
 
     @Override
+    public void accept(final BuildEvent buildEvent)
+    {
+        testAndConsume(buildEvent::hasInvocationAttemptStarted, buildEvent::getInvocationAttemptStarted, sink);
+        testAndConsume(buildEvent::hasInvocationAttemptFinished, buildEvent::getInvocationAttemptFinished, sink);
+        testAndConsume(buildEvent::hasBuildEnqueued, buildEvent::getBuildEnqueued, sink);
+        testAndConsume(buildEvent::hasBuildFinished, buildEvent::getBuildFinished, sink);
+        testAndConsume(buildEvent::hasConsoleOutput, buildEvent::getConsoleOutput, sink);
+        testAndConsume(buildEvent::hasComponentStreamFinished, buildEvent::getComponentStreamFinished, sink);
+        testAndConsume(buildEvent::hasBuildExecutionEvent, buildEvent::getBuildExecutionEvent, this::accept);
+        testAndConsume(buildEvent::hasSourceFetchEvent, buildEvent::getSourceFetchEvent, this::accept);
+        testAndConsume(buildEvent::hasBazelEvent, buildEvent::getBazelEvent, this::accept);
+    }
+
     public void accept(final Any any)
     {
         unpackAndConsume(BuildEventStreamProtos.BuildEvent.class, any, this::accept);
-        unpackAndConsume(BuildEventStreamProtos.BuildEventId.class, any, consumer::accept);
-        unpackAndConsume(BuildEventStreamProtos.BuildFinished.class, any, consumer::accept);
-        unpackAndConsume(BuildEventStreamProtos.BuildMetadata.class, any, consumer::accept);
+        unpackAndConsume(BuildEventStreamProtos.BuildEventId.class, any, sink::accept);
+        unpackAndConsume(BuildEventStreamProtos.BuildFinished.class, any, sink::accept);
+        unpackAndConsume(BuildEventStreamProtos.BuildMetadata.class, any, sink::accept);
     }
 
     @SuppressWarnings("DuplicatedCode")
     private void accept(final BuildEventStreamProtos.BuildEvent buildEvent)
     {
-        testAndConsume(buildEvent::hasAborted, buildEvent::getAborted, consumer);
-        testAndConsume(buildEvent::hasAction, buildEvent::getAction, consumer);
-        testAndConsume(buildEvent::hasBuildMetadata, buildEvent::getBuildMetadata, consumer);
-        testAndConsume(buildEvent::hasBuildMetrics, buildEvent::getBuildMetrics, consumer);
-        testAndConsume(buildEvent::hasBuildToolLogs, buildEvent::getBuildToolLogs, consumer);
-        testAndConsume(buildEvent::hasCompleted, buildEvent::getCompleted, consumer);
-        testAndConsume(buildEvent::hasConfiguration, buildEvent::getConfiguration, consumer);
-        testAndConsume(buildEvent::hasConfigured, buildEvent::getConfigured, consumer);
-        testAndConsume(buildEvent::hasConvenienceSymlinksIdentified, buildEvent::getConvenienceSymlinksIdentified, consumer);
-        testAndConsume(buildEvent::hasExpanded, buildEvent::getExpanded, consumer);
-        testAndConsume(buildEvent::hasFetch, buildEvent::getFetch, consumer);
-        testAndConsume(buildEvent::hasFinished, buildEvent::getFinished, consumer);
-        testAndConsume(buildEvent::hasId, buildEvent::getId, consumer);
-        testAndConsume(buildEvent::hasNamedSetOfFiles, buildEvent::getNamedSetOfFiles, consumer);
-        testAndConsume(buildEvent::hasOptionsParsed, buildEvent::getOptionsParsed, consumer);
-        testAndConsume(buildEvent::hasProgress, buildEvent::getProgress, consumer);
-        testAndConsume(buildEvent::hasStarted, buildEvent::getStarted, consumer);
+        testAndConsume(buildEvent::hasAborted, buildEvent::getAborted, sink);
+        testAndConsume(buildEvent::hasAction, buildEvent::getAction, sink);
+        testAndConsume(buildEvent::hasBuildMetadata, buildEvent::getBuildMetadata, sink);
+        testAndConsume(buildEvent::hasBuildMetrics, buildEvent::getBuildMetrics, sink);
+        testAndConsume(buildEvent::hasBuildToolLogs, buildEvent::getBuildToolLogs, sink);
+        testAndConsume(buildEvent::hasCompleted, buildEvent::getCompleted, sink);
+        testAndConsume(buildEvent::hasConfiguration, buildEvent::getConfiguration, sink);
+        testAndConsume(buildEvent::hasConfigured, buildEvent::getConfigured, sink);
+        testAndConsume(buildEvent::hasConvenienceSymlinksIdentified, buildEvent::getConvenienceSymlinksIdentified, sink);
+        testAndConsume(buildEvent::hasExpanded, buildEvent::getExpanded, sink);
+        testAndConsume(buildEvent::hasFetch, buildEvent::getFetch, sink);
+        testAndConsume(buildEvent::hasFinished, buildEvent::getFinished, sink);
+        testAndConsume(buildEvent::hasId, buildEvent::getId, sink);
+        testAndConsume(buildEvent::hasNamedSetOfFiles, buildEvent::getNamedSetOfFiles, sink);
+        testAndConsume(buildEvent::hasOptionsParsed, buildEvent::getOptionsParsed, sink);
+        testAndConsume(buildEvent::hasProgress, buildEvent::getProgress, sink);
+        testAndConsume(buildEvent::hasStarted, buildEvent::getStarted, sink);
 //        demux(buildEvent::hasStructuredCommandLine, buildEvent::getStructuredCommandLine, consumer);
-        testAndConsume(buildEvent::hasTargetSummary, buildEvent::getTargetSummary, consumer);
-        testAndConsume(buildEvent::hasTestResult, buildEvent::getTestResult, consumer);
-        testAndConsume(buildEvent::hasTestSummary, buildEvent::getTestResult, consumer);
-        testAndConsume(buildEvent::hasUnstructuredCommandLine, buildEvent::getUnstructuredCommandLine, consumer);
-        testAndConsume(buildEvent::hasWorkspaceInfo, buildEvent::getWorkspaceInfo, consumer);
-        testAndConsume(buildEvent::hasWorkspaceStatus, buildEvent::getWorkspaceStatus, consumer);
-        testAndConsume(buildEvent::hasWorkspaceStatus, buildEvent::getWorkspaceStatus, consumer);
+        testAndConsume(buildEvent::hasTargetSummary, buildEvent::getTargetSummary, sink);
+        testAndConsume(buildEvent::hasTestResult, buildEvent::getTestResult, sink);
+        testAndConsume(buildEvent::hasTestSummary, buildEvent::getTestResult, sink);
+        testAndConsume(buildEvent::hasUnstructuredCommandLine, buildEvent::getUnstructuredCommandLine, sink);
+        testAndConsume(buildEvent::hasWorkspaceInfo, buildEvent::getWorkspaceInfo, sink);
+        testAndConsume(buildEvent::hasWorkspaceStatus, buildEvent::getWorkspaceStatus, sink);
+        testAndConsume(buildEvent::hasWorkspaceStatus, buildEvent::getWorkspaceStatus, sink);
     }
 }

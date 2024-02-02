@@ -1,14 +1,12 @@
 package nickbreen.bes;
 
+import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 import io.grpc.BindableService;
 import io.grpc.ServerBuilder;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Map;
@@ -18,17 +16,26 @@ import java.util.function.Function;
 
 public class Main
 {
-    private static final Map<String, Function<URI, Consumer<Message>>> SINK_FACTORIES = Map.of(
+    private static final Map<String, Function<URI, Consumer<BuildEvent>>> SINK_FACTORIES = Map.of(
             "file", uri -> {
                 try
                 {
                     @SuppressWarnings("resource") // it is used in the lambda, so we cannot try-with-resources
-                    final PrintStream out = new PrintStream(new File(uri));
-                    return message -> out.printf("*** %s ***:\n%s", message.getClass().getSimpleName(), message);
+                    final OutputStream outputStream = new FileOutputStream(new File(uri));
+                    return message -> {
+                        try
+                        {
+                            message.writeDelimitedTo(outputStream);
+                        }
+                        catch (final IOException e)
+                        {
+                            throw new IOError(e);
+                        }
+                    };
                 }
                 catch (FileNotFoundException e)
                 {
-                    throw new Error(e);
+                    throw new IOError(e);
                 }
             },
             "redis", uri -> message -> {} // todo no-op for now
@@ -36,9 +43,9 @@ public class Main
 
     private static BindableService createService(final URI uri)
     {
-        final Consumer<Message> sink = SINK_FACTORIES.get(uri.getScheme()).apply(uri);
-        final Consumer<Any> bazelBuildEventConsumer = new BazelBuildEventConsumer(sink);
-        final BuildEventConsumer buildEventConsumer = new DelegatingBuildEventConsumer(bazelBuildEventConsumer, sink);
+        final BaseBuildEventConsumer bazelBuildEventConsumer = new BazelBuildEventConsumer(System.out::print);
+        final Consumer<BuildEvent> sink = SINK_FACTORIES.get(uri.getScheme()).apply(uri);
+        final BaseBuildEventConsumer buildEventConsumer = DelegatingBuildEventConsumer.create(sink, bazelBuildEventConsumer::accept);
         return new PublishBuildEventService(buildEventConsumer::accept, buildEventConsumer::accept);
     }
 
