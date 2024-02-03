@@ -15,6 +15,9 @@ java_binary(
         "@com_google_protobuf//java/core",
         "@io_grpc_grpc_java//api",
         "@io_grpc_grpc_java//stub",
+        artifact("com.google.protobuf:protobuf-java-util"),
+        artifact("javax.json:javax.json-api"),
+        artifact("org.hamcrest:hamcrest"),
     ],
 )
 
@@ -22,7 +25,7 @@ java_test(
     name = "test",
     srcs = glob(["src/test/java/**/*.java"]),
     resources = glob(["src/test/resources/**"]),
-    test_class = "nickbreen.bes.FixturesCompatibilityTest",
+    test_class = "nickbreen.bes.TestSuite",
     runtime_deps = [
         artifact("org.glassfish:javax-json"),
     ],
