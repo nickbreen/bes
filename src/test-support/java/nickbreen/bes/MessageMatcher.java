@@ -12,11 +12,11 @@ public class MessageMatcher<T extends Message, U> extends TypeSafeMatcher<T>
 {
     public static <T extends Message, U> MessageMatcher<T, U> messageThat(final Class<T> t, final Function<T, U> transform, final Matcher<U> matcher)
     {
-        return new MessageMatcher<T, U>(t, transform, matcher);
+        return new MessageMatcher<>(t, transform, matcher);
     }
     public static <T extends Message, U> MessageMatcher<T, U> messageThat(final Class<T> t, final Predicate<T> filter, final Function<T, U> transform, final Matcher<U> matcher)
     {
-        return new MessageMatcher<T, U>(t, filter, transform, matcher);
+        return new MessageMatcher<>(t, filter, transform, matcher);
     }
 
     private final Predicate<T> filter;
