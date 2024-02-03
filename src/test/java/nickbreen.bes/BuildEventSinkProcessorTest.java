@@ -11,7 +11,9 @@ import java.util.List;
 
 import static nickbreen.bes.Util.loadBinary;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
 
 public class BuildEventSinkProcessorTest
 {

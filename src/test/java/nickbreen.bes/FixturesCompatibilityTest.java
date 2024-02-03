@@ -9,10 +9,18 @@ import javax.json.JsonObject;
 import java.io.IOException;
 import java.util.List;
 
-import static nickbreen.bes.Util.*;
+import static nickbreen.bes.Util.loadBinary;
+import static nickbreen.bes.Util.loadJsonl;
+import static nickbreen.bes.Util.unpack;
 import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class FixturesCompatibilityTest
 {
