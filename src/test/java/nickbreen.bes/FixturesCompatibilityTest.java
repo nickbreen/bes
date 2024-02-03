@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import javax.json.Json;
 import javax.json.JsonObject;
-import java.io.*;
+import java.io.IOException;
 import java.util.List;
 
 import static nickbreen.bes.Util.*;

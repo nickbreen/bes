@@ -10,7 +10,6 @@ import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 
 import java.util.Collection;
-import java.util.stream.Stream;
 
 class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventImplBase
 {
