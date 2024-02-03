@@ -9,6 +9,7 @@ java_binary(
         "@io_grpc_grpc_java//netty",
     ],
     deps = [
+        ":support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
@@ -22,6 +23,27 @@ java_binary(
     ],
 )
 
+java_library(
+    name = "support",
+    srcs = glob(["src/support/java/**/*.java"]),
+    deps = [
+        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@com_google_protobuf//java/core",
+        artifact("com.google.protobuf:protobuf-java-util"),
+    ],
+)
+
+java_library(
+    name = "test-support",
+    testonly = True,
+    srcs = glob(["src/test-support/java/**/*.java"]),
+    deps = [
+        ":support",
+        "@com_google_protobuf//java/core",
+        artifact("org.hamcrest:hamcrest"),
+    ],
+)
+
 java_test(
     name = "test",
     srcs = glob(["src/test/java/**/*.java"]),
@@ -32,6 +54,8 @@ java_test(
     ],
     deps = [
         ":bes",
+        ":support",
+        ":test-support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",

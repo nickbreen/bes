@@ -87,9 +87,9 @@ public class FixturesCompatibilityTest
         final List<BuildEvent> events = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
         assertThat("an event", events, hasItem(
-                new Util.AnyMatcher<>(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
-                        new Util.MessageMatcher<>(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,
-                                new Util.MessageMatcher<>(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid,
+                new AnyMatcher<>(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
+                        new MessageMatcher<>(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,
+                                new MessageMatcher<>(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid,
                                         is("c1296c8a-61d6-4fd7-b8c0-42b63e0af62d"))))));
     }
 

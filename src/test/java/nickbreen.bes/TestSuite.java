@@ -10,6 +10,6 @@ import org.junit.runners.Suite.SuiteClasses;
         BazelBuildEventProcessorTest.class,
 })
 @RunWith(Suite.class)
-public class TestSuite
+public interface TestSuite
 {
 }
