@@ -18,6 +18,7 @@ java_binary(
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("javax.json:javax.json-api"),
         artifact("org.hamcrest:hamcrest"),
+        artifact("org.xerial:sqlite-jdbc"),
     ],
 )
 

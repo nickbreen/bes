@@ -7,13 +7,15 @@ import com.google.devtools.build.v1.PublishLifecycleEventRequest;
 
 import static nickbreen.bes.Util.testAndConsume;
 
-public abstract class BaseBuildEventConsumer
+public abstract class BuildEventProcessor implements PublishEventProcessor
 {
+    @Override
     public final void accept(final PublishBuildToolEventStreamRequest request)
     {
         testAndConsume(request::hasOrderedBuildEvent, request::getOrderedBuildEvent, this::accept);
     }
 
+    @Override
     public final void accept(final PublishLifecycleEventRequest request)
     {
         testAndConsume(request::hasBuildEvent, request::getBuildEvent, this::accept);

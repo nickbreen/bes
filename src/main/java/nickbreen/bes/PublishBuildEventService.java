@@ -9,23 +9,22 @@ import io.grpc.Status;
 import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 
-import java.util.function.Consumer;
+import java.util.Collection;
+import java.util.stream.Stream;
 
 class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventImplBase
 {
-    private final Consumer<PublishLifecycleEventRequest> publishLifecycleEventRequestConsumer;
-    private final Consumer<PublishBuildToolEventStreamRequest> publishBuildToolEventStreamRequestConsumer;
+    private final Collection<PublishEventProcessor> buildEventProcessors;
 
-    public PublishBuildEventService(final Consumer<PublishLifecycleEventRequest> publishLifecycleEventRequestConsumer, final Consumer<PublishBuildToolEventStreamRequest> publishBuildToolEventStreamRequestConsumer)
+    public PublishBuildEventService(final Collection<PublishEventProcessor> buildEventProcessors)
     {
-        this.publishLifecycleEventRequestConsumer = publishLifecycleEventRequestConsumer;
-        this.publishBuildToolEventStreamRequestConsumer = publishBuildToolEventStreamRequestConsumer;
+        this.buildEventProcessors = buildEventProcessors;
     }
 
     @Override
     public void publishLifecycleEvent(final PublishLifecycleEventRequest request, final StreamObserver<Empty> responseObserver)
     {
-        publishLifecycleEventRequestConsumer.accept(request);
+        buildEventProcessors.forEach(p -> p.accept(request));
         responseObserver.onNext(Empty.newBuilder().getDefaultInstanceForType());
         responseObserver.onCompleted();
     }
@@ -38,7 +37,7 @@ class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventIm
             @Override
             public void onNext(PublishBuildToolEventStreamRequest request)
             {
-                publishBuildToolEventStreamRequestConsumer.accept(request);
+                buildEventProcessors.forEach(p -> p.accept(request));
                 final PublishBuildToolEventStreamResponse.Builder builder = PublishBuildToolEventStreamResponse.newBuilder()
                         .setStreamId(request.getOrderedBuildEvent().getStreamId())
                         .setSequenceNumber(request.getOrderedBuildEvent().getSequenceNumber());

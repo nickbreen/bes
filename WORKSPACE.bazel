@@ -40,11 +40,12 @@ load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_ARTIFACTS", "IO
 
 maven_install(
     artifacts = [
-        "junit:junit:4.13",
-        "org.hamcrest:hamcrest:2.2",
-        "javax.json:javax.json-api:1.1",
-        "org.glassfish:javax.json:1.1",
         "com.google.protobuf:protobuf-java-util:4.26.0-RC1",
+        "javax.json:javax.json-api:1.1",
+        "junit:junit:4.13",
+        "org.glassfish:javax.json:1.1",
+        "org.hamcrest:hamcrest:2.2",
+        "org.xerial:sqlite-jdbc:3.45.1.0",
     ],
     repositories = [
         "https://repo.maven.apache.org/maven2/",

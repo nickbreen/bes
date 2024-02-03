@@ -10,13 +10,11 @@ import java.util.function.Consumer;
 import static nickbreen.bes.Util.testAndConsume;
 import static nickbreen.bes.Util.unpackAndConsume;
 
-public class BazelBuildEventConsumer extends BaseBuildEventConsumer
+public class BazelBuildEventProcessor extends BuildEventSinkProcessor
 {
-    private final Consumer<Message> sink;
-
-    public BazelBuildEventConsumer(final Consumer<Message> sink)
+    public BazelBuildEventProcessor(final Consumer<Message> sink)
     {
-        this.sink = sink;
+        super(sink);
     }
 
     @Override
@@ -33,7 +31,7 @@ public class BazelBuildEventConsumer extends BaseBuildEventConsumer
         testAndConsume(buildEvent::hasBazelEvent, buildEvent::getBazelEvent, this::accept);
     }
 
-    public void accept(final Any any)
+    private void accept(final Any any)
     {
         unpackAndConsume(BuildEventStreamProtos.BuildEvent.class, any, this::accept);
         unpackAndConsume(BuildEventStreamProtos.BuildEventId.class, any, sink::accept);

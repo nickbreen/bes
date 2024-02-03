@@ -3,7 +3,7 @@ A Bazel Build Event Service.
 
 Build and run the BES.
 ```shell
-bazel run bes file:$PWD/src/test/resources/jnl.bin
+bazel run bes journal:file:$PWD/src/test/resources/jnl2.bin bazel:file:///dev/stderr
 ```
 
 Re-build forwarding to the BES.
