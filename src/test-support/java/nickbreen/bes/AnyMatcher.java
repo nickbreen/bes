@@ -11,12 +11,17 @@ import java.util.function.Predicate;
 
 public class AnyMatcher<T extends Message, U extends Message> extends TypeSafeMatcher<T>
 {
+    public static <T extends Message, U extends Message> AnyMatcher<T,U> anyThat(final Class<T> t, final Class<U> any, final Predicate<T> filter, final Function<T, Any> transform, final Matcher<U> matcher)
+    {
+        return new AnyMatcher<>(t, any, filter, transform, matcher);
+    }
+
     private final Class<U> any;
     private final Predicate<T> filter;
     private final Function<T, Any> transform;
     private final Matcher<U> matcher;
 
-    public AnyMatcher(final Class<T> t, final Class<U> any, final Predicate<T> filter, final Function<T, Any> transform, final Matcher<U> matcher)
+    private AnyMatcher(final Class<T> t, final Class<U> any, final Predicate<T> filter, final Function<T, Any> transform, final Matcher<U> matcher)
     {
         super(t);
         this.any = any;

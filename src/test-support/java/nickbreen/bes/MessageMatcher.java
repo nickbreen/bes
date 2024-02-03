@@ -10,17 +10,25 @@ import java.util.function.Predicate;
 
 public class MessageMatcher<T extends Message, U> extends TypeSafeMatcher<T>
 {
+    public static <T extends Message, U> MessageMatcher<T, U> messageThat(final Class<T> t, final Function<T, U> transform, final Matcher<U> matcher)
+    {
+        return new MessageMatcher<T, U>(t, transform, matcher);
+    }
+    public static <T extends Message, U> MessageMatcher<T, U> messageThat(final Class<T> t, final Predicate<T> filter, final Function<T, U> transform, final Matcher<U> matcher)
+    {
+        return new MessageMatcher<T, U>(t, filter, transform, matcher);
+    }
+
     private final Predicate<T> filter;
     private final Function<T, U> transform;
     private final Matcher<U> matcher;
 
-    public MessageMatcher(final Class<T> t, final Function<T, U> transform, final Matcher<U> matcher)
+    private MessageMatcher(final Class<T> t, final Function<T, U> transform, final Matcher<U> matcher)
     {
         this(t, o -> true, transform, matcher);
-
     }
 
-    public MessageMatcher(final Class<T> t, final Predicate<T> filter, final Function<T, U> transform, final Matcher<U> matcher)
+    private MessageMatcher(final Class<T> t, final Predicate<T> filter, final Function<T, U> transform, final Matcher<U> matcher)
     {
         super(t);
         this.filter = filter;

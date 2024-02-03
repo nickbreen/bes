@@ -9,6 +9,8 @@ import javax.json.JsonObject;
 import java.io.IOException;
 import java.util.List;
 
+import static nickbreen.bes.AnyMatcher.anyThat;
+import static nickbreen.bes.MessageMatcher.messageThat;
 import static nickbreen.bes.Util.loadBinary;
 import static nickbreen.bes.Util.loadJsonl;
 import static nickbreen.bes.Util.unpack;
@@ -87,9 +89,9 @@ public class FixturesCompatibilityTest
         final List<BuildEvent> events = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
         assertThat("an event", events, hasItem(
-                new AnyMatcher<>(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
-                        new MessageMatcher<>(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,
-                                new MessageMatcher<>(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid,
+                anyThat(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
+                        messageThat(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,
+                                messageThat(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid,
                                         is("c1296c8a-61d6-4fd7-b8c0-42b63e0af62d"))))));
     }
 
