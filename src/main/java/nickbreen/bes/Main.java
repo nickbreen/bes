@@ -18,7 +18,7 @@ public class Main
         ServerBuilder.forPort(port)
                 .addService(stream(args)
                         .map(URI::create)
-                        .map(PublishEventProcessor.Factory::create)
+                        .map(ProcessorFactory::create)
                         .collect(collectingAndThen(toList(), PublishBuildEventService::new)))
                 .build()
                 .start()
