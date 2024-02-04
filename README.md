@@ -1,9 +1,13 @@
 A Bazel Build Event Service.
 
+Run tests.
+```shell
+bazel test --test_output all ...
+```
 
 Build and run the BES.
 ```shell
-bazel run bes journal:file:$PWD/src/test/resources/jnl2.bin bazel:file:///dev/stderr
+bazel run bes journal:file:$PWD/src/test/resources/jnl.bin bazel:file:///dev/stderr
 ```
 
 Re-build forwarding to the BES.
@@ -13,10 +17,5 @@ bazel build --bes_backend=grpc://localhost:8888 --bes_results_url=http://localho
 
 Generate test fixtures.
 ```shell
-bazel build --config bes ...
-```
-
-Run tests.
-```shell
-bazel test --test_output all ...
+bazel build --config bes --bes_backend=grpc://localhost:8888 --bes_results_url=http://localhost:8080 ...
 ```

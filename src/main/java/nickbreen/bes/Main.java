@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 public class Main
 {
@@ -19,7 +19,7 @@ public class Main
                 .addService(stream(args)
                         .map(URI::create)
                         .map(ProcessorFactory::create)
-                        .collect(collectingAndThen(toList(), PublishBuildEventService::new)))
+                        .collect(collectingAndThen(toUnmodifiableList(), PublishBuildEventService::new)))
                 .build()
                 .start()
                 .awaitTermination();
