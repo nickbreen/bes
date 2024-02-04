@@ -9,17 +9,25 @@ java_binary(
         "@io_grpc_grpc_java//netty",
     ],
     deps = [
+        ":domain",
         ":support",
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
         "@io_grpc_grpc_java//api",
         "@io_grpc_grpc_java//stub",
+    ],
+)
+
+java_library(
+    name = "domain",
+    srcs = glob(["src/domain/java/**/*.java"]),
+    deps = [
+        ":support",
+        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
+        "@com_google_protobuf//java/core",
         artifact("com.google.protobuf:protobuf-java-util"),
-        artifact("javax.json:javax.json-api"),
-        artifact("org.hamcrest:hamcrest"),
-        artifact("org.xerial:sqlite-jdbc"),
     ],
 )
 
@@ -53,7 +61,7 @@ java_test(
         artifact("org.glassfish:javax-json"),
     ],
     deps = [
-        ":bes",
+        ":domain",
         ":support",
         ":test-support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
