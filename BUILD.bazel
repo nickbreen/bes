@@ -54,6 +54,7 @@ java_library(
 
 java_test(
     name = "test",
+    size = "small",
     srcs = glob(["src/test/java/**/*.java"]),
     resources = glob(["src/test/resources/**"]),
     test_class = "nickbreen.bes.TestSuite",
@@ -67,9 +68,31 @@ java_test(
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
+        "@io_grpc_grpc_java//api",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("javax.json:javax.json-api"),
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
+    ],
+)
+
+java_test(
+    name = "integration-test",
+    size = "small",
+    srcs = glob(["src/integration-test/java/**/*.java"]),
+    resources = glob(["src/integration-test/resources/**"]),
+    test_class = "nickbreen.bes.IntegrationTestSuite",
+    deps = [
+        ":domain",
+        ":support",
+        ":test-support",
+        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
+        "@com_google_protobuf//java/core",
+        "@io_grpc_grpc_java//api",
+        artifact("com.google.protobuf:protobuf-java-util"),
+        artifact("junit:junit"),
+        artifact("org.hamcrest:hamcrest"),
+        artifact("org.mockito:mockito-core"),
     ],
 )
