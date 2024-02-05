@@ -5,7 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @SuiteClasses({
-        SinkTest.class
+        BinarySinkTest.class,
+        JsonSinkTest.class,
+        TextSinkTest.class,
 })
 @RunWith(Suite.class)
 public interface IntegrationTestSuite
