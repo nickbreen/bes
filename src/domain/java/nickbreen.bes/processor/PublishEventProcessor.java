@@ -1,4 +1,4 @@
-package nickbreen.bes;
+package nickbreen.bes.processor;
 
 import com.google.devtools.build.v1.PublishBuildToolEventStreamRequest;
 import com.google.devtools.build.v1.PublishLifecycleEventRequest;

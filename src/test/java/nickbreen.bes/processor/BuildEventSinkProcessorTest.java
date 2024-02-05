@@ -1,8 +1,11 @@
-package nickbreen.bes;
+package nickbreen.bes.processor;
 
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
+import nickbreen.bes.FixturesCompatibilityTest;
+import nickbreen.bes.processor.BuildEventProcessor;
+import nickbreen.bes.processor.BuildEventSinkProcessor;
 import org.junit.Test;
 
 import java.io.IOException;

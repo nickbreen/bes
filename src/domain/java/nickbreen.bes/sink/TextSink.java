@@ -1,19 +1,18 @@
-package nickbreen.bes;
+package nickbreen.bes.sink;
 
 import com.google.protobuf.Message;
 
 import java.io.IOError;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.function.Consumer;
 
-class BinarySink implements Consumer<Message>
+public class TextSink implements Consumer<Message>
 {
-    private final OutputStream out;
+    private final Appendable writer;
 
-    public BinarySink(final OutputStream out)
+    public TextSink(final Appendable writer)
     {
-        this.out = out;
+        this.writer = writer;
     }
 
     @Override
@@ -21,7 +20,7 @@ class BinarySink implements Consumer<Message>
     {
         try
         {
-            message.writeDelimitedTo(out);
+            writer.append(message.toString());
         }
         catch (IOException e)
         {

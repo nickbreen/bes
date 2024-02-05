@@ -1,8 +1,9 @@
-package nickbreen.bes;
+package nickbreen.bes.sink;
 
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
+import nickbreen.bes.sink.TextSink;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -17,7 +18,7 @@ import java.nio.file.Path;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TextSinkTest
+public class TextSinkIntegrationTest
 {
     private static final String UUID = "cbf29d13-9dd2-41bd-92dc-06ab2d704990";  // UUID.randomUUID().toString()
     private static final BuildEvent EVENT = BuildEvent.newBuilder()

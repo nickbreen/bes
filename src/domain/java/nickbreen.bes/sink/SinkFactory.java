@@ -1,4 +1,4 @@
-package nickbreen.bes;
+package nickbreen.bes.sink;
 
 import com.google.protobuf.Message;
 

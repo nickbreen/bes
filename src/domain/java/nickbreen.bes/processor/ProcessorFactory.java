@@ -1,16 +1,15 @@
-package nickbreen.bes;
+package nickbreen.bes.processor;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.util.JsonFormat;
+import nickbreen.bes.sink.SinkFactory;
 
 import java.io.IOError;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public interface ProcessorFactory
 {

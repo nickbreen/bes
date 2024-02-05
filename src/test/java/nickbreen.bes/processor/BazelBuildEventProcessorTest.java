@@ -1,9 +1,11 @@
-package nickbreen.bes;
+package nickbreen.bes.processor;
 
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
+import nickbreen.bes.processor.BazelBuildEventProcessor;
+import nickbreen.bes.processor.BuildEventProcessor;
 import org.junit.Test;
 
 import java.util.ArrayList;

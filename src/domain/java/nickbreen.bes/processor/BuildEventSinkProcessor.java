@@ -1,4 +1,4 @@
-package nickbreen.bes;
+package nickbreen.bes.processor;
 
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Message;
