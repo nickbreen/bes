@@ -1,0 +1,1608 @@
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: CONTROLLER
+}
+sequence_number: 1
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 340000000
+  }
+  build_enqueued {
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: CONTROLLER
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 1
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 352000000
+  }
+  invocation_attempt_started {
+    attempt_number: 1
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 1
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002\032\000\022\002\022\000\022\002Z\000\022\r\222\001\n\n\boriginal\022\016\222\001\v\n\tcanonical\022\t\222\001\006\n\004tool\022\003\302\001\000\022\002b\000\022\002r\000\022\a\"\005\n\003...\022\002J\000*\327\002\n$e15c3cc2-e9df-4ac0-96c8-e12129bc7caa\020\244\363\262\332\3271\032\0056.5.0\"\337\001--noenable_bzlmod --announce_rc --java_language_version=17 --tool_java_language_version=17 --java_runtime_version=17 --tool_java_runtime_version=17 --bes_backend=grpc://localhost:8888 --bes_results_url=http://localhost:8080*\005build2\022/home/nick/src/bes:\022/home/nick/src/bes@\207\217\tJ\f\b\322\266\205\256\006\020\200\372\217\242\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 2
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\302\001\000\322\001\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 3
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\r\222\001\n\n\boriginal\262\001\346}\n\boriginal\022\025\n\nexecutable\022\a\n\005bazel\022\023\n\017startup options\032\000\022\022\n\acommand\022\a\n\005build\022\206}\n\017command options\032\362|\n-\n\022--rc_source=client\022\trc_source\032\006client\"\001\003*\001\003\nU\n&--default_override=0:common=--isatty=1\022\020default_override\032\0230:common=--isatty=1\"\001\003*\001\003\nm\n2--default_override=0:common=--terminal_columns=181\022\020default_override\032\0370:common=--terminal_columns=181\"\001\003*\001\003\nW\n\'--rc_source=/home/nick/src/bes/.bazelrc\022\trc_source\032\033/home/nick/src/bes/.bazelrc\"\001\003*\001\003\nG\n\037--rc_source=/home/nick/.bazelrc\022\trc_source\032\023/home/nick/.bazelrc\"\001\003*\001\003\ns\n5--default_override=1:build=--java_language_version=17\022\020default_override\032\"1:build=--java_language_version=17\"\001\003*\001\003\n}\n:--default_override=1:build=--tool_java_language_version=17\022\020default_override\032\'1:build=--tool_java_language_version=17\"\001\003*\001\003\nq\n4--default_override=1:build=--java_runtime_version=17\022\020default_override\032!1:build=--java_runtime_version=17\"\001\003*\001\003\n{\n9--default_override=1:build=--tool_java_runtime_version=17\022\020default_override\032&1:build=--tool_java_runtime_version=17\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\022\020default_override\032@1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\022\020default_override\032@1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\"\001\003*\001\003\n\253\001\nQ--default_override=1:build:bes=--build_event_text_file=src/test/resources/bes.txt\022\020default_override\032>1:build:bes=--build_event_text_file=src/test/resources/bes.txt\"\001\003*\001\003\nu\n6--default_override=1:build:ci=--build_metadata=ROLE=CI\022\020default_override\032#1:build:ci=--build_metadata=ROLE=CI\"\001\003*\001\003\ne\n.--default_override=1:test:ci=--test_output=all\022\020default_override\032\0331:test:ci=--test_output=all\"\001\003*\001\003\nc\n---default_override=1:common=--noenable_bzlmod\022\020default_override\032\0321:common=--noenable_bzlmod\"\001\003*\001\003\n\253\001\nQ--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/\022\020default_override\032>2:build:remote=--bes_results_url=http://white:8080/invocation/\"\001\003*\001\003\n\213\001\nA--default_override=2:build:remote=--bes_backend=grpc://white:1985\022\020default_override\032.2:build:remote=--bes_backend=grpc://white:1985\"\001\003*\001\003\n\215\001\nB--default_override=2:build:remote=--remote_cache=grpc://white:1985\022\020default_override\032/2:build:remote=--remote_cache=grpc://white:1985\"\001\003*\001\003\nu\n6--default_override=2:build:remote=--remote_timeout=120\022\020default_override\032#2:build:remote=--remote_timeout=120\"\001\003*\001\003\n\223\001\nE--default_override=2:build:remote=--remote_executor=grpc://white:1985\022\020default_override\03222:build:remote=--remote_executor=grpc://white:1985\"\001\003*\001\003\n\277\001\n[--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\022\020default_override\032H2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\"\001\003*\001\003\n\263\001\nU--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\022\020default_override\032B2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\"\001\003*\001\003\n\231\001\nH--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\022\020default_override\03252:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\233\001\nI--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\022\020default_override\03262:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\"\001\003*\001\003\no\n3--default_override=2:build:bb=--remote_timeout=3600\022\020default_override\032 2:build:bb=--remote_timeout=3600\"\001\003*\001\003\n\241\001\nL--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\022\020default_override\03292:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\267\001\nW--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\022\020default_override\032D2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\"\001\003*\001\003\n[\n)--default_override=2:common=--announce_rc\022\020default_override\032\0262:common=--announce_rc\"\001\003*\001\003\n*\n\020--startup_time=9\022\fstartup_time\032\0019\"\002\004\v*\001\003\n4\n\025--command_wait_time=0\022\021command_wait_time\032\0010\"\002\004\v*\001\003\n4\n\025--extract_data_time=0\022\021extract_data_time\032\0010\"\002\004\v*\001\003\n\223\002\n\204\001--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\022\vbinary_path\032v/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\"\002\004\v*\001\003\nA\n\034--client_env=SHELL=/bin/bash\022\nclient_env\032\017SHELL=/bin/bash\"\001\003*\001\003\n\305\001\n^--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\022\nclient_env\032QSESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\"\001\003*\001\003\nG\n\037--client_env=QT_ACCESSIBILITY=1\022\nclient_env\032\022QT_ACCESSIBILITY=1\"\001\003*\001\003\nE\n\036--client_env=SNAP_REVISION=473\022\nclient_env\032\021SNAP_REVISION=473\"\001\003*\001\003\n{\n9--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\022\nclient_env\032,XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\"\001\003*\001\003\nW\n\'--client_env=SSH_AGENT_LAUNCHER=openssh\022\nclient_env\032\032SSH_AGENT_LAUNCHER=openssh\"\001\003*\001\003\nO\n#--client_env=XDG_MENU_PREFIX=gnome-\022\nclient_env\032\026XDG_MENU_PREFIX=gnome-\"\001\003*\001\003\ny\n8--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated\022\nclient_env\032+GNOME_DESKTOP_SESSION_ID=this-is-deprecated\"\001\003*\001\003\nU\n&--client_env=SNAP_REAL_HOME=/home/nick\022\nclient_env\032\031SNAP_REAL_HOME=/home/nick\"\001\003*\001\003\nk\n1--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm\022\nclient_env\032$TERMINAL_EMULATOR=JetBrains-JediTerm\"\001\003*\001\003\n\237\001\nK--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\022\nclient_env\032>SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\"\001\003*\001\003\na\n,--client_env=GNOME_SHELL_SESSION_MODE=ubuntu\022\nclient_env\032\037GNOME_SHELL_SESSION_MODE=ubuntu\"\001\003*\001\003\ns\n5--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\022\nclient_env\032(SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\"\001\003*\001\003\n\213\001\nA--client_env=TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\022\nclient_env\0324TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\"\001\003*\001\003\nG\n\037--client_env=SNAP_INSTANCE_KEY=\022\nclient_env\032\022SNAP_INSTANCE_KEY=\"\001\003*\001\003\nI\n --client_env=XMODIFIERS=@im=ibus\022\nclient_env\032\023XMODIFIERS=@im=ibus\"\001\003*\001\003\nO\n#--client_env=DESKTOP_SESSION=ubuntu\022\nclient_env\032\026DESKTOP_SESSION=ubuntu\"\001\003*\001\003\n\203\002\n}--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032pBAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nY\n(--client_env=GTK_MODULES=gail:atk-bridge\022\nclient_env\032\033GTK_MODULES=gail:atk-bridge\"\001\003*\001\003\n?\n\033--client_env=SNAP_EUID=1000\022\nclient_env\032\016SNAP_EUID=1000\"\001\003*\001\003\nO\n#--client_env=PWD=/home/nick/src/bes\022\nclient_env\032\026PWD=/home/nick/src/bes\"\001\003*\001\003\nW\n\'--client_env=XDG_SESSION_DESKTOP=ubuntu\022\nclient_env\032\032XDG_SESSION_DESKTOP=ubuntu\"\001\003*\001\003\n;\n\031--client_env=LOGNAME=nick\022\nclient_env\032\fLOGNAME=nick\"\001\003*\001\003\nS\n%--client_env=XDG_SESSION_TYPE=wayland\022\nclient_env\032\030XDG_SESSION_TYPE=wayland\"\001\003*\001\003\nM\n\"--client_env=SYSTEMD_EXEC_PID=3381\022\nclient_env\032\025SYSTEMD_EXEC_PID=3381\"\001\003*\001\003\n\215\001\nB--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\022\nclient_env\0325XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\"\001\003*\001\003\n\323\001\ne--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032XDESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\n\245\001\nN--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032ASNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nc\n---client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG\022\nclient_env\032 GJS_DEBUG_TOPICS=JS ERROR;JS LOG\"\001\003*\001\003\nA\n\034--client_env=HOME=/home/nick\022\nclient_env\032\017HOME=/home/nick\"\001\003*\001\003\n=\n\032--client_env=USERNAME=nick\022\nclient_env\032\rUSERNAME=nick\"\001\003*\001\003\nE\n\036--client_env=IM_CONFIG_PHASE=1\022\nclient_env\032\021IM_CONFIG_PHASE=1\"\001\003*\001\003\nC\n\035--client_env=LANG=en_US.UTF-8\022\nclient_env\032\020LANG=en_US.UTF-8\"\001\003*\001\003\n\353\033\n\360\r--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\022\nclient_env\032\343\rLS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\"\001\003*\001\003\nc\n---client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME\022\nclient_env\032 XDG_CURRENT_DESKTOP=ubuntu:GNOME\"\001\003*\001\003\nU\n&--client_env=WAYLAND_DISPLAY=wayland-0\022\nclient_env\032\031WAYLAND_DISPLAY=wayland-0\"\001\003*\001\003\nA\n\034--client_env=SNAP_ARCH=amd64\022\nclient_env\032\017SNAP_ARCH=amd64\"\001\003*\001\003\nu\n6--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate\022\nclient_env\032)SNAP_INSTANCE_NAME=intellij-idea-ultimate\"\001\003*\001\003\n\225\001\nF--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\022\nclient_env\0329SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\177\n;--client_env=INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\022\nclient_env\032.INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\"\001\003*\001\003\nA\n\034--client_env=MANAGERPID=3106\022\nclient_env\032\017MANAGERPID=3106\"\001\003*\001\003\n;\n\031--client_env=SNAP_REEXEC=\022\nclient_env\032\fSNAP_REEXEC=\"\001\003*\001\003\n=\n\032--client_env=SNAP_UID=1000\022\nclient_env\032\rSNAP_UID=1000\"\001\003*\001\003\nQ\n$--client_env=GJS_DEBUG_OUTPUT=stderr\022\nclient_env\032\027GJS_DEBUG_OUTPUT=stderr\"\001\003*\001\003\nO\n#--client_env=GNOME_SETUP_DISPLAY=:1\022\nclient_env\032\026GNOME_SETUP_DISPLAY=:1\"\001\003*\001\003\n\327\001\ng--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032ZXDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\ne\n.--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s\022\nclient_env\032!LESSCLOSE=/usr/bin/lesspipe %s %s\"\001\003*\001\003\nO\n#--client_env=XDG_SESSION_CLASS=user\022\nclient_env\032\026XDG_SESSION_CLASS=user\"\001\003*\001\003\nI\n --client_env=TERM=xterm-256color\022\nclient_env\032\023TERM=xterm-256color\"\001\003*\001\003\na\n,--client_env=LESSOPEN=| /usr/bin/lesspipe %s\022\nclient_env\032\037LESSOPEN=| /usr/bin/lesspipe %s\"\001\003*\001\003\n5\n\026--client_env=USER=nick\022\nclient_env\032\tUSER=nick\"\001\003*\001\003\nm\n2--client_env=SNAP=/snap/intellij-idea-ultimate/473\022\nclient_env\032%SNAP=/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\211\001\n@--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\022\nclient_env\0323SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\"\001\003*\001\003\nM\n\"--client_env=SNAP_VERSION=2023.3.3\022\nclient_env\032\025SNAP_VERSION=2023.3.3\"\001\003*\001\003\n7\n\027--client_env=DISPLAY=:0\022\nclient_env\032\nDISPLAY=:0\"\001\003*\001\003\n1\n\024--client_env=SHLVL=1\022\nclient_env\032\aSHLVL=1\"\001\003*\001\003\n\311\001\n`--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\022\nclient_env\032SSNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\"\001\003*\001\003\n\243\001\nM--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032@SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nE\n\036--client_env=QT_IM_MODULE=ibus\022\nclient_env\032\021QT_IM_MODULE=ibus\"\001\003*\001\003\n\177\n;--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473\022\nclient_env\032.SNAP_DATA=/var/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n_\n+--client_env=XDG_RUNTIME_DIR=/run/user/1000\022\nclient_env\032\036XDG_RUNTIME_DIR=/run/user/1000\"\001\003*\001\003\n\177\n;--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \022\nclient_env\032.DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \"\001\003*\001\003\nc\n---client_env=SNAP_NAME=intellij-idea-ultimate\022\nclient_env\032 SNAP_NAME=intellij-idea-ultimate\"\001\003*\001\003\nO\n#--client_env=JOURNAL_STREAM=8:45543\022\nclient_env\032\026JOURNAL_STREAM=8:45543\"\001\003*\001\003\n\355\001\nr--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\022\nclient_env\032eXDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\"\001\003*\001\003\n\351\003\n\357\001--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\022\nclient_env\032\342\001PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\"\001\003*\001\003\nE\n\036--client_env=GDMSESSION=ubuntu\022\nclient_env\032\021GDMSESSION=ubuntu\"\001\003*\001\003\n\215\001\nB--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\022\nclient_env\0325DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\"\001\003*\001\003\ni\n0--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=13682\022\nclient_env\032#GIO_LAUNCHED_DESKTOP_FILE_PID=13682\"\001\003*\001\003\n\212\002\n\200\001--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032sGIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nO\n#--client_env=_=/usr/local/bin/bazel\022\nclient_env\032\026_=/usr/local/bin/bazel\"\001\003*\001\003\nW\n\'--client_env=BAZELISK_SKIP_WRAPPER=true\022\nclient_env\032\032BAZELISK_SKIP_WRAPPER=true\"\001\003*\001\003\nG\n\037--client_cwd=/home/nick/src/bes\022\nclient_cwd\032\022/home/nick/src/bes\"\001\003*\001\003\nL\n#--bes_backend=grpc://localhost:8888\022\vbes_backend\032\025grpc://localhost:8888\"\001\004\nT\n\'--bes_results_url=http://localhost:8080\022\017bes_results_url\032\025http://localhost:8080\"\001\f\022\021\n\bresidual\022\005\n\003..."
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 4
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002Z\000b\301;\n\005build\n\020--startup_time=9\n\025--command_wait_time=0\n\025--extract_data_time=0\n\204\001--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\n\022--rc_source=client\n&--default_override=0:common=--isatty=1\n2--default_override=0:common=--terminal_columns=181\n\'--rc_source=/home/nick/src/bes/.bazelrc\n\037--rc_source=/home/nick/.bazelrc\n5--default_override=1:build=--java_language_version=17\n:--default_override=1:build=--tool_java_language_version=17\n4--default_override=1:build=--java_runtime_version=17\n9--default_override=1:build=--tool_java_runtime_version=17\nS--default_override=1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\nS--default_override=1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\nQ--default_override=1:build:bes=--build_event_text_file=src/test/resources/bes.txt\n6--default_override=1:build:ci=--build_metadata=ROLE=CI\n.--default_override=1:test:ci=--test_output=all\n---default_override=1:common=--noenable_bzlmod\nQ--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/\nA--default_override=2:build:remote=--bes_backend=grpc://white:1985\nB--default_override=2:build:remote=--remote_cache=grpc://white:1985\n6--default_override=2:build:remote=--remote_timeout=120\nE--default_override=2:build:remote=--remote_executor=grpc://white:1985\n[--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\nU--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\nH--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\nI--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\n3--default_override=2:build:bb=--remote_timeout=3600\nL--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\nW--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\n)--default_override=2:common=--announce_rc\n\034--client_env=SHELL=/bin/bash\n^--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\n\037--client_env=QT_ACCESSIBILITY=1\n\036--client_env=SNAP_REVISION=473\n9--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\n\'--client_env=SSH_AGENT_LAUNCHER=openssh\n#--client_env=XDG_MENU_PREFIX=gnome-\n8--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated\n&--client_env=SNAP_REAL_HOME=/home/nick\n1--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm\nK--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\n,--client_env=GNOME_SHELL_SESSION_MODE=ubuntu\n5--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\nA--client_env=TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\n\037--client_env=SNAP_INSTANCE_KEY=\n --client_env=XMODIFIERS=@im=ibus\n#--client_env=DESKTOP_SESSION=ubuntu\n}--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\n(--client_env=GTK_MODULES=gail:atk-bridge\n\033--client_env=SNAP_EUID=1000\n#--client_env=PWD=/home/nick/src/bes\n\'--client_env=XDG_SESSION_DESKTOP=ubuntu\n\031--client_env=LOGNAME=nick\n%--client_env=XDG_SESSION_TYPE=wayland\n\"--client_env=SYSTEMD_EXEC_PID=3381\nB--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\ne--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\nN--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\n---client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG\n\034--client_env=HOME=/home/nick\n\032--client_env=USERNAME=nick\n\036--client_env=IM_CONFIG_PHASE=1\n\035--client_env=LANG=en_US.UTF-8\n\360\r--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\n---client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME\n&--client_env=WAYLAND_DISPLAY=wayland-0\n\034--client_env=SNAP_ARCH=amd64\n6--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate\nF--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\n;--client_env=INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\n\034--client_env=MANAGERPID=3106\n\031--client_env=SNAP_REEXEC=\n\032--client_env=SNAP_UID=1000\n$--client_env=GJS_DEBUG_OUTPUT=stderr\n#--client_env=GNOME_SETUP_DISPLAY=:1\ng--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\n.--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s\n#--client_env=XDG_SESSION_CLASS=user\n --client_env=TERM=xterm-256color\n,--client_env=LESSOPEN=| /usr/bin/lesspipe %s\n\026--client_env=USER=nick\n2--client_env=SNAP=/snap/intellij-idea-ultimate/473\n@--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\n\"--client_env=SNAP_VERSION=2023.3.3\n\027--client_env=DISPLAY=:0\n\024--client_env=SHLVL=1\n`--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\nM--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\n\036--client_env=QT_IM_MODULE=ibus\n;--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473\n+--client_env=XDG_RUNTIME_DIR=/run/user/1000\n;--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \n---client_env=SNAP_NAME=intellij-idea-ultimate\n#--client_env=JOURNAL_STREAM=8:45543\nr--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\n\357\001--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\n\036--client_env=GDMSESSION=ubuntu\nB--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\n0--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=13682\n\200\001--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\n#--client_env=_=/usr/local/bin/bazel\n\'--client_env=BAZELISK_SKIP_WRAPPER=true\n\037--client_cwd=/home/nick/src/bes\n#--bes_backend=grpc://localhost:8888\n\'--bes_results_url=http://localhost:8080\n\003..."
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 5
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\t\222\001\006\n\004tool\262\001\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 6
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002b\000j\247\006\n\025--max_idle_secs=10800\n\033--noshutdown_on_low_sys_mem\n\031--connect_timeout_secs=30\n6--output_user_root=/home/nick/.cache/bazel/_bazel_nick\nR--output_base=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411\nq--failure_detail_out=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto\n\031--expand_configs_in_place\n\023--idle_server_tasks\n\023--write_command_log\n\v--nowatchfs\n\036--nofatal_event_bus_exceptions\n\033--nowindows_enable_symlinks\n\020--noclient_debug\032\021--noenable_bzlmod\032\r--announce_rc\032\032--java_language_version=17\032\037--tool_java_language_version=17\032\031--java_runtime_version=17\032\036--tool_java_runtime_version=17\032#--bes_backend=grpc://localhost:8888\032\'--bes_results_url=http://localhost:8080\"#--bes_backend=grpc://localhost:8888\"\'--bes_results_url=http://localhost:8080*\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 7
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\016\222\001\v\n\tcanonical\262\001\340\216\001\n\tcanonical\022\025\n\nexecutable\022\a\n\005bazel\022\345\r\n\017startup options\032\321\r\n1\n\025--max_idle_secs=10800\022\rmax_idle_secs\032\00510800\"\002\n\002\n=\n\033--noshutdown_on_low_sys_mem\022\027shutdown_on_low_sys_mem\032\0010\"\002\n\002\n8\n\031--connect_timeout_secs=30\022\024connect_timeout_secs\032\00230\"\001\006\ns\n6--output_user_root=/home/nick/.cache/bazel/_bazel_nick\022\020output_user_root\032#/home/nick/.cache/bazel/_bazel_nick\"\002\004\002\n\300\001\n[--install_base=/home/nick/.cache/bazel/_bazel_nick/install/20da5ab742b8d3d499c34fdafcd3c8b8\022\finstall_base\032L/home/nick/.cache/bazel/_bazel_nick/install/20da5ab742b8d3d499c34fdafcd3c8b8\"\002\003\002*\001\003\nf\n.--install_md5=20da5ab742b8d3d499c34fdafcd3c8b8\022\vinstall_md5\032 20da5ab742b8d3d499c34fdafcd3c8b8\"\002\002\v*\001\003\n\253\001\nR--output_base=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411\022\voutput_base\032D/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411\"\002\004\002\nZ\n(--workspace_directory=/home/nick/src/bes\022\023workspace_directory\032\022/home/nick/src/bes\"\002\003\002*\001\003\n\202\001\n<--default_system_javabase=/usr/lib/jvm/java-17-openjdk-amd64\022\027default_system_javabase\032\"/usr/lib/jvm/java-17-openjdk-amd64\"\002\003\002*\001\003\n\351\001\nq--failure_detail_out=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto\022\022failure_detail_out\032\\/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto\"\002\004\002\n=\n\031--expand_configs_in_place\022\027expand_configs_in_place\032\0011\"\001\001*\001\002\n/\n\023--idle_server_tasks\022\021idle_server_tasks\032\0011\"\002\002\t\n/\n\023--write_command_log\022\021write_command_log\032\0011\"\002\004\002\n\037\n\v--nowatchfs\022\awatchfs\032\0010\"\001\000*\001\002\nC\n\036--nofatal_event_bus_exceptions\022\032fatal_event_bus_exceptions\032\0010\"\002\n\002\n<\n\033--nowindows_enable_symlinks\022\027windows_enable_symlinks\032\0010\"\001\006\n/\n\024--client_debug=false\022\fclient_debug\032\005false\"\002\004\v\n3\n\024--product_name=Bazel\022\fproduct_name\032\005Bazel\"\003\002\004\v*\001\003\n)\n\021--option_sources=\022\016option_sources\"\001\004*\001\003\n2\n\025--ignore_all_rc_files\022\023ignore_all_rc_files\032\0011\"\001\003\022\022\n\acommand\022\a\n\005build\022\253\200\001\n\017command options\032\226\200\001\n\035\n\n--isatty=1\022\006isatty\032\0011\"\001\000*\001\003\n5\n\026--terminal_columns=181\022\020terminal_columns\032\003181\"\001\000*\001\003\n(\n\021--noenable_bzlmod\022\renable_bzlmod\032\0010\"\001\a\n\"\n\r--announce_rc\022\vannounce_rc\032\0011\"\001\004\n:\n\032--java_language_version=17\022\025java_language_version\032\00217\"\001\000\nD\n\037--tool_java_language_version=17\022\032tool_java_language_version\032\00217\"\001\000\n8\n\031--java_runtime_version=17\022\024java_runtime_version\032\00217\"\001\000\nB\n\036--tool_java_runtime_version=17\022\031tool_java_runtime_version\032\00217\"\001\000\n-\n\022--rc_source=client\022\trc_source\032\006client\"\001\003*\001\003\nU\n&--default_override=0:common=--isatty=1\022\020default_override\032\0230:common=--isatty=1\"\001\003*\001\003\nm\n2--default_override=0:common=--terminal_columns=181\022\020default_override\032\0370:common=--terminal_columns=181\"\001\003*\001\003\nW\n\'--rc_source=/home/nick/src/bes/.bazelrc\022\trc_source\032\033/home/nick/src/bes/.bazelrc\"\001\003*\001\003\nG\n\037--rc_source=/home/nick/.bazelrc\022\trc_source\032\023/home/nick/.bazelrc\"\001\003*\001\003\ns\n5--default_override=1:build=--java_language_version=17\022\020default_override\032\"1:build=--java_language_version=17\"\001\003*\001\003\n}\n:--default_override=1:build=--tool_java_language_version=17\022\020default_override\032\'1:build=--tool_java_language_version=17\"\001\003*\001\003\nq\n4--default_override=1:build=--java_runtime_version=17\022\020default_override\032!1:build=--java_runtime_version=17\"\001\003*\001\003\n{\n9--default_override=1:build=--tool_java_runtime_version=17\022\020default_override\032&1:build=--tool_java_runtime_version=17\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\022\020default_override\032@1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\022\020default_override\032@1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\"\001\003*\001\003\n\253\001\nQ--default_override=1:build:bes=--build_event_text_file=src/test/resources/bes.txt\022\020default_override\032>1:build:bes=--build_event_text_file=src/test/resources/bes.txt\"\001\003*\001\003\nu\n6--default_override=1:build:ci=--build_metadata=ROLE=CI\022\020default_override\032#1:build:ci=--build_metadata=ROLE=CI\"\001\003*\001\003\ne\n.--default_override=1:test:ci=--test_output=all\022\020default_override\032\0331:test:ci=--test_output=all\"\001\003*\001\003\nc\n---default_override=1:common=--noenable_bzlmod\022\020default_override\032\0321:common=--noenable_bzlmod\"\001\003*\001\003\n\253\001\nQ--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/\022\020default_override\032>2:build:remote=--bes_results_url=http://white:8080/invocation/\"\001\003*\001\003\n\213\001\nA--default_override=2:build:remote=--bes_backend=grpc://white:1985\022\020default_override\032.2:build:remote=--bes_backend=grpc://white:1985\"\001\003*\001\003\n\215\001\nB--default_override=2:build:remote=--remote_cache=grpc://white:1985\022\020default_override\032/2:build:remote=--remote_cache=grpc://white:1985\"\001\003*\001\003\nu\n6--default_override=2:build:remote=--remote_timeout=120\022\020default_override\032#2:build:remote=--remote_timeout=120\"\001\003*\001\003\n\223\001\nE--default_override=2:build:remote=--remote_executor=grpc://white:1985\022\020default_override\03222:build:remote=--remote_executor=grpc://white:1985\"\001\003*\001\003\n\277\001\n[--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\022\020default_override\032H2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\"\001\003*\001\003\n\263\001\nU--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\022\020default_override\032B2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\"\001\003*\001\003\n\231\001\nH--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\022\020default_override\03252:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\233\001\nI--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\022\020default_override\03262:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\"\001\003*\001\003\no\n3--default_override=2:build:bb=--remote_timeout=3600\022\020default_override\032 2:build:bb=--remote_timeout=3600\"\001\003*\001\003\n\241\001\nL--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\022\020default_override\03292:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\267\001\nW--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\022\020default_override\032D2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\"\001\003*\001\003\n[\n)--default_override=2:common=--announce_rc\022\020default_override\032\0262:common=--announce_rc\"\001\003*\001\003\n*\n\020--startup_time=9\022\fstartup_time\032\0019\"\002\004\v*\001\003\n4\n\025--command_wait_time=0\022\021command_wait_time\032\0010\"\002\004\v*\001\003\n4\n\025--extract_data_time=0\022\021extract_data_time\032\0010\"\002\004\v*\001\003\n\223\002\n\204\001--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\022\vbinary_path\032v/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\"\002\004\v*\001\003\nA\n\034--client_env=SHELL=/bin/bash\022\nclient_env\032\017SHELL=/bin/bash\"\001\003*\001\003\n\305\001\n^--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\022\nclient_env\032QSESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\"\001\003*\001\003\nG\n\037--client_env=QT_ACCESSIBILITY=1\022\nclient_env\032\022QT_ACCESSIBILITY=1\"\001\003*\001\003\nE\n\036--client_env=SNAP_REVISION=473\022\nclient_env\032\021SNAP_REVISION=473\"\001\003*\001\003\n{\n9--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\022\nclient_env\032,XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\"\001\003*\001\003\nW\n\'--client_env=SSH_AGENT_LAUNCHER=openssh\022\nclient_env\032\032SSH_AGENT_LAUNCHER=openssh\"\001\003*\001\003\nO\n#--client_env=XDG_MENU_PREFIX=gnome-\022\nclient_env\032\026XDG_MENU_PREFIX=gnome-\"\001\003*\001\003\ny\n8--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated\022\nclient_env\032+GNOME_DESKTOP_SESSION_ID=this-is-deprecated\"\001\003*\001\003\nU\n&--client_env=SNAP_REAL_HOME=/home/nick\022\nclient_env\032\031SNAP_REAL_HOME=/home/nick\"\001\003*\001\003\nk\n1--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm\022\nclient_env\032$TERMINAL_EMULATOR=JetBrains-JediTerm\"\001\003*\001\003\n\237\001\nK--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\022\nclient_env\032>SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\"\001\003*\001\003\na\n,--client_env=GNOME_SHELL_SESSION_MODE=ubuntu\022\nclient_env\032\037GNOME_SHELL_SESSION_MODE=ubuntu\"\001\003*\001\003\ns\n5--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\022\nclient_env\032(SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\"\001\003*\001\003\n\213\001\nA--client_env=TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\022\nclient_env\0324TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\"\001\003*\001\003\nG\n\037--client_env=SNAP_INSTANCE_KEY=\022\nclient_env\032\022SNAP_INSTANCE_KEY=\"\001\003*\001\003\nI\n --client_env=XMODIFIERS=@im=ibus\022\nclient_env\032\023XMODIFIERS=@im=ibus\"\001\003*\001\003\nO\n#--client_env=DESKTOP_SESSION=ubuntu\022\nclient_env\032\026DESKTOP_SESSION=ubuntu\"\001\003*\001\003\n\203\002\n}--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032pBAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nY\n(--client_env=GTK_MODULES=gail:atk-bridge\022\nclient_env\032\033GTK_MODULES=gail:atk-bridge\"\001\003*\001\003\n?\n\033--client_env=SNAP_EUID=1000\022\nclient_env\032\016SNAP_EUID=1000\"\001\003*\001\003\nO\n#--client_env=PWD=/home/nick/src/bes\022\nclient_env\032\026PWD=/home/nick/src/bes\"\001\003*\001\003\nW\n\'--client_env=XDG_SESSION_DESKTOP=ubuntu\022\nclient_env\032\032XDG_SESSION_DESKTOP=ubuntu\"\001\003*\001\003\n;\n\031--client_env=LOGNAME=nick\022\nclient_env\032\fLOGNAME=nick\"\001\003*\001\003\nS\n%--client_env=XDG_SESSION_TYPE=wayland\022\nclient_env\032\030XDG_SESSION_TYPE=wayland\"\001\003*\001\003\nM\n\"--client_env=SYSTEMD_EXEC_PID=3381\022\nclient_env\032\025SYSTEMD_EXEC_PID=3381\"\001\003*\001\003\n\215\001\nB--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\022\nclient_env\0325XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\"\001\003*\001\003\n\323\001\ne--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032XDESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\n\245\001\nN--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032ASNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nc\n---client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG\022\nclient_env\032 GJS_DEBUG_TOPICS=JS ERROR;JS LOG\"\001\003*\001\003\nA\n\034--client_env=HOME=/home/nick\022\nclient_env\032\017HOME=/home/nick\"\001\003*\001\003\n=\n\032--client_env=USERNAME=nick\022\nclient_env\032\rUSERNAME=nick\"\001\003*\001\003\nE\n\036--client_env=IM_CONFIG_PHASE=1\022\nclient_env\032\021IM_CONFIG_PHASE=1\"\001\003*\001\003\nC\n\035--client_env=LANG=en_US.UTF-8\022\nclient_env\032\020LANG=en_US.UTF-8\"\001\003*\001\003\n\353\033\n\360\r--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\022\nclient_env\032\343\rLS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\"\001\003*\001\003\nc\n---client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME\022\nclient_env\032 XDG_CURRENT_DESKTOP=ubuntu:GNOME\"\001\003*\001\003\nU\n&--client_env=WAYLAND_DISPLAY=wayland-0\022\nclient_env\032\031WAYLAND_DISPLAY=wayland-0\"\001\003*\001\003\nA\n\034--client_env=SNAP_ARCH=amd64\022\nclient_env\032\017SNAP_ARCH=amd64\"\001\003*\001\003\nu\n6--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate\022\nclient_env\032)SNAP_INSTANCE_NAME=intellij-idea-ultimate\"\001\003*\001\003\n\225\001\nF--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\022\nclient_env\0329SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\177\n;--client_env=INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\022\nclient_env\032.INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\"\001\003*\001\003\nA\n\034--client_env=MANAGERPID=3106\022\nclient_env\032\017MANAGERPID=3106\"\001\003*\001\003\n;\n\031--client_env=SNAP_REEXEC=\022\nclient_env\032\fSNAP_REEXEC=\"\001\003*\001\003\n=\n\032--client_env=SNAP_UID=1000\022\nclient_env\032\rSNAP_UID=1000\"\001\003*\001\003\nQ\n$--client_env=GJS_DEBUG_OUTPUT=stderr\022\nclient_env\032\027GJS_DEBUG_OUTPUT=stderr\"\001\003*\001\003\nO\n#--client_env=GNOME_SETUP_DISPLAY=:1\022\nclient_env\032\026GNOME_SETUP_DISPLAY=:1\"\001\003*\001\003\n\327\001\ng--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032ZXDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\ne\n.--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s\022\nclient_env\032!LESSCLOSE=/usr/bin/lesspipe %s %s\"\001\003*\001\003\nO\n#--client_env=XDG_SESSION_CLASS=user\022\nclient_env\032\026XDG_SESSION_CLASS=user\"\001\003*\001\003\nI\n --client_env=TERM=xterm-256color\022\nclient_env\032\023TERM=xterm-256color\"\001\003*\001\003\na\n,--client_env=LESSOPEN=| /usr/bin/lesspipe %s\022\nclient_env\032\037LESSOPEN=| /usr/bin/lesspipe %s\"\001\003*\001\003\n5\n\026--client_env=USER=nick\022\nclient_env\032\tUSER=nick\"\001\003*\001\003\nm\n2--client_env=SNAP=/snap/intellij-idea-ultimate/473\022\nclient_env\032%SNAP=/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\211\001\n@--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\022\nclient_env\0323SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\"\001\003*\001\003\nM\n\"--client_env=SNAP_VERSION=2023.3.3\022\nclient_env\032\025SNAP_VERSION=2023.3.3\"\001\003*\001\003\n7\n\027--client_env=DISPLAY=:0\022\nclient_env\032\nDISPLAY=:0\"\001\003*\001\003\n1\n\024--client_env=SHLVL=1\022\nclient_env\032\aSHLVL=1\"\001\003*\001\003\n\311\001\n`--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\022\nclient_env\032SSNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\"\001\003*\001\003\n\243\001\nM--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032@SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nE\n\036--client_env=QT_IM_MODULE=ibus\022\nclient_env\032\021QT_IM_MODULE=ibus\"\001\003*\001\003\n\177\n;--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473\022\nclient_env\032.SNAP_DATA=/var/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n_\n+--client_env=XDG_RUNTIME_DIR=/run/user/1000\022\nclient_env\032\036XDG_RUNTIME_DIR=/run/user/1000\"\001\003*\001\003\n\177\n;--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \022\nclient_env\032.DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \"\001\003*\001\003\nc\n---client_env=SNAP_NAME=intellij-idea-ultimate\022\nclient_env\032 SNAP_NAME=intellij-idea-ultimate\"\001\003*\001\003\nO\n#--client_env=JOURNAL_STREAM=8:45543\022\nclient_env\032\026JOURNAL_STREAM=8:45543\"\001\003*\001\003\n\355\001\nr--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\022\nclient_env\032eXDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\"\001\003*\001\003\n\351\003\n\357\001--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\022\nclient_env\032\342\001PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\"\001\003*\001\003\nE\n\036--client_env=GDMSESSION=ubuntu\022\nclient_env\032\021GDMSESSION=ubuntu\"\001\003*\001\003\n\215\001\nB--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\022\nclient_env\0325DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\"\001\003*\001\003\ni\n0--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=13682\022\nclient_env\032#GIO_LAUNCHED_DESKTOP_FILE_PID=13682\"\001\003*\001\003\n\212\002\n\200\001--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032sGIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nO\n#--client_env=_=/usr/local/bin/bazel\022\nclient_env\032\026_=/usr/local/bin/bazel\"\001\003*\001\003\nW\n\'--client_env=BAZELISK_SKIP_WRAPPER=true\022\nclient_env\032\032BAZELISK_SKIP_WRAPPER=true\"\001\003*\001\003\nG\n\037--client_cwd=/home/nick/src/bes\022\nclient_cwd\032\022/home/nick/src/bes\"\001\003*\001\003\nL\n#--bes_backend=grpc://localhost:8888\022\vbes_backend\032\025grpc://localhost:8888\"\001\004\nT\n\'--bes_results_url=http://localhost:8080\022\017bes_results_url\032\025http://localhost:8080\"\001\f\022\021\n\bresidual\022\005\n\003..."
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 8
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\a\"\005\n\003...\022\v\202\001\b\n\006//:bes\022\016\202\001\v\n\t//:domain\022\030\202\001\025\n\023//:integration-test\022\017\202\001\f\n\n//:support\022\f\202\001\t\n\a//:test\022\024\202\001\021\n\017//:test-support2\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 9
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002\022\000\022\004\022\002\b\001\022\003\272\001\000\032\375\005\022\372\005\033[32mINFO: \033[0mStreaming build results to: http://localhost:8080/e15c3cc2-e9df-4ac0-96c8-e12129bc7caa\n\033[32mINFO: \033[0mOptions provided by the client:\n  Inherited \'common\' options: --isatty=1 --terminal_columns=181\n\033[32mINFO: \033[0mReading rc options for \'build\' from /home/nick/src/bes/.bazelrc:\n  Inherited \'common\' options: --noenable_bzlmod\n\033[32mINFO: \033[0mReading rc options for \'build\' from /home/nick/.bazelrc:\n  Inherited \'common\' options: --announce_rc\n\033[32mINFO: \033[0mReading rc options for \'build\' from /home/nick/src/bes/.bazelrc:\n  \'build\' options: --java_language_version=17 --tool_java_language_version=17 --java_runtime_version=17 --tool_java_runtime_version=17\n\033[32mLoading:\033[0m \n\r\033[1A\033[K\033[32mLoading:\033[0m \n\r\033[1A\033[K\033[32mLoading:\033[0m 0 packages loaded\n"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 10
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 375000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\272\001\000\312\001X\nV/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 11
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\001\022\004\022\002\b\002\022DzB\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\032\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 12
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nDzB\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\212\001\223\001\n\fk8-fastbuild\022\002k8\032\002k8\"\035\n\020COMPILATION_MODE\022\tfastbuild\"\020\n\nTARGET_CPU\022\002k8\"$\n\006GENDIR\022\032bazel-out/k8-fastbuild/bin\"$\n\006BINDIR\022\032bazel-out/k8-fastbuild/bin"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 13
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\002\022\004\022\002\b\003\022DzB\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\032\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 14
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nDzB\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\212\001\223\001\n\fk8-fastbuild\022\002k8\032\002k8\"\035\n\020COMPILATION_MODE\022\tfastbuild\"\020\n\nTARGET_CPU\022\002k8\"$\n\006GENDIR\022\032bazel-out/k8-fastbuild/bin\"$\n\006BINDIR\022\032bazel-out/k8-fastbuild/bin"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 15
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\v\202\001\b\n\006//:bes\022N*L\n\006//:bes\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\022\n\020java_binary rule"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 16
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\016\202\001\v\n\t//:domain\022Q*O\n\t//:domain\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\023\n\021java_library rule"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 17
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\030\202\001\025\n\023//:integration-test\022[*Y\n\023//:integration-test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\222\001\022\n\016java_test rule\020\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 18
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\017\202\001\f\n\n//:support\022R*P\n\n//:support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\023\n\021java_library rule"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 19
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\f\202\001\t\n\a//:test\022O*M\n\a//:test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\222\001\022\n\016java_test rule\020\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 20
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 376000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\024\202\001\021\n\017//:test-support\022W*U\n\017//:test-support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\023\n\021java_library rule"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 21
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\003\022\004\022\002\b\004\022\005j\003\n\0010\032\214\002\022\211\002\r\033[1A\033[K\033[32mAnalyzing:\033[0m 6 targets (0 packages loaded, 0 targets configured)\n\r\033[1A\033[K\033[32mINFO: \033[0mAnalyzed 6 targets (0 packages loaded, 0 targets configured).\n\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO: \033[0mFound 6 targets...\n\033[0m checking cached actions\n"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 22
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0010z\377\001\n\374\001\n\rlibdomain.jar\022\206\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libdomain.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@1b84a4c80c578b060e7fdec0865c218344aecb49bd7b30b563bb79a8d05353a70\306\204\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 23
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nQ*O\n\t//:domain\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\221\002\b\001\022\016\n\adefault\032\003\n\0010\"\374\001\n\rlibdomain.jar\022\206\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libdomain.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@1b84a4c80c578b060e7fdec0865c218344aecb49bd7b30b563bb79a8d05353a70\306\204\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 24
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\004\022\004\022\002\b\005\022\005j\003\n\0011\032\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 25
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0011z\221\004\n\211\002\n\024integration-test.jar\022\215\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@58f7f1019e330b3c8cd9f739c9e1c0c9a17f9521d47c1ea25a353505ebab9a340\224W\n\202\002\n\020integration-test\022\211\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a04d48a4f829b26deaeb27fadbd378c1590b3ee00735a7d77b676fd7cb8370610\357\220\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 26
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n[*Y\n\023//:integration-test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2B\243\004\b\001\022\016\n\adefault\032\003\n\0011\"\211\002\n\024integration-test.jar\022\215\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@58f7f1019e330b3c8cd9f739c9e1c0c9a17f9521d47c1ea25a353505ebab9a340\224W\"\202\002\n\020integration-test\022\211\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a04d48a4f829b26deaeb27fadbd378c1590b3ee00735a7d77b676fd7cb8370610\357\220\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 27
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\005\022\004\022\002\b\006\022\005j\003\n\0012\032\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 28
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0012z\200\002\n\375\001\n\016libsupport.jar\022\207\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libsupport.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a746a4187708b271e793e24c0f4db3edfbe8a184088dee6ac4f237e3383babad0\214\032"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 29
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nR*P\n\n//:support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\222\002\b\001\022\016\n\adefault\032\003\n\0012\"\375\001\n\016libsupport.jar\022\207\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libsupport.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a746a4187708b271e793e24c0f4db3edfbe8a184088dee6ac4f237e3383babad0\214\032"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 30
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\006\022\004\022\002\b\a\022\005j\003\n\0013\032\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 31
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0013z\212\002\n\207\002\n\023libtest-support.jar\022\214\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libtest-support.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@16111ddb18fc40d35e4f04884062d404db33757a69cbe02e5ab3d9d6af79e73b0\310\036"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 32
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 389000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nW*U\n\017//:test-support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\234\002\b\001\022\016\n\adefault\032\003\n\0013\"\207\002\n\023libtest-support.jar\022\214\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libtest-support.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@16111ddb18fc40d35e4f04884062d404db33757a69cbe02e5ab3d9d6af79e73b0\310\036"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 33
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 390000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002r\000\202\001\212\001\n\023\n\021BUILD_EMBED_LABEL\n\024\n\nBUILD_HOST\022\006walnut\n\035\n\017BUILD_TIMESTAMP\022\n1707170642\n\022\n\nBUILD_USER\022\004nick\n*\n\016FORMATTED_DATE\022\0302024 Feb 05 22 04 02 Mon"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 34
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 391000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\a\022\004\022\002\b\b\022\005j\003\n\0014\032P\022N\r\033[1A\033[K\033[32m[0 / 3]\033[0m [Prepa] BazelWorkspaceStatusAction stable-status.txt\n"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 35
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 391000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0014z\341\003\n\362\001\n\btest.jar\022\201\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@67b00d87b53d836a2ee950b4c40c07c46520265daf98175becbd56cf8d9538900\360\361\002\n\351\001\n\004test\022}file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@bd50dba7a4e39a0fbd0d5d877380dfa0c26222221910668f66e8db964e31b3680\346\214\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 36
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 391000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nO*M\n\a//:test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2B\363\003\b\001\022\016\n\adefault\032\003\n\0014\"\362\001\n\btest.jar\022\201\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@67b00d87b53d836a2ee950b4c40c07c46520265daf98175becbd56cf8d9538900\360\361\002\"\351\001\n\004test\022}file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@bd50dba7a4e39a0fbd0d5d877380dfa0c26222221910668f66e8db964e31b3680\346\214\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 37
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 403000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\b\022\004\022\002\b\t\022\005j\003\n\0015\032\000"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 38
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 403000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0015z\335\003\n\360\001\n\abes.jar\022\200\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@cd80c2d7c17950bff0978cfcca19d71303b0bf986206cb92d17b2538197550340\375\332\002\n\347\001\n\003bes\022|file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes\"\tbazel-out\"\fk8-fastbuild\"\003bin*@92a68579a809e59bc7e6c35414cff9c947258dac076cde86809e17180bc615f60\245\233\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 39
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 403000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nN*L\n\006//:bes\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\357\003\b\001\022\016\n\adefault\032\003\n\0015\"\360\001\n\abes.jar\022\200\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@cd80c2d7c17950bff0978cfcca19d71303b0bf986206cb92d17b2538197550340\375\332\002\"\347\001\n\003bes\022|file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes\"\tbazel-out\"\fk8-fastbuild\"\003bin*@92a68579a809e59bc7e6c35414cff9c947258dac076cde86809e17180bc615f60\245\233\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 40
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 419000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002J\000\022\003\242\001\000\022\003\262\001\000r\"\b\001\020\344\363\262\332\3271\032\t\n\aSUCCESS*\f\b\322\266\205\256\006\020\200\232\322\300\001"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 41
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 419000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\262\001\000\302\001\247\004\n\247\001\020\002\"!\n\017JavaResourceJar\020\001\030\327\363\262\332\3271 \343\363\262\332\3271\",\n\032BazelWorkspaceStatusAction\020\001\030\326\363\262\332\3271 \327\363\262\332\32712\t\n\005total\020\0022\f\n\binternal\020\0012\021\n\rlinux-sandbox\020\001:&\b\363\305\t\030\002 \003*\000*\002\b\001*\002\b\002*\004\b\003\020\002*\002\b\004*\002\b\005*\004\b\006\020\001\022\000\032\000\"\000*\a\b\202\001\0206\030\0012\004X```:\037\022\002\020\003\032\006\b\345\315\005\020\006\"\006\b\360\361\002\020\003*\t\b\305\302\231\311\001\020\275\002B\004 \241\233\001J1\b\001\020\246\236\t\032\023JavaPackageManifest0\001:\022\b\362\363\262\332\3271\020\274\206\004\030\223\303\343\271\3271J%\b\002\020\247\236\t\032\005Javac \0010\001:\022\b\362\363\262\332\3271\020\274\376=\030\205\360\245\332\3271J1\b\003\020\304\250\n\032\023JavaPackageManifest0\001:\022\b\362\363\262\332\3271\020\300\214\004\030\223\303\343\271\3271J%\b\004\020\247\236\t\032\005Javac \0010\001:\022\b\362\363\262\332\3271\020\274\376=\030\207\327\220\276\3271J1\b\005\020\303\312\v\032\023JavaPackageManifest0\001:\022\b\362\363\262\332\3271\020\244\215\004\030\351\324\220\276\3271J1\b\006\020\277\312\v\032\023JavaPackageManifest0\001:\022\b\362\363\262\332\3271\020\210\351\003\030\225\303\343\271\3271J%\b\a\020\247\236\t\032\005Javac \0010\001:\022\b\362\363\262\332\3271\020\274\376=\030\207\327\220\276\3271"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 42
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 419000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\t\032\235\002\022\232\002\r\033[1A\033[K\033[32mINFO: \033[0mElapsed time: 0.064s, Critical Path: 0.01s\n\033[32m[3 / 3]\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO: \033[0m2 processes: 1 internal, 1 linux-sandbox.\n\033[32m[3 / 3]\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO:\033[0m Build completed successfully, 2 total actions\n"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 43
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 419000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\242\001\000\240\001\001\272\001\250\005\n\030\n\felapsed time\032\b0.064000\n\331\003\n\rcritical path\032\307\003Critical Path: 0.01s, Remote (0.00% of the time): [parse: 0.00%, queue: 0.00%, network: 0.00%, upload: 0.00%, setup: 0.00%, process: 0.00%, fetch: 0.00%, retry: 0.00%, processOutputs: 0.00%, other: 0.00%, input files: 0, input bytes: 0, memory bytes: 0, input files limit: 0, input bytes limit: 0, output files limit: 0, output bytes limit: 0, memory limit: 0, time limit: 0 seconds]\n  0.00s runfiles for //:bes\n  0.01s action \'Building Java resource jar\'\n:\n\rprocess stats\032)2 processes: 1 internal, 1 linux-sandbox.\nt\n\022command.profile.gz\022^file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/command.profile.gz"
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: TOOL
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 44
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 419000000
+  }
+  component_stream_finished {
+    type: FINISHED
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: CONTROLLER
+  invocation_id: "e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"
+}
+sequence_number: 2
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 528000000
+  }
+  invocation_attempt_finished {
+    invocation_status {
+      result: COMMAND_SUCCEEDED
+    }
+  }
+}
+stream_id {
+  build_id: "c07753e2-5660-40ba-a3d0-8cd932a74fb8"
+  component: CONTROLLER
+}
+sequence_number: 2
+event {
+  event_time {
+    seconds: 1707170642
+    nanos: 531000000
+  }
+  build_finished {
+    status {
+      result: COMMAND_SUCCEEDED
+    }
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: CONTROLLER
+}
+sequence_number: 1
+event {
+  event_time {
+    seconds: 1707172314
+    nanos: 991000000
+  }
+  build_enqueued {
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: CONTROLLER
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 1
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 1000000
+  }
+  invocation_attempt_started {
+    attempt_number: 1
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 1
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002\032\000\022\002\022\000\022\002Z\000\022\r\222\001\n\n\boriginal\022\016\222\001\v\n\tcanonical\022\t\222\001\006\n\004tool\022\003\302\001\000\022\002b\000\022\002r\000\022\a\"\005\n\003...\022\002J\000*\326\002\n$584d2774-aab7-4ce9-8a9a-32ac493b0f6e\020\357\376\230\333\3271\032\0056.5.0\"\337\001--noenable_bzlmod --announce_rc --java_language_version=17 --tool_java_language_version=17 --java_runtime_version=17 --tool_java_runtime_version=17 --bes_backend=grpc://localhost:8888 --bes_results_url=http://localhost:8080*\004test2\022/home/nick/src/bes:\022/home/nick/src/bes@\207\217\tJ\f\b\332\303\205\256\006\020\300\353\305\330\003"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 2
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\302\001\000\322\001\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 3
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002Z\000b\300;\n\004test\n\020--startup_time=8\n\025--command_wait_time=0\n\025--extract_data_time=0\n\204\001--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\n\022--rc_source=client\n&--default_override=0:common=--isatty=1\n2--default_override=0:common=--terminal_columns=181\n\'--rc_source=/home/nick/src/bes/.bazelrc\n\037--rc_source=/home/nick/.bazelrc\n5--default_override=1:build=--java_language_version=17\n:--default_override=1:build=--tool_java_language_version=17\n4--default_override=1:build=--java_runtime_version=17\n9--default_override=1:build=--tool_java_runtime_version=17\nS--default_override=1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\nS--default_override=1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\nQ--default_override=1:build:bes=--build_event_text_file=src/test/resources/bes.txt\n6--default_override=1:build:ci=--build_metadata=ROLE=CI\n.--default_override=1:test:ci=--test_output=all\n---default_override=1:common=--noenable_bzlmod\nQ--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/\nA--default_override=2:build:remote=--bes_backend=grpc://white:1985\nB--default_override=2:build:remote=--remote_cache=grpc://white:1985\n6--default_override=2:build:remote=--remote_timeout=120\nE--default_override=2:build:remote=--remote_executor=grpc://white:1985\n[--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\nU--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\nH--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\nI--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\n3--default_override=2:build:bb=--remote_timeout=3600\nL--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\nW--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\n)--default_override=2:common=--announce_rc\n\034--client_env=SHELL=/bin/bash\n^--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\n\037--client_env=QT_ACCESSIBILITY=1\n\036--client_env=SNAP_REVISION=473\n9--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\n\'--client_env=SSH_AGENT_LAUNCHER=openssh\n#--client_env=XDG_MENU_PREFIX=gnome-\n8--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated\n&--client_env=SNAP_REAL_HOME=/home/nick\n1--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm\nK--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\n,--client_env=GNOME_SHELL_SESSION_MODE=ubuntu\n5--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\nA--client_env=TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\n\037--client_env=SNAP_INSTANCE_KEY=\n --client_env=XMODIFIERS=@im=ibus\n#--client_env=DESKTOP_SESSION=ubuntu\n}--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\n(--client_env=GTK_MODULES=gail:atk-bridge\n\033--client_env=SNAP_EUID=1000\n#--client_env=PWD=/home/nick/src/bes\n\'--client_env=XDG_SESSION_DESKTOP=ubuntu\n\031--client_env=LOGNAME=nick\n%--client_env=XDG_SESSION_TYPE=wayland\n\"--client_env=SYSTEMD_EXEC_PID=3381\nB--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\ne--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\nN--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\n---client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG\n\034--client_env=HOME=/home/nick\n\032--client_env=USERNAME=nick\n\036--client_env=IM_CONFIG_PHASE=1\n\035--client_env=LANG=en_US.UTF-8\n\360\r--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\n---client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME\n&--client_env=WAYLAND_DISPLAY=wayland-0\n\034--client_env=SNAP_ARCH=amd64\n6--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate\nF--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\n;--client_env=INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\n\034--client_env=MANAGERPID=3106\n\031--client_env=SNAP_REEXEC=\n\032--client_env=SNAP_UID=1000\n$--client_env=GJS_DEBUG_OUTPUT=stderr\n#--client_env=GNOME_SETUP_DISPLAY=:1\ng--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\n.--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s\n#--client_env=XDG_SESSION_CLASS=user\n --client_env=TERM=xterm-256color\n,--client_env=LESSOPEN=| /usr/bin/lesspipe %s\n\026--client_env=USER=nick\n2--client_env=SNAP=/snap/intellij-idea-ultimate/473\n@--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\n\"--client_env=SNAP_VERSION=2023.3.3\n\027--client_env=DISPLAY=:0\n\024--client_env=SHLVL=1\n`--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\nM--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\n\036--client_env=QT_IM_MODULE=ibus\n;--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473\n+--client_env=XDG_RUNTIME_DIR=/run/user/1000\n;--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \n---client_env=SNAP_NAME=intellij-idea-ultimate\n#--client_env=JOURNAL_STREAM=8:45543\nr--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\n\357\001--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\n\036--client_env=GDMSESSION=ubuntu\nB--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\n0--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=13682\n\200\001--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\n#--client_env=_=/usr/local/bin/bazel\n\'--client_env=BAZELISK_SKIP_WRAPPER=true\n\037--client_cwd=/home/nick/src/bes\n#--bes_backend=grpc://localhost:8888\n\'--bes_results_url=http://localhost:8080\n\003..."
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 4
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\016\222\001\v\n\tcanonical\262\001\337\216\001\n\tcanonical\022\025\n\nexecutable\022\a\n\005bazel\022\345\r\n\017startup options\032\321\r\n1\n\025--max_idle_secs=10800\022\rmax_idle_secs\032\00510800\"\002\n\002\n=\n\033--noshutdown_on_low_sys_mem\022\027shutdown_on_low_sys_mem\032\0010\"\002\n\002\n8\n\031--connect_timeout_secs=30\022\024connect_timeout_secs\032\00230\"\001\006\ns\n6--output_user_root=/home/nick/.cache/bazel/_bazel_nick\022\020output_user_root\032#/home/nick/.cache/bazel/_bazel_nick\"\002\004\002\n\300\001\n[--install_base=/home/nick/.cache/bazel/_bazel_nick/install/20da5ab742b8d3d499c34fdafcd3c8b8\022\finstall_base\032L/home/nick/.cache/bazel/_bazel_nick/install/20da5ab742b8d3d499c34fdafcd3c8b8\"\002\003\002*\001\003\nf\n.--install_md5=20da5ab742b8d3d499c34fdafcd3c8b8\022\vinstall_md5\032 20da5ab742b8d3d499c34fdafcd3c8b8\"\002\002\v*\001\003\n\253\001\nR--output_base=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411\022\voutput_base\032D/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411\"\002\004\002\nZ\n(--workspace_directory=/home/nick/src/bes\022\023workspace_directory\032\022/home/nick/src/bes\"\002\003\002*\001\003\n\202\001\n<--default_system_javabase=/usr/lib/jvm/java-17-openjdk-amd64\022\027default_system_javabase\032\"/usr/lib/jvm/java-17-openjdk-amd64\"\002\003\002*\001\003\n\351\001\nq--failure_detail_out=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto\022\022failure_detail_out\032\\/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto\"\002\004\002\n=\n\031--expand_configs_in_place\022\027expand_configs_in_place\032\0011\"\001\001*\001\002\n/\n\023--idle_server_tasks\022\021idle_server_tasks\032\0011\"\002\002\t\n/\n\023--write_command_log\022\021write_command_log\032\0011\"\002\004\002\n\037\n\v--nowatchfs\022\awatchfs\032\0010\"\001\000*\001\002\nC\n\036--nofatal_event_bus_exceptions\022\032fatal_event_bus_exceptions\032\0010\"\002\n\002\n<\n\033--nowindows_enable_symlinks\022\027windows_enable_symlinks\032\0010\"\001\006\n/\n\024--client_debug=false\022\fclient_debug\032\005false\"\002\004\v\n3\n\024--product_name=Bazel\022\fproduct_name\032\005Bazel\"\003\002\004\v*\001\003\n)\n\021--option_sources=\022\016option_sources\"\001\004*\001\003\n2\n\025--ignore_all_rc_files\022\023ignore_all_rc_files\032\0011\"\001\003\022\021\n\acommand\022\006\n\004test\022\253\200\001\n\017command options\032\226\200\001\n\035\n\n--isatty=1\022\006isatty\032\0011\"\001\000*\001\003\n5\n\026--terminal_columns=181\022\020terminal_columns\032\003181\"\001\000*\001\003\n(\n\021--noenable_bzlmod\022\renable_bzlmod\032\0010\"\001\a\n\"\n\r--announce_rc\022\vannounce_rc\032\0011\"\001\004\n:\n\032--java_language_version=17\022\025java_language_version\032\00217\"\001\000\nD\n\037--tool_java_language_version=17\022\032tool_java_language_version\032\00217\"\001\000\n8\n\031--java_runtime_version=17\022\024java_runtime_version\032\00217\"\001\000\nB\n\036--tool_java_runtime_version=17\022\031tool_java_runtime_version\032\00217\"\001\000\n-\n\022--rc_source=client\022\trc_source\032\006client\"\001\003*\001\003\nU\n&--default_override=0:common=--isatty=1\022\020default_override\032\0230:common=--isatty=1\"\001\003*\001\003\nm\n2--default_override=0:common=--terminal_columns=181\022\020default_override\032\0370:common=--terminal_columns=181\"\001\003*\001\003\nW\n\'--rc_source=/home/nick/src/bes/.bazelrc\022\trc_source\032\033/home/nick/src/bes/.bazelrc\"\001\003*\001\003\nG\n\037--rc_source=/home/nick/.bazelrc\022\trc_source\032\023/home/nick/.bazelrc\"\001\003*\001\003\ns\n5--default_override=1:build=--java_language_version=17\022\020default_override\032\"1:build=--java_language_version=17\"\001\003*\001\003\n}\n:--default_override=1:build=--tool_java_language_version=17\022\020default_override\032\'1:build=--tool_java_language_version=17\"\001\003*\001\003\nq\n4--default_override=1:build=--java_runtime_version=17\022\020default_override\032!1:build=--java_runtime_version=17\"\001\003*\001\003\n{\n9--default_override=1:build=--tool_java_runtime_version=17\022\020default_override\032&1:build=--tool_java_runtime_version=17\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\022\020default_override\032@1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\022\020default_override\032@1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\"\001\003*\001\003\n\253\001\nQ--default_override=1:build:bes=--build_event_text_file=src/test/resources/bes.txt\022\020default_override\032>1:build:bes=--build_event_text_file=src/test/resources/bes.txt\"\001\003*\001\003\nu\n6--default_override=1:build:ci=--build_metadata=ROLE=CI\022\020default_override\032#1:build:ci=--build_metadata=ROLE=CI\"\001\003*\001\003\ne\n.--default_override=1:test:ci=--test_output=all\022\020default_override\032\0331:test:ci=--test_output=all\"\001\003*\001\003\nc\n---default_override=1:common=--noenable_bzlmod\022\020default_override\032\0321:common=--noenable_bzlmod\"\001\003*\001\003\n\253\001\nQ--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/\022\020default_override\032>2:build:remote=--bes_results_url=http://white:8080/invocation/\"\001\003*\001\003\n\213\001\nA--default_override=2:build:remote=--bes_backend=grpc://white:1985\022\020default_override\032.2:build:remote=--bes_backend=grpc://white:1985\"\001\003*\001\003\n\215\001\nB--default_override=2:build:remote=--remote_cache=grpc://white:1985\022\020default_override\032/2:build:remote=--remote_cache=grpc://white:1985\"\001\003*\001\003\nu\n6--default_override=2:build:remote=--remote_timeout=120\022\020default_override\032#2:build:remote=--remote_timeout=120\"\001\003*\001\003\n\223\001\nE--default_override=2:build:remote=--remote_executor=grpc://white:1985\022\020default_override\03222:build:remote=--remote_executor=grpc://white:1985\"\001\003*\001\003\n\277\001\n[--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\022\020default_override\032H2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\"\001\003*\001\003\n\263\001\nU--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\022\020default_override\032B2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\"\001\003*\001\003\n\231\001\nH--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\022\020default_override\03252:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\233\001\nI--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\022\020default_override\03262:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\"\001\003*\001\003\no\n3--default_override=2:build:bb=--remote_timeout=3600\022\020default_override\032 2:build:bb=--remote_timeout=3600\"\001\003*\001\003\n\241\001\nL--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\022\020default_override\03292:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\267\001\nW--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\022\020default_override\032D2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\"\001\003*\001\003\n[\n)--default_override=2:common=--announce_rc\022\020default_override\032\0262:common=--announce_rc\"\001\003*\001\003\n*\n\020--startup_time=8\022\fstartup_time\032\0018\"\002\004\v*\001\003\n4\n\025--command_wait_time=0\022\021command_wait_time\032\0010\"\002\004\v*\001\003\n4\n\025--extract_data_time=0\022\021extract_data_time\032\0010\"\002\004\v*\001\003\n\223\002\n\204\001--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\022\vbinary_path\032v/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\"\002\004\v*\001\003\nA\n\034--client_env=SHELL=/bin/bash\022\nclient_env\032\017SHELL=/bin/bash\"\001\003*\001\003\n\305\001\n^--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\022\nclient_env\032QSESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\"\001\003*\001\003\nG\n\037--client_env=QT_ACCESSIBILITY=1\022\nclient_env\032\022QT_ACCESSIBILITY=1\"\001\003*\001\003\nE\n\036--client_env=SNAP_REVISION=473\022\nclient_env\032\021SNAP_REVISION=473\"\001\003*\001\003\n{\n9--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\022\nclient_env\032,XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\"\001\003*\001\003\nW\n\'--client_env=SSH_AGENT_LAUNCHER=openssh\022\nclient_env\032\032SSH_AGENT_LAUNCHER=openssh\"\001\003*\001\003\nO\n#--client_env=XDG_MENU_PREFIX=gnome-\022\nclient_env\032\026XDG_MENU_PREFIX=gnome-\"\001\003*\001\003\ny\n8--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated\022\nclient_env\032+GNOME_DESKTOP_SESSION_ID=this-is-deprecated\"\001\003*\001\003\nU\n&--client_env=SNAP_REAL_HOME=/home/nick\022\nclient_env\032\031SNAP_REAL_HOME=/home/nick\"\001\003*\001\003\nk\n1--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm\022\nclient_env\032$TERMINAL_EMULATOR=JetBrains-JediTerm\"\001\003*\001\003\n\237\001\nK--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\022\nclient_env\032>SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\"\001\003*\001\003\na\n,--client_env=GNOME_SHELL_SESSION_MODE=ubuntu\022\nclient_env\032\037GNOME_SHELL_SESSION_MODE=ubuntu\"\001\003*\001\003\ns\n5--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\022\nclient_env\032(SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\"\001\003*\001\003\n\213\001\nA--client_env=TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\022\nclient_env\0324TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\"\001\003*\001\003\nG\n\037--client_env=SNAP_INSTANCE_KEY=\022\nclient_env\032\022SNAP_INSTANCE_KEY=\"\001\003*\001\003\nI\n --client_env=XMODIFIERS=@im=ibus\022\nclient_env\032\023XMODIFIERS=@im=ibus\"\001\003*\001\003\nO\n#--client_env=DESKTOP_SESSION=ubuntu\022\nclient_env\032\026DESKTOP_SESSION=ubuntu\"\001\003*\001\003\n\203\002\n}--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032pBAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nY\n(--client_env=GTK_MODULES=gail:atk-bridge\022\nclient_env\032\033GTK_MODULES=gail:atk-bridge\"\001\003*\001\003\n?\n\033--client_env=SNAP_EUID=1000\022\nclient_env\032\016SNAP_EUID=1000\"\001\003*\001\003\nO\n#--client_env=PWD=/home/nick/src/bes\022\nclient_env\032\026PWD=/home/nick/src/bes\"\001\003*\001\003\nW\n\'--client_env=XDG_SESSION_DESKTOP=ubuntu\022\nclient_env\032\032XDG_SESSION_DESKTOP=ubuntu\"\001\003*\001\003\n;\n\031--client_env=LOGNAME=nick\022\nclient_env\032\fLOGNAME=nick\"\001\003*\001\003\nS\n%--client_env=XDG_SESSION_TYPE=wayland\022\nclient_env\032\030XDG_SESSION_TYPE=wayland\"\001\003*\001\003\nM\n\"--client_env=SYSTEMD_EXEC_PID=3381\022\nclient_env\032\025SYSTEMD_EXEC_PID=3381\"\001\003*\001\003\n\215\001\nB--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\022\nclient_env\0325XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\"\001\003*\001\003\n\323\001\ne--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032XDESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\n\245\001\nN--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032ASNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nc\n---client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG\022\nclient_env\032 GJS_DEBUG_TOPICS=JS ERROR;JS LOG\"\001\003*\001\003\nA\n\034--client_env=HOME=/home/nick\022\nclient_env\032\017HOME=/home/nick\"\001\003*\001\003\n=\n\032--client_env=USERNAME=nick\022\nclient_env\032\rUSERNAME=nick\"\001\003*\001\003\nE\n\036--client_env=IM_CONFIG_PHASE=1\022\nclient_env\032\021IM_CONFIG_PHASE=1\"\001\003*\001\003\nC\n\035--client_env=LANG=en_US.UTF-8\022\nclient_env\032\020LANG=en_US.UTF-8\"\001\003*\001\003\n\353\033\n\360\r--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\022\nclient_env\032\343\rLS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\"\001\003*\001\003\nc\n---client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME\022\nclient_env\032 XDG_CURRENT_DESKTOP=ubuntu:GNOME\"\001\003*\001\003\nU\n&--client_env=WAYLAND_DISPLAY=wayland-0\022\nclient_env\032\031WAYLAND_DISPLAY=wayland-0\"\001\003*\001\003\nA\n\034--client_env=SNAP_ARCH=amd64\022\nclient_env\032\017SNAP_ARCH=amd64\"\001\003*\001\003\nu\n6--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate\022\nclient_env\032)SNAP_INSTANCE_NAME=intellij-idea-ultimate\"\001\003*\001\003\n\225\001\nF--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\022\nclient_env\0329SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\177\n;--client_env=INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\022\nclient_env\032.INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\"\001\003*\001\003\nA\n\034--client_env=MANAGERPID=3106\022\nclient_env\032\017MANAGERPID=3106\"\001\003*\001\003\n;\n\031--client_env=SNAP_REEXEC=\022\nclient_env\032\fSNAP_REEXEC=\"\001\003*\001\003\n=\n\032--client_env=SNAP_UID=1000\022\nclient_env\032\rSNAP_UID=1000\"\001\003*\001\003\nQ\n$--client_env=GJS_DEBUG_OUTPUT=stderr\022\nclient_env\032\027GJS_DEBUG_OUTPUT=stderr\"\001\003*\001\003\nO\n#--client_env=GNOME_SETUP_DISPLAY=:1\022\nclient_env\032\026GNOME_SETUP_DISPLAY=:1\"\001\003*\001\003\n\327\001\ng--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032ZXDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\ne\n.--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s\022\nclient_env\032!LESSCLOSE=/usr/bin/lesspipe %s %s\"\001\003*\001\003\nO\n#--client_env=XDG_SESSION_CLASS=user\022\nclient_env\032\026XDG_SESSION_CLASS=user\"\001\003*\001\003\nI\n --client_env=TERM=xterm-256color\022\nclient_env\032\023TERM=xterm-256color\"\001\003*\001\003\na\n,--client_env=LESSOPEN=| /usr/bin/lesspipe %s\022\nclient_env\032\037LESSOPEN=| /usr/bin/lesspipe %s\"\001\003*\001\003\n5\n\026--client_env=USER=nick\022\nclient_env\032\tUSER=nick\"\001\003*\001\003\nm\n2--client_env=SNAP=/snap/intellij-idea-ultimate/473\022\nclient_env\032%SNAP=/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\211\001\n@--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\022\nclient_env\0323SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\"\001\003*\001\003\nM\n\"--client_env=SNAP_VERSION=2023.3.3\022\nclient_env\032\025SNAP_VERSION=2023.3.3\"\001\003*\001\003\n7\n\027--client_env=DISPLAY=:0\022\nclient_env\032\nDISPLAY=:0\"\001\003*\001\003\n1\n\024--client_env=SHLVL=1\022\nclient_env\032\aSHLVL=1\"\001\003*\001\003\n\311\001\n`--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\022\nclient_env\032SSNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\"\001\003*\001\003\n\243\001\nM--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032@SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nE\n\036--client_env=QT_IM_MODULE=ibus\022\nclient_env\032\021QT_IM_MODULE=ibus\"\001\003*\001\003\n\177\n;--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473\022\nclient_env\032.SNAP_DATA=/var/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n_\n+--client_env=XDG_RUNTIME_DIR=/run/user/1000\022\nclient_env\032\036XDG_RUNTIME_DIR=/run/user/1000\"\001\003*\001\003\n\177\n;--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \022\nclient_env\032.DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \"\001\003*\001\003\nc\n---client_env=SNAP_NAME=intellij-idea-ultimate\022\nclient_env\032 SNAP_NAME=intellij-idea-ultimate\"\001\003*\001\003\nO\n#--client_env=JOURNAL_STREAM=8:45543\022\nclient_env\032\026JOURNAL_STREAM=8:45543\"\001\003*\001\003\n\355\001\nr--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\022\nclient_env\032eXDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\"\001\003*\001\003\n\351\003\n\357\001--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\022\nclient_env\032\342\001PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\"\001\003*\001\003\nE\n\036--client_env=GDMSESSION=ubuntu\022\nclient_env\032\021GDMSESSION=ubuntu\"\001\003*\001\003\n\215\001\nB--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\022\nclient_env\0325DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\"\001\003*\001\003\ni\n0--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=13682\022\nclient_env\032#GIO_LAUNCHED_DESKTOP_FILE_PID=13682\"\001\003*\001\003\n\212\002\n\200\001--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032sGIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nO\n#--client_env=_=/usr/local/bin/bazel\022\nclient_env\032\026_=/usr/local/bin/bazel\"\001\003*\001\003\nW\n\'--client_env=BAZELISK_SKIP_WRAPPER=true\022\nclient_env\032\032BAZELISK_SKIP_WRAPPER=true\"\001\003*\001\003\nG\n\037--client_cwd=/home/nick/src/bes\022\nclient_cwd\032\022/home/nick/src/bes\"\001\003*\001\003\nL\n#--bes_backend=grpc://localhost:8888\022\vbes_backend\032\025grpc://localhost:8888\"\001\004\nT\n\'--bes_results_url=http://localhost:8080\022\017bes_results_url\032\025http://localhost:8080\"\001\f\022\021\n\bresidual\022\005\n\003..."
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 5
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\r\222\001\n\n\boriginal\262\001\345}\n\boriginal\022\025\n\nexecutable\022\a\n\005bazel\022\023\n\017startup options\032\000\022\021\n\acommand\022\006\n\004test\022\206}\n\017command options\032\362|\n-\n\022--rc_source=client\022\trc_source\032\006client\"\001\003*\001\003\nU\n&--default_override=0:common=--isatty=1\022\020default_override\032\0230:common=--isatty=1\"\001\003*\001\003\nm\n2--default_override=0:common=--terminal_columns=181\022\020default_override\032\0370:common=--terminal_columns=181\"\001\003*\001\003\nW\n\'--rc_source=/home/nick/src/bes/.bazelrc\022\trc_source\032\033/home/nick/src/bes/.bazelrc\"\001\003*\001\003\nG\n\037--rc_source=/home/nick/.bazelrc\022\trc_source\032\023/home/nick/.bazelrc\"\001\003*\001\003\ns\n5--default_override=1:build=--java_language_version=17\022\020default_override\032\"1:build=--java_language_version=17\"\001\003*\001\003\n}\n:--default_override=1:build=--tool_java_language_version=17\022\020default_override\032\'1:build=--tool_java_language_version=17\"\001\003*\001\003\nq\n4--default_override=1:build=--java_runtime_version=17\022\020default_override\032!1:build=--java_runtime_version=17\"\001\003*\001\003\n{\n9--default_override=1:build=--tool_java_runtime_version=17\022\020default_override\032&1:build=--tool_java_runtime_version=17\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\022\020default_override\032@1:build:bes=--build_event_binary_file=src/test/resources/bes.bin\"\001\003*\001\003\n\257\001\nS--default_override=1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\022\020default_override\032@1:build:bes=--build_event_json_file=src/test/resources/bes.jsonl\"\001\003*\001\003\n\253\001\nQ--default_override=1:build:bes=--build_event_text_file=src/test/resources/bes.txt\022\020default_override\032>1:build:bes=--build_event_text_file=src/test/resources/bes.txt\"\001\003*\001\003\nu\n6--default_override=1:build:ci=--build_metadata=ROLE=CI\022\020default_override\032#1:build:ci=--build_metadata=ROLE=CI\"\001\003*\001\003\ne\n.--default_override=1:test:ci=--test_output=all\022\020default_override\032\0331:test:ci=--test_output=all\"\001\003*\001\003\nc\n---default_override=1:common=--noenable_bzlmod\022\020default_override\032\0321:common=--noenable_bzlmod\"\001\003*\001\003\n\253\001\nQ--default_override=2:build:remote=--bes_results_url=http://white:8080/invocation/\022\020default_override\032>2:build:remote=--bes_results_url=http://white:8080/invocation/\"\001\003*\001\003\n\213\001\nA--default_override=2:build:remote=--bes_backend=grpc://white:1985\022\020default_override\032.2:build:remote=--bes_backend=grpc://white:1985\"\001\003*\001\003\n\215\001\nB--default_override=2:build:remote=--remote_cache=grpc://white:1985\022\020default_override\032/2:build:remote=--remote_cache=grpc://white:1985\"\001\003*\001\003\nu\n6--default_override=2:build:remote=--remote_timeout=120\022\020default_override\032#2:build:remote=--remote_timeout=120\"\001\003*\001\003\n\223\001\nE--default_override=2:build:remote=--remote_executor=grpc://white:1985\022\020default_override\03222:build:remote=--remote_executor=grpc://white:1985\"\001\003*\001\003\n\277\001\n[--default_override=2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\022\020default_override\032H2:build:remote=--remote_header=x-buildbuddy-api-key=OMlho2P2zpLMiKVA1A8o\"\001\003*\001\003\n\263\001\nU--default_override=2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\022\020default_override\032B2:build:bb=--bes_results_url=https://app.buildbuddy.io/invocation/\"\001\003*\001\003\n\231\001\nH--default_override=2:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\022\020default_override\03252:build:bb=--bes_backend=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\233\001\nI--default_override=2:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\022\020default_override\03262:build:bb=--remote_cache=grpcs://remote.buildbuddy.io\"\001\003*\001\003\no\n3--default_override=2:build:bb=--remote_timeout=3600\022\020default_override\032 2:build:bb=--remote_timeout=3600\"\001\003*\001\003\n\241\001\nL--default_override=2:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\022\020default_override\03292:build:bb=--remote_executor=grpcs://remote.buildbuddy.io\"\001\003*\001\003\n\267\001\nW--default_override=2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\022\020default_override\032D2:build:bb=--remote_header=x-buildbuddy-api-key=AtuyF88xlQNyIVisF0eC\"\001\003*\001\003\n[\n)--default_override=2:common=--announce_rc\022\020default_override\032\0262:common=--announce_rc\"\001\003*\001\003\n*\n\020--startup_time=8\022\fstartup_time\032\0018\"\002\004\v*\001\003\n4\n\025--command_wait_time=0\022\021command_wait_time\032\0010\"\002\004\v*\001\003\n4\n\025--extract_data_time=0\022\021extract_data_time\032\0010\"\002\004\v*\001\003\n\223\002\n\204\001--binary_path=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\022\vbinary_path\032v/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin/bazel\"\002\004\v*\001\003\nA\n\034--client_env=SHELL=/bin/bash\022\nclient_env\032\017SHELL=/bin/bash\"\001\003*\001\003\n\305\001\n^--client_env=SESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\022\nclient_env\032QSESSION_MANAGER=local/walnut:@/tmp/.ICE-unix/3357,unix/walnut:/tmp/.ICE-unix/3357\"\001\003*\001\003\nG\n\037--client_env=QT_ACCESSIBILITY=1\022\nclient_env\032\022QT_ACCESSIBILITY=1\"\001\003*\001\003\nE\n\036--client_env=SNAP_REVISION=473\022\nclient_env\032\021SNAP_REVISION=473\"\001\003*\001\003\n{\n9--client_env=XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\022\nclient_env\032,XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg\"\001\003*\001\003\nW\n\'--client_env=SSH_AGENT_LAUNCHER=openssh\022\nclient_env\032\032SSH_AGENT_LAUNCHER=openssh\"\001\003*\001\003\nO\n#--client_env=XDG_MENU_PREFIX=gnome-\022\nclient_env\032\026XDG_MENU_PREFIX=gnome-\"\001\003*\001\003\ny\n8--client_env=GNOME_DESKTOP_SESSION_ID=this-is-deprecated\022\nclient_env\032+GNOME_DESKTOP_SESSION_ID=this-is-deprecated\"\001\003*\001\003\nU\n&--client_env=SNAP_REAL_HOME=/home/nick\022\nclient_env\032\031SNAP_REAL_HOME=/home/nick\"\001\003*\001\003\nk\n1--client_env=TERMINAL_EMULATOR=JetBrains-JediTerm\022\nclient_env\032$TERMINAL_EMULATOR=JetBrains-JediTerm\"\001\003*\001\003\n\237\001\nK--client_env=SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\022\nclient_env\032>SNAP_USER_COMMON=/home/nick/snap/intellij-idea-ultimate/common\"\001\003*\001\003\na\n,--client_env=GNOME_SHELL_SESSION_MODE=ubuntu\022\nclient_env\032\037GNOME_SHELL_SESSION_MODE=ubuntu\"\001\003*\001\003\ns\n5--client_env=SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\022\nclient_env\032(SSH_AUTH_SOCK=/run/user/1000/keyring/ssh\"\001\003*\001\003\n\213\001\nA--client_env=TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\022\nclient_env\0324TERM_SESSION_ID=e23a5a2f-b8f7-43ef-94f0-8a673a7ffacd\"\001\003*\001\003\nG\n\037--client_env=SNAP_INSTANCE_KEY=\022\nclient_env\032\022SNAP_INSTANCE_KEY=\"\001\003*\001\003\nI\n --client_env=XMODIFIERS=@im=ibus\022\nclient_env\032\023XMODIFIERS=@im=ibus\"\001\003*\001\003\nO\n#--client_env=DESKTOP_SESSION=ubuntu\022\nclient_env\032\026DESKTOP_SESSION=ubuntu\"\001\003*\001\003\n\203\002\n}--client_env=BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032pBAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nY\n(--client_env=GTK_MODULES=gail:atk-bridge\022\nclient_env\032\033GTK_MODULES=gail:atk-bridge\"\001\003*\001\003\n?\n\033--client_env=SNAP_EUID=1000\022\nclient_env\032\016SNAP_EUID=1000\"\001\003*\001\003\nO\n#--client_env=PWD=/home/nick/src/bes\022\nclient_env\032\026PWD=/home/nick/src/bes\"\001\003*\001\003\nW\n\'--client_env=XDG_SESSION_DESKTOP=ubuntu\022\nclient_env\032\032XDG_SESSION_DESKTOP=ubuntu\"\001\003*\001\003\n;\n\031--client_env=LOGNAME=nick\022\nclient_env\032\fLOGNAME=nick\"\001\003*\001\003\nS\n%--client_env=XDG_SESSION_TYPE=wayland\022\nclient_env\032\030XDG_SESSION_TYPE=wayland\"\001\003*\001\003\nM\n\"--client_env=SYSTEMD_EXEC_PID=3381\022\nclient_env\032\025SYSTEMD_EXEC_PID=3381\"\001\003*\001\003\n\215\001\nB--client_env=XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\022\nclient_env\0325XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.7Q0DI2\"\001\003*\001\003\n\323\001\ne--client_env=DESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032XDESKTOP_STARTUP_ID=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\n\245\001\nN--client_env=SNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032ASNAP_CONTEXT=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nc\n---client_env=GJS_DEBUG_TOPICS=JS ERROR;JS LOG\022\nclient_env\032 GJS_DEBUG_TOPICS=JS ERROR;JS LOG\"\001\003*\001\003\nA\n\034--client_env=HOME=/home/nick\022\nclient_env\032\017HOME=/home/nick\"\001\003*\001\003\n=\n\032--client_env=USERNAME=nick\022\nclient_env\032\rUSERNAME=nick\"\001\003*\001\003\nE\n\036--client_env=IM_CONFIG_PHASE=1\022\nclient_env\032\021IM_CONFIG_PHASE=1\"\001\003*\001\003\nC\n\035--client_env=LANG=en_US.UTF-8\022\nclient_env\032\020LANG=en_US.UTF-8\"\001\003*\001\003\n\353\033\n\360\r--client_env=LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\022\nclient_env\032\343\rLS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:\"\001\003*\001\003\nc\n---client_env=XDG_CURRENT_DESKTOP=ubuntu:GNOME\022\nclient_env\032 XDG_CURRENT_DESKTOP=ubuntu:GNOME\"\001\003*\001\003\nU\n&--client_env=WAYLAND_DISPLAY=wayland-0\022\nclient_env\032\031WAYLAND_DISPLAY=wayland-0\"\001\003*\001\003\nA\n\034--client_env=SNAP_ARCH=amd64\022\nclient_env\032\017SNAP_ARCH=amd64\"\001\003*\001\003\nu\n6--client_env=SNAP_INSTANCE_NAME=intellij-idea-ultimate\022\nclient_env\032)SNAP_INSTANCE_NAME=intellij-idea-ultimate\"\001\003*\001\003\n\225\001\nF--client_env=SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\022\nclient_env\0329SNAP_USER_DATA=/home/nick/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\177\n;--client_env=INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\022\nclient_env\032.INVOCATION_ID=41cb01fdd1194eb7934ea65db7f91cdf\"\001\003*\001\003\nA\n\034--client_env=MANAGERPID=3106\022\nclient_env\032\017MANAGERPID=3106\"\001\003*\001\003\n;\n\031--client_env=SNAP_REEXEC=\022\nclient_env\032\fSNAP_REEXEC=\"\001\003*\001\003\n=\n\032--client_env=SNAP_UID=1000\022\nclient_env\032\rSNAP_UID=1000\"\001\003*\001\003\nQ\n$--client_env=GJS_DEBUG_OUTPUT=stderr\022\nclient_env\032\027GJS_DEBUG_OUTPUT=stderr\"\001\003*\001\003\nO\n#--client_env=GNOME_SETUP_DISPLAY=:1\022\nclient_env\032\026GNOME_SETUP_DISPLAY=:1\"\001\003*\001\003\n\327\001\ng--client_env=XDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\022\nclient_env\032ZXDG_ACTIVATION_TOKEN=gnome-shell/IntelliJ IDEA Ultimate Edition/3381-3-walnut_TIME26020549\"\001\003*\001\003\ne\n.--client_env=LESSCLOSE=/usr/bin/lesspipe %s %s\022\nclient_env\032!LESSCLOSE=/usr/bin/lesspipe %s %s\"\001\003*\001\003\nO\n#--client_env=XDG_SESSION_CLASS=user\022\nclient_env\032\026XDG_SESSION_CLASS=user\"\001\003*\001\003\nI\n --client_env=TERM=xterm-256color\022\nclient_env\032\023TERM=xterm-256color\"\001\003*\001\003\na\n,--client_env=LESSOPEN=| /usr/bin/lesspipe %s\022\nclient_env\032\037LESSOPEN=| /usr/bin/lesspipe %s\"\001\003*\001\003\n5\n\026--client_env=USER=nick\022\nclient_env\032\tUSER=nick\"\001\003*\001\003\nm\n2--client_env=SNAP=/snap/intellij-idea-ultimate/473\022\nclient_env\032%SNAP=/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n\211\001\n@--client_env=SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\022\nclient_env\0323SNAP_COMMON=/var/snap/intellij-idea-ultimate/common\"\001\003*\001\003\nM\n\"--client_env=SNAP_VERSION=2023.3.3\022\nclient_env\032\025SNAP_VERSION=2023.3.3\"\001\003*\001\003\n7\n\027--client_env=DISPLAY=:0\022\nclient_env\032\nDISPLAY=:0\"\001\003*\001\003\n1\n\024--client_env=SHLVL=1\022\nclient_env\032\aSHLVL=1\"\001\003*\001\003\n\311\001\n`--client_env=SNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\022\nclient_env\032SSNAP_LIBRARY_PATH=/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void\"\001\003*\001\003\n\243\001\nM--client_env=SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\022\nclient_env\032@SNAP_COOKIE=KF9M2scTpboHov2lyc1Q7eCCNQClBx6qMFXD1QklpFUTLfaKZy5X\"\001\003*\001\003\nE\n\036--client_env=QT_IM_MODULE=ibus\022\nclient_env\032\021QT_IM_MODULE=ibus\"\001\003*\001\003\n\177\n;--client_env=SNAP_DATA=/var/snap/intellij-idea-ultimate/473\022\nclient_env\032.SNAP_DATA=/var/snap/intellij-idea-ultimate/473\"\001\003*\001\003\n_\n+--client_env=XDG_RUNTIME_DIR=/run/user/1000\022\nclient_env\032\036XDG_RUNTIME_DIR=/run/user/1000\"\001\003*\001\003\n\177\n;--client_env=DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \022\nclient_env\032.DEBUGINFOD_URLS=https://debuginfod.ubuntu.com \"\001\003*\001\003\nc\n---client_env=SNAP_NAME=intellij-idea-ultimate\022\nclient_env\032 SNAP_NAME=intellij-idea-ultimate\"\001\003*\001\003\nO\n#--client_env=JOURNAL_STREAM=8:45543\022\nclient_env\032\026JOURNAL_STREAM=8:45543\"\001\003*\001\003\n\355\001\nr--client_env=XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\022\nclient_env\032eXDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop\"\001\003*\001\003\n\351\003\n\357\001--client_env=PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\022\nclient_env\032\342\001PATH=/home/nick/.cache/bazelisk/downloads/sha256/a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin\"\001\003*\001\003\nE\n\036--client_env=GDMSESSION=ubuntu\022\nclient_env\032\021GDMSESSION=ubuntu\"\001\003*\001\003\n\215\001\nB--client_env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\022\nclient_env\0325DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus\"\001\003*\001\003\ni\n0--client_env=GIO_LAUNCHED_DESKTOP_FILE_PID=13682\022\nclient_env\032#GIO_LAUNCHED_DESKTOP_FILE_PID=13682\"\001\003*\001\003\n\212\002\n\200\001--client_env=GIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\022\nclient_env\032sGIO_LAUNCHED_DESKTOP_FILE=/var/lib/snapd/desktop/applications/intellij-idea-ultimate_intellij-idea-ultimate.desktop\"\001\003*\001\003\nO\n#--client_env=_=/usr/local/bin/bazel\022\nclient_env\032\026_=/usr/local/bin/bazel\"\001\003*\001\003\nW\n\'--client_env=BAZELISK_SKIP_WRAPPER=true\022\nclient_env\032\032BAZELISK_SKIP_WRAPPER=true\"\001\003*\001\003\nG\n\037--client_cwd=/home/nick/src/bes\022\nclient_cwd\032\022/home/nick/src/bes\"\001\003*\001\003\nL\n#--bes_backend=grpc://localhost:8888\022\vbes_backend\032\025grpc://localhost:8888\"\001\004\nT\n\'--bes_results_url=http://localhost:8080\022\017bes_results_url\032\025http://localhost:8080\"\001\f\022\021\n\bresidual\022\005\n\003..."
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 6
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\t\222\001\006\n\004tool\262\001\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 7
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 24000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002b\000j\247\006\n\025--max_idle_secs=10800\n\033--noshutdown_on_low_sys_mem\n\031--connect_timeout_secs=30\n6--output_user_root=/home/nick/.cache/bazel/_bazel_nick\nR--output_base=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411\nq--failure_detail_out=/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/failure_detail.rawproto\n\031--expand_configs_in_place\n\023--idle_server_tasks\n\023--write_command_log\n\v--nowatchfs\n\036--nofatal_event_bus_exceptions\n\033--nowindows_enable_symlinks\n\020--noclient_debug\032\021--noenable_bzlmod\032\r--announce_rc\032\032--java_language_version=17\032\037--tool_java_language_version=17\032\031--java_runtime_version=17\032\036--tool_java_runtime_version=17\032#--bes_backend=grpc://localhost:8888\032\'--bes_results_url=http://localhost:8080\"#--bes_backend=grpc://localhost:8888\"\'--bes_results_url=http://localhost:8080*\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 8
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 26000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\a\"\005\n\003...\022\v\202\001\b\n\006//:bes\022\016\202\001\v\n\t//:domain\022\030\202\001\025\n\023//:integration-test\022\017\202\001\f\n\n//:support\022\f\202\001\t\n\a//:test\022\024\202\001\021\n\017//:test-support2\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 9
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 26000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002\022\000\022\004\022\002\b\001\022\003\272\001\000\032\204\006\022\201\006\033[32mINFO: \033[0mStreaming build results to: http://localhost:8080/584d2774-aab7-4ce9-8a9a-32ac493b0f6e\n\033[32mINFO: \033[0mOptions provided by the client:\n  Inherited \'common\' options: --isatty=1 --terminal_columns=181\n\033[32mINFO: \033[0mReading rc options for \'test\' from /home/nick/src/bes/.bazelrc:\n  Inherited \'common\' options: --noenable_bzlmod\n\033[32mINFO: \033[0mReading rc options for \'test\' from /home/nick/.bazelrc:\n  Inherited \'common\' options: --announce_rc\n\033[32mINFO: \033[0mReading rc options for \'test\' from /home/nick/src/bes/.bazelrc:\n  Inherited \'build\' options: --java_language_version=17 --tool_java_language_version=17 --java_runtime_version=17 --tool_java_runtime_version=17\n\033[32mLoading:\033[0m \n\r\033[1A\033[K\033[32mLoading:\033[0m \n\r\033[1A\033[K\033[32mLoading:\033[0m 0 packages loaded\n"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 10
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 26000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\272\001\000\312\001X\nV/home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 11
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\001\022\004\022\002\b\002\022DzB\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\032\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 12
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nDzB\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\212\001\223\001\n\fk8-fastbuild\022\002k8\032\002k8\"\035\n\020COMPILATION_MODE\022\tfastbuild\"\020\n\nTARGET_CPU\022\002k8\"$\n\006GENDIR\022\032bazel-out/k8-fastbuild/bin\"$\n\006BINDIR\022\032bazel-out/k8-fastbuild/bin"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 13
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\002\022\004\022\002\b\003\022DzB\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\032\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 14
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nDzB\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\212\001\223\001\n\fk8-fastbuild\022\002k8\032\002k8\"\035\n\020COMPILATION_MODE\022\tfastbuild\"\020\n\nTARGET_CPU\022\002k8\"$\n\006GENDIR\022\032bazel-out/k8-fastbuild/bin\"$\n\006BINDIR\022\032bazel-out/k8-fastbuild/bin"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 15
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\v\202\001\b\n\006//:bes\022N*L\n\006//:bes\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\022\n\020java_binary rule"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 16
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\016\202\001\v\n\t//:domain\022Q*O\n\t//:domain\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\023\n\021java_library rule"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 17
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\030\202\001\025\n\023//:integration-test\022[*Y\n\023//:integration-test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\222\001\022\n\016java_test rule\020\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 18
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\017\202\001\f\n\n//:support\022R*P\n\n//:support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\023\n\021java_library rule"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 19
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\f\202\001\t\n\a//:test\022O*M\n\a//:test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\222\001\022\n\016java_test rule\020\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 20
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 27000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\024\202\001\021\n\017//:test-support\022W*U\n\017//:test-support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9\222\001\023\n\021java_library rule"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 21
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 51000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\003\022\004\022\002\b\004\022\005j\003\n\0010\032\237\002\022\234\002\r\033[1A\033[K\033[32mAnalyzing:\033[0m 6 targets (0 packages loaded, 0 targets configured)\n\r\033[1A\033[K\033[32mINFO: \033[0mAnalyzed 6 targets (0 packages loaded, 5 targets configured).\n\033[0m checking cached actions\n\r\033[1A\033[K\033[32mINFO: \033[0mFound 4 targets and 2 test targets...\n\033[0m checking cached actions\n"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 22
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 51000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0010z\377\001\n\374\001\n\rlibdomain.jar\022\206\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libdomain.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@ae93868154d1c3d428a0c0d1a57addab1757e17c07bc6473f8aacdd117a008700\306\204\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 23
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 51000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nQ*O\n\t//:domain\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\221\002\b\001\022\016\n\adefault\032\003\n\0010\"\374\001\n\rlibdomain.jar\022\206\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libdomain.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@ae93868154d1c3d428a0c0d1a57addab1757e17c07bc6473f8aacdd117a008700\306\204\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 24
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\004\022\004\022\002\b\005\022\005j\003\n\0011\032\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 25
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0011z\200\002\n\375\001\n\016libsupport.jar\022\207\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libsupport.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a746a4187708b271e793e24c0f4db3edfbe8a184088dee6ac4f237e3383babad0\214\032"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 26
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nR*P\n\n//:support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\222\002\b\001\022\016\n\adefault\032\003\n\0011\"\375\001\n\016libsupport.jar\022\207\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libsupport.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a746a4187708b271e793e24c0f4db3edfbe8a184088dee6ac4f237e3383babad0\214\032"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 27
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002r\000\202\001\212\001\n\023\n\021BUILD_EMBED_LABEL\n\024\n\nBUILD_HOST\022\006walnut\n\035\n\017BUILD_TIMESTAMP\022\n1707172315\n\022\n\nBUILD_USER\022\004nick\n*\n\016FORMATTED_DATE\022\0302024 Feb 05 22 31 55 Mon"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 28
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\005\022\004\022\002\b\006\022\005j\003\n\0012\032P\022N\r\033[1A\033[K\033[32m[0 / 5]\033[0m [Prepa] BazelWorkspaceStatusAction stable-status.txt\n"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 29
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0012z\212\002\n\207\002\n\023libtest-support.jar\022\214\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libtest-support.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@16111ddb18fc40d35e4f04884062d404db33757a69cbe02e5ab3d9d6af79e73b0\310\036"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 30
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 52000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nW*U\n\017//:test-support\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\234\002\b\001\022\016\n\adefault\032\003\n\0012\"\207\002\n\023libtest-support.jar\022\214\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/libtest-support.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@16111ddb18fc40d35e4f04884062d404db33757a69cbe02e5ab3d9d6af79e73b0\310\036"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 31
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 53000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\006\022\004\022\002\b\a\022\005j\003\n\0013\032\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 32
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 53000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0013z\341\003\n\362\001\n\btest.jar\022\201\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@26d2ea03f3a1ecc76fbf7d88d11d27bbf2fd0a88202dd0581d5022a79ac91deb0\204\210\004\n\351\001\n\004test\022}file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@bd50dba7a4e39a0fbd0d5d877380dfa0c26222221910668f66e8db964e31b3680\346\214\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 33
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 53000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nO*M\n\a//:test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\022UBS\n\a//:test\020\001\030\001 \001*B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\022O:M\n\a//:test\022B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2B\371\003\b\001\022\016\n\adefault\032\003\n\0013\"\362\001\n\btest.jar\022\201\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@26d2ea03f3a1ecc76fbf7d88d11d27bbf2fd0a88202dd0581d5022a79ac91deb0\204\210\004\"\351\001\n\004test\022}file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@bd50dba7a4e39a0fbd0d5d877380dfa0c26222221910668f66e8db964e31b3680\346\214\0018<R\002\b<"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 34
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 53000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\a\022\004\022\002\b\b\022\005j\003\n\0014\032\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 35
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 53000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0014z\221\004\n\211\002\n\024integration-test.jar\022\215\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@de486dea8f5ecb7d74c4ef3d8e767c3bebd082cb73ec4b7e15fc9e32f5dd14540\353X\n\202\002\n\020integration-test\022\211\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a04d48a4f829b26deaeb27fadbd378c1590b3ee00735a7d77b676fd7cb8370610\357\220\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 36
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 53000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n[*Y\n\023//:integration-test\032B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\022aB_\n\023//:integration-test\020\001\030\001 \001*B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2\022[:Y\n\023//:integration-test\022B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2B\251\004\b\001\022\016\n\adefault\032\003\n\0014\"\211\002\n\024integration-test.jar\022\215\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@de486dea8f5ecb7d74c4ef3d8e767c3bebd082cb73ec4b7e15fc9e32f5dd14540\353X\"\202\002\n\020integration-test\022\211\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/integration-test\"\tbazel-out\"\fk8-fastbuild\"\003bin*@a04d48a4f829b26deaeb27fadbd378c1590b3ee00735a7d77b676fd7cb8370610\357\220\0018<R\002\b<"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 37
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 72000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\b\022\004\022\002\b\t\022\005j\003\n\0015\032\000"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 38
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 72000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\005j\003\n\0015z\335\003\n\360\001\n\abes.jar\022\200\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@90212f33c764dd4f2bc28cee9d4fe43cf4d390983deab55eda578a5388925d2c0\262\211\005\n\347\001\n\003bes\022|file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes\"\tbazel-out\"\fk8-fastbuild\"\003bin*@92a68579a809e59bc7e6c35414cff9c947258dac076cde86809e17180bc615f60\245\233\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 39
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 72000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nN*L\n\006//:bes\032B\n@14fd56b1cbc974596cb2e2a91ee439567ef599762bdd309030d1f913487e1da9B\357\003\b\001\022\016\n\adefault\032\003\n\0015\"\360\001\n\abes.jar\022\200\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes.jar\"\tbazel-out\"\fk8-fastbuild\"\003bin*@90212f33c764dd4f2bc28cee9d4fe43cf4d390983deab55eda578a5388925d2c0\262\211\005\"\347\001\n\003bes\022|file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/bin/bes\"\tbazel-out\"\fk8-fastbuild\"\003bin*@92a68579a809e59bc7e6c35414cff9c947258dac076cde86809e17180bc615f60\245\233\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 40
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 445000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\naB_\n\023//:integration-test\020\001\030\001 \001*B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2R\251\004\022\244\001\n\btest.log\022\227\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/testlogs/integration-test/test.log\022\244\001\n\btest.xml\022\227\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/testlogs/integration-test/test.xml\030\350\002(\0010\256\377\230\333\3271B\267\001\022\rlinux-sandbox\"\245\001\n\r\022\tparseTime\"\000\n\r\022\tfetchTime\"\000\n\r\022\tqueueTime\"\000\n\016\022\nuploadTime\"\000\n\r\022\tsetupTime\"\000\n\033\022\021executionWallTime\"\006\020\310\243\206\254\001\n\026\022\022processOutputsTime\"\000\n\017\022\vnetworkTime\"\000\022\ttotalTime\"\006\020\310\243\206\254\001R\v\b\333\303\205\256\006\020\200\363\337\031Z\006\020\200\324\324\253\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 41
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 445000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n[:Y\n\023//:integration-test\022B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2J\331\001\b\001\032\232\001\022\227\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/testlogs/integration-test/test.log(\0018\256\377\230\333\3271@\226\202\231\333\3271H\350\002P\001b\006\020\200\324\324\253\001j\v\b\333\303\205\256\006\020\200\363\337\031r\f\b\333\303\205\256\006\020\200\307\264\305\001x\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 42
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 463000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nUBS\n\a//:test\020\001\030\001 \001*B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2R\221\004\022\230\001\n\btest.log\022\213\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/testlogs/test/test.log\022\230\001\n\btest.xml\022\213\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/testlogs/test/test.xml\030\374\002(\0010\256\377\230\333\3271B\267\001\022\rlinux-sandbox\"\245\001\n\r\022\tparseTime\"\000\n\r\022\tfetchTime\"\000\n\r\022\tqueueTime\"\000\n\016\022\nuploadTime\"\000\n\r\022\tsetupTime\"\000\n\033\022\021executionWallTime\"\006\020\320\203\326\265\001\n\026\022\022processOutputsTime\"\000\n\017\022\vnetworkTime\"\000\022\ttotalTime\"\006\020\320\203\326\265\001R\v\b\333\303\205\256\006\020\200\363\337\031Z\006\020\200\256\231\265\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 43
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 463000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\nO:M\n\a//:test\022B\n@2a09c839083e6c79d32316d7b6d8a81bbfcb1f674a11b968f5c107f90bbd3fb2J\315\001\b\001\032\216\001\022\213\001file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/execroot/__main__/bazel-out/k8-fastbuild/testlogs/test/test.log(\0018\256\377\230\333\3271@\252\202\231\333\3271H\374\002P\001b\006\020\200\256\231\265\001j\v\b\333\303\205\256\006\020\200\363\337\031r\f\b\333\303\205\256\006\020\200\241\371\316\001x\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 44
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 482000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\002J\000\022\003\242\001\000r\"\b\001\020\311\202\231\333\3271\032\t\n\aSUCCESS*\f\b\333\303\205\256\006\020\300\254\335\335\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 45
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 482000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\t\022\004\022\002\b\n\022\003\262\001\000\032\340\a\n\364\001//:integration-test                                                      \033[0m\033[32mPASSED\033[0m in 0.4s\n//:test                                                                  \033[0m\033[32mPASSED\033[0m in 0.4s\n\nExecuted 2 out of 2 tests: 2 tests pass.\n\022\346\005\r\033[1A\033[K\033[32m[15 / 17]\033[0m 2 actions running\n    Testing //:test; 0s linux-sandbox\n    Testing //:integration-test; 0s linux-sandbox\n\r\033[1A\033[K\r\033[1A\033[K\r\033[1A\033[K\033[32mINFO: \033[0mElapsed time: 0.474s, Critical Path: 0.41s\n\033[32m[17 / 17]\033[0m 2 / 2 tests;\033[0m checking cached actions\033[0m; last test: \033[32m//:test\033[0m\n\r\033[1A\033[K\033[32mINFO: \033[0m4 processes: 1 internal, 3 linux-sandbox.\n\033[32m[17 / 17]\033[0m 2 / 2 tests;\033[0m checking cached actions\033[0m; last test: \033[32m//:test\033[0m\n\r\033[1A\033[K\033[32mINFO:\033[0m Build completed successfully, 4 total actions\n\r\033[1A\033[K\033[32mINFO:\033[0m Build completed successfully, 4 total actions\n\r\033[1A\033[K\033[32mINFO:\033[0m Build completed successfully, 4 total actions\n\r\033[1A\033[K\033[32mINFO:\033[0m Build completed successfully, 4 total actions\n"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 46
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 482000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\262\001\000\302\001\215\005\n\313\001\b\037\020\004\030\037\"\034\n\nTestRunner\020\002\030\255\377\230\333\3271 \310\202\231\333\3271\"!\n\017JavaResourceJar\020\001\030\255\377\230\333\3271 \300\377\230\333\3271\",\n\032BazelWorkspaceStatusAction\020\001\030\253\377\230\333\3271 \255\377\230\333\32712\t\n\005total\020\0042\f\n\binternal\020\0012\021\n\rlinux-sandbox\020\003:(\b\313\305\t\030\017 \005*\002\020\002*\002\b\001*\002\b\002*\004\b\003\020\002*\002\b\004*\002\b\005*\004\b\006\020\001\022)\032\021\n\nG1 Old Gen\020\360\276\306\001\032\024\n\rG1 Eden Space\020\200\200\2004\032\004\020\005\030\005\"\000*\b\b\266\002\020\322\003\030\t2\004X|`|:\035\022\000\032\006\b\333\206%\020 \"\006\b\375\340\037\020\031*\t\b\205\230\367\273\002\020\372\003B\032\b\222\f\020\302\005\030\270\t \221\242\001(\375\v0\227\0058\347\t@\rH)J1\b\001\020\246\236\t\032\023JavaPackageManifest0\001:\022\b\330\202\231\333\3271\020\274\206\004\030\223\303\343\271\3271J%\b\002\020\247\236\t\032\005Javac \0010\001:\022\b\330\202\231\333\3271\020\214\233%\030\272\267\230\333\3271J1\b\003\020\304\250\n\032\023JavaPackageManifest0\001:\022\b\330\202\231\333\3271\020\300\214\004\030\223\303\343\271\3271J%\b\004\020\247\236\t\032\005Javac \0010\001:\022\b\330\202\231\333\3271\020\214\233%\030\207\327\220\276\3271J1\b\005\020\303\312\v\032\023JavaPackageManifest0\001:\022\b\330\202\231\333\3271\020\244\215\004\030\351\324\220\276\3271J1\b\006\020\277\312\v\032\023JavaPackageManifest0\001:\022\b\330\202\231\333\3271\020\210\351\003\030\225\303\343\271\3271J%\b\a\020\247\236\t\032\005Javac \0010\001:\022\b\330\202\231\333\3271\020\214\233%\030\207\327\220\276\3271"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 47
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 482000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\003\242\001\000\272\001\245\006\n\030\n\felapsed time\032\b0.474000\n\326\004\n\rcritical path\032\304\004Critical Path: 0.41s, Remote (0.00% of the time): [parse: 0.00%, queue: 0.00%, network: 0.00%, upload: 0.00%, setup: 0.00%, process: 0.00%, fetch: 0.00%, retry: 0.00%, processOutputs: 0.00%, other: 0.00%, input files: 0, input bytes: 0, memory bytes: 0, input files limit: 0, input bytes limit: 0, output files limit: 0, output bytes limit: 0, memory limit: 0, time limit: 0 seconds]\n  0.41s action \'Testing //:test\'\n  0.00s runfiles for //:test\n  0.00s action \'Creating runfiles tree bazel-out/k8-fastbuild/bin/test.runfiles\'\n  0.00s action \'Creating source manifest for //:test\'\n:\n\rprocess stats\032)4 processes: 1 internal, 3 linux-sandbox.\nt\n\022command.profile.gz\022^file:///home/nick/.cache/bazel/_bazel_nick/5102f38c75b30de93223246fa3d1a411/command.profile.gz"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 48
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 482000000
+  }
+  bazel_event {
+    type_url: "type.googleapis.com/build_event_stream.BuildEvent"
+    value: "\n\004\022\002\b\n\032\000\240\001\001"
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: TOOL
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 49
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 482000000
+  }
+  component_stream_finished {
+    type: FINISHED
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: CONTROLLER
+  invocation_id: "584d2774-aab7-4ce9-8a9a-32ac493b0f6e"
+}
+sequence_number: 2
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 485000000
+  }
+  invocation_attempt_finished {
+    invocation_status {
+      result: COMMAND_SUCCEEDED
+    }
+  }
+}
+stream_id {
+  build_id: "4d16d0f2-6337-4a12-9129-52097ea30e63"
+  component: CONTROLLER
+}
+sequence_number: 2
+event {
+  event_time {
+    seconds: 1707172315
+    nanos: 486000000
+  }
+  build_finished {
+    status {
+      result: COMMAND_SUCCEEDED
+    }
+  }
+}

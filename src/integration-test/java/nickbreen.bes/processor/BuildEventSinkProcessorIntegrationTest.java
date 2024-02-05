@@ -4,6 +4,7 @@ import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.devtools.build.v1.BuildEventProto;
 import com.google.devtools.build.v1.OrderedBuildEvent;
+import com.google.devtools.build.v1.StreamId;
 import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
@@ -33,13 +34,16 @@ public class BuildEventSinkProcessorIntegrationTest
     private static final String UUID = "cbf29d13-9dd2-41bd-92dc-06ab2d704990";  // UUID.randomUUID().toString()
     private static final OrderedBuildEvent EVENT = OrderedBuildEvent.newBuilder()
             .setSequenceNumber(1)
+            .setStreamId(StreamId.newBuilder()
+                    .setComponent(StreamId.BuildComponent.CONTROLLER)
+                    .setInvocationId(UUID))
             .setEvent(BuildEvent.newBuilder()
                     .setBazelEvent(Any.pack(BuildEventStreamProtos.BuildEvent.newBuilder()
                             .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder().setUuid(UUID))
                             .build()))
                     .build())
             .build();
-    private static final String EXPECTED_JSON = "{\"bazelEvent\":{\"@type\":\"type.googleapis.com/build_event_stream.BuildEvent\",\"started\":{\"uuid\":\"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"}}}";
+    private static final String EXPECTED_JSON = "{\"streamId\":{\"component\":\"CONTROLLER\",\"invocationId\":\"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"},\"sequenceNumber\":\"1\",\"event\":{\"bazelEvent\":{\"@type\":\"type.googleapis.com/build_event_stream.BuildEvent\",\"started\":{\"uuid\":\"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"}}}}";
 
     private final TypeRegistry typeRegistry = newBuilder()
             .add(BuildEventProto.getDescriptor().getMessageTypes())

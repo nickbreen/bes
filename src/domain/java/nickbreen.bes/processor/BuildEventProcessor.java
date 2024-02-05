@@ -1,6 +1,5 @@
 package nickbreen.bes.processor;
 
-import com.google.devtools.build.v1.BuildEvent;
 import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.devtools.build.v1.PublishBuildToolEventStreamRequest;
 import com.google.devtools.build.v1.PublishLifecycleEventRequest;
@@ -21,10 +20,5 @@ public abstract class BuildEventProcessor implements PublishEventProcessor
         testAndConsume(request::hasBuildEvent, request::getBuildEvent, this::accept);
     }
 
-    void accept(final OrderedBuildEvent orderedBuildEvent)
-    {
-        testAndConsume(orderedBuildEvent::hasEvent, orderedBuildEvent::getEvent, this::accept);
-    }
-
-    protected abstract void accept(final BuildEvent buildEvent);
+    protected abstract void accept(final OrderedBuildEvent orderedBuildEvent);
 }

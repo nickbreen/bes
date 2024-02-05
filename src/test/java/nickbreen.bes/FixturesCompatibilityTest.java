@@ -2,6 +2,8 @@ package nickbreen.bes;
 
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
+import com.google.devtools.build.v1.OrderedBuildEvent;
+import com.google.devtools.build.v1.StreamId;
 import org.junit.Test;
 
 import javax.json.Json;
@@ -17,7 +19,6 @@ import static nickbreen.bes.Util.unpack;
 import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -53,10 +54,10 @@ public class FixturesCompatibilityTest
     @Test
     public void shouldReadBinaryJournalAsOrderedBuildEvents() throws IOException
     {
-        final List<BuildEvent> events = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
+        final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
-        assertThat(events, hasSize(32));
-        assertThat(events, everyItem(notNullValue(BuildEvent.class)));
+        assertThat(events, hasSize(48));
+        assertThat(events, everyItem(notNullValue(OrderedBuildEvent.class)));
     }
 
     @Test
@@ -71,28 +72,27 @@ public class FixturesCompatibilityTest
     }
 
     @Test
-    public void shouldIdentifyInvocationFromThirdJournalBuildEvent() throws IOException
+    public void shouldIdentifyInvocationFromStreamIdOfControllerComponent() throws IOException
     {
-        final List<BuildEvent> events = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
+        final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
-        assertThat("more then two events", events, hasSize(greaterThan(2)));
-        final BuildEvent first = events.get(2);
-        assertThat("hasBazelEvent", first.hasBazelEvent());
-        final BuildEventStreamProtos.BuildEvent buildEvent = unpack(BuildEventStreamProtos.BuildEvent.class, first.getBazelEvent()).orElseThrow();
-        assertThat("hasStarted", buildEvent.hasStarted());
-        assertThat("has invocation id", buildEvent.getStarted().getUuid(), is("c1296c8a-61d6-4fd7-b8c0-42b63e0af62d"));
+        assertThat("more then two events", events, hasSize(48));
+        assertThat("", events, hasItem(
+                messageThat(OrderedBuildEvent.class, OrderedBuildEvent::hasStreamId, OrderedBuildEvent::getStreamId,
+                        messageThat(StreamId.class, streamId -> StreamId.BuildComponent.CONTROLLER.equals(streamId.getComponent()), StreamId::getInvocationId, is("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")))));
     }
 
     @Test
     public void shouldIdentifyInvocationFromAnyJournalBuildEvent() throws IOException
     {
-        final List<BuildEvent> events = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
+        final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
         assertThat("an event", events, hasItem(
-                anyThat(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
-                        messageThat(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,
-                                messageThat(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid,
-                                        is("c1296c8a-61d6-4fd7-b8c0-42b63e0af62d"))))));
+                messageThat(OrderedBuildEvent.class, OrderedBuildEvent::hasEvent, OrderedBuildEvent::getEvent,
+                        anyThat(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
+                                messageThat(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,
+                                        messageThat(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid,
+                                                is("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")))))));
     }
 
 

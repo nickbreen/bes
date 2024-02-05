@@ -1,6 +1,9 @@
 package nickbreen.bes.processor;
 
+import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
+import com.google.devtools.build.v1.BuildEventProto;
 import com.google.protobuf.Message;
+import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.sink.SinkFactory;
 
@@ -17,34 +20,25 @@ public interface ProcessorFactory
     {
         assert uri.isOpaque() : "processor URI's must be opaque";
         final URI sinkUri = URI.create(uri.getSchemeSpecificPart());
-        final BiConsumer<Message, OutputStream> writer = createWriter(sinkUri);
         return switch (uri.getScheme())
         {
-            case "bazel" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, writer));
-            case "journal" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, writer));
+            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, new TextWriter()));
+            case "bazel+json" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, new JsonlWriter(buildPrinter())));
+            case "bazel+binary" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, new BinaryWriter()));
+            case "journal+text" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, new TextWriter()));
+            case "journal+json" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, new JsonlWriter(buildPrinter())));
+            case "journal+binary", "journal" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, new BinaryWriter()));
             default -> throw new Error("Unknown scheme " + uri);
         };
     }
 
-    private static BiConsumer<Message, OutputStream> createWriter(final URI uri)
+    private static JsonFormat.Printer buildPrinter()
     {
-        final Path fileName = Path.of(uri).getFileName();
-//        conditional switch pattern matching would be nice
-//        return switch (fileName)
-//        {
-//            case Path p && p.endsWith(".bin") -> new BinaryWriter();
-//            case Path p && p.endsWith(".jsonl") -> new JsonlWriter(JsonFormat.printer());
-//            default -> new TextWriter();
-//        }
-        if (fileName.endsWith(".bin"))
-        {
-            return new BinaryWriter();
-        }
-        if (fileName.endsWith(".jsonl") || fileName.endsWith(".json"))
-        {
-            return new JsonlWriter(JsonFormat.printer());
-        }
-        return new TextWriter();
+        final TypeRegistry typeRegistry = TypeRegistry.newBuilder()
+                .add(BuildEventProto.getDescriptor().getMessageTypes())
+                .add(BuildEventStreamProtos.getDescriptor().getMessageTypes())
+                .build();
+        return JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
     }
 
     class JsonlWriter implements BiConsumer<Message, OutputStream>
@@ -63,6 +57,7 @@ public interface ProcessorFactory
             try
             {
                 outputStream.write(printer.print(message).getBytes());
+                outputStream.write('\n');
             }
             catch (IOException e)
             {

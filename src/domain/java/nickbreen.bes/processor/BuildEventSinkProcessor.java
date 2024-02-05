@@ -1,9 +1,11 @@
 package nickbreen.bes.processor;
 
-import com.google.devtools.build.v1.BuildEvent;
+import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.protobuf.Message;
 
 import java.util.function.Consumer;
+
+import static nickbreen.bes.Util.testAndConsume;
 
 public class BuildEventSinkProcessor extends BuildEventProcessor
 {
@@ -15,8 +17,8 @@ public class BuildEventSinkProcessor extends BuildEventProcessor
     }
 
     @Override
-    protected void accept(final BuildEvent buildEvent)
+    protected void accept(final OrderedBuildEvent orderedBuildEvent)
     {
-        sink.accept(buildEvent);
+        sink.accept(orderedBuildEvent);
     }
 }

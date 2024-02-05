@@ -17,7 +17,6 @@ public class BazelBuildEventProcessor extends BuildEventSinkProcessor
         super(sink);
     }
 
-    @Override
     public void accept(final BuildEvent buildEvent)
     {
         testAndConsume(buildEvent::hasInvocationAttemptStarted, buildEvent::getInvocationAttemptStarted, sink);

@@ -1,6 +1,7 @@
 package nickbreen.bes.processor;
 
 import com.google.devtools.build.v1.BuildEvent;
+import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 import nickbreen.bes.FixturesCompatibilityTest;
@@ -23,7 +24,7 @@ public class BuildEventSinkProcessorTest
     @Test
     public void shouldSendEverythingToSink() throws IOException
     {
-        final List<BuildEvent> expected = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
+        final List<OrderedBuildEvent> expected = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
         final List<Message> actual = new ArrayList<>();
         final BuildEventProcessor processor = new BuildEventSinkProcessor(actual::add);
         expected.forEach(processor::accept);
@@ -37,8 +38,8 @@ public class BuildEventSinkProcessorTest
     {
         final List<Message> actuals = new ArrayList<>();
         final BuildEventProcessor processor = new BuildEventSinkProcessor(actuals::add);
-        processor.accept(BuildEvent.newBuilder().setBazelEvent(Any.newBuilder()).build());
-        final BuildEvent expected = BuildEvent.newBuilder().setBazelEvent(Any.newBuilder()).build();
+        processor.accept(OrderedBuildEvent.newBuilder().setEvent(BuildEvent.newBuilder().setBazelEvent(Any.newBuilder())).build());
+        final OrderedBuildEvent expected = OrderedBuildEvent.newBuilder().setEvent(BuildEvent.newBuilder().setBazelEvent(Any.newBuilder()).build()).build();
 
         assertThat("same size", actuals, hasSize(1));
         assertThat("same items", actuals, hasItem(equalTo(expected)));

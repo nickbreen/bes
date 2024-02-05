@@ -7,7 +7,10 @@ bazel test --test_output all ...
 
 Build and run the BES.
 ```shell
-bazel run bes journal:file:$PWD/src/test/resources/jnl.bin bazel:file:///dev/stderr
+bazel run bes \
+      journal+binary:file:$PWD/src/test/resources/jnl.bin \
+      journal+json:file:$PWD/src/test/resources/jnl.json \
+      journal+text:file:$PWD/src/test/resources/jnl.text
 ```
 
 Re-build forwarding to the BES.
