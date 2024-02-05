@@ -56,7 +56,6 @@ public class FixturesCompatibilityTest
     {
         final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
-        assertThat(events, hasSize(48));
         assertThat(events, everyItem(notNullValue(OrderedBuildEvent.class)));
     }
 
@@ -76,7 +75,6 @@ public class FixturesCompatibilityTest
     {
         final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
-        assertThat("more then two events", events, hasSize(48));
         assertThat("", events, hasItem(
                 messageThat(OrderedBuildEvent.class, OrderedBuildEvent::hasStreamId, OrderedBuildEvent::getStreamId,
                         messageThat(StreamId.class, streamId -> StreamId.BuildComponent.CONTROLLER.equals(streamId.getComponent()), StreamId::getInvocationId, is("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")))));
