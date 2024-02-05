@@ -94,5 +94,6 @@ java_test(
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
         artifact("org.mockito:mockito-core"),
+        artifact("org.xerial:sqlite-jdbc"),
     ],
 )

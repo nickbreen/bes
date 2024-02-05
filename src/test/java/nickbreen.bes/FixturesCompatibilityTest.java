@@ -38,7 +38,7 @@ public class FixturesCompatibilityTest
         final List<BuildEventStreamProtos.BuildEvent> events = loadJsonl(BuildEventStreamProtos.BuildEvent.newBuilder(), FixturesCompatibilityTest.class::getResourceAsStream, "/bes.jsonl");
 
         assertThat(events, hasSize(33));
-        assertThat(events, everyItem(notNullValue()));
+        assertThat(events, everyItem(notNullValue(BuildEventStreamProtos.BuildEvent.class)));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class FixturesCompatibilityTest
         final List<BuildEventStreamProtos.BuildEvent> events = loadBinary(BuildEventStreamProtos.BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/bes.bin");
 
         assertThat(events, hasSize(33));
-        assertThat(events, everyItem(notNullValue()));
+        assertThat(events, everyItem(notNullValue(BuildEventStreamProtos.BuildEvent.class)));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class FixturesCompatibilityTest
         final List<BuildEvent> events = loadBinary(BuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
         assertThat(events, hasSize(32));
-        assertThat(events, everyItem(notNullValue()));
+        assertThat(events, everyItem(notNullValue(BuildEvent.class)));
     }
 
     @Test
