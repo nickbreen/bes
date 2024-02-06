@@ -6,13 +6,16 @@ import com.google.protobuf.Message;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.sink.SinkFactory;
+import org.sqlite.javax.SQLiteConnectionPoolDataSource;
 
+import javax.sql.DataSource;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URI;
-import java.nio.file.Path;
-import java.util.function.BiConsumer;
+import java.sql.DriverManager;
+import java.util.function.Consumer;
 
 public interface ProcessorFactory
 {
@@ -20,16 +23,25 @@ public interface ProcessorFactory
     {
         assert uri.isOpaque() : "processor URI's must be opaque";
         final URI sinkUri = URI.create(uri.getSchemeSpecificPart());
+        final OutputStream sink = SinkFactory.createSink(sinkUri);
         return switch (uri.getScheme())
         {
-            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, new TextWriter()));
-            case "bazel+json" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, new JsonlWriter(buildPrinter())));
-            case "bazel+binary" -> new BazelBuildEventProcessor(SinkFactory.createSink(sinkUri, new BinaryWriter()));
-            case "journal+text" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, new TextWriter()));
-            case "journal+json" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, new JsonlWriter(buildPrinter())));
-            case "journal+binary", "journal" -> new BuildEventSinkProcessor(SinkFactory.createSink(sinkUri, new BinaryWriter()));
+            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(new TextWriter(new PrintWriter(sink)));
+            case "bazel+json" -> new BazelBuildEventProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(sink)));
+            case "bazel+binary" -> new BazelBuildEventProcessor(new BinaryWriter(sink));
+            case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(new PrintWriter(sink)));
+            case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(sink)));
+            case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(sink));
+            case "jdbc" -> new DatabaseEventProcessor(buildDataSource(uri), buildPrinter());
             default -> throw new Error("Unknown scheme " + uri);
         };
+    }
+
+    private static DataSource buildDataSource(final URI uri)
+    {
+        final SQLiteConnectionPoolDataSource ds = new SQLiteConnectionPoolDataSource();
+        ds.setUrl(uri.toString());
+        return ds;
     }
 
     private static JsonFormat.Printer buildPrinter()
@@ -41,23 +53,24 @@ public interface ProcessorFactory
         return JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
     }
 
-    class JsonlWriter implements BiConsumer<Message, OutputStream>
+    class JsonlWriter implements Consumer<Message>
     {
         private final JsonFormat.Printer printer;
+        private final PrintWriter sink;
 
-        public JsonlWriter(final JsonFormat.Printer printer)
+        public JsonlWriter(final JsonFormat.Printer printer, final PrintWriter sink)
         {
-
             this.printer = printer;
+            this.sink = sink;
         }
 
         @Override
-        public void accept(final Message message, final OutputStream outputStream)
+        public void accept(final Message message)
         {
             try
             {
-                outputStream.write(printer.print(message).getBytes());
-                outputStream.write('\n');
+                printer.appendTo(message, sink);
+                sink.println();
             }
             catch (IOException e)
             {
@@ -66,30 +79,37 @@ public interface ProcessorFactory
         }
     }
 
-    class TextWriter implements BiConsumer<Message, OutputStream>
+    class TextWriter implements Consumer<Message>
     {
-        @Override
-        public void accept(final Message message, final OutputStream outputStream)
+        private final PrintWriter sink;
+
+        public TextWriter(final PrintWriter sink)
         {
-            try
-            {
-                outputStream.write(message.toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                throw new IOError(e);
-            }
+            this.sink = sink;
+        }
+
+        @Override
+        public void accept(final Message message)
+        {
+            sink.println(message.toString());
         }
     }
 
-    class BinaryWriter implements BiConsumer<Message, OutputStream>
+    class BinaryWriter implements Consumer<Message>
     {
+        private final OutputStream sink;
+
+        public BinaryWriter(final OutputStream sink)
+        {
+            this.sink = sink;
+        }
+
         @Override
-        public void accept(final Message message, final OutputStream outputStream)
+        public void accept(final Message message)
         {
             try
             {
-                message.writeDelimitedTo(outputStream);
+                message.writeDelimitedTo(sink);
             }
             catch (IOException e)
             {

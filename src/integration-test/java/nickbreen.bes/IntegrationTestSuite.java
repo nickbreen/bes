@@ -1,6 +1,6 @@
 package nickbreen.bes;
 
-import nickbreen.bes.processor.BuildEventSinkProcessorIntegrationTest;
+import nickbreen.bes.processor.DatabaseEventProcessorIntegrationTest;
 import nickbreen.bes.sink.BinarySinkIntegrationTest;
 import nickbreen.bes.sink.JsonSinkIntegrationTest;
 import nickbreen.bes.sink.TextSinkIntegrationTest;
@@ -12,7 +12,7 @@ import org.junit.runners.Suite.SuiteClasses;
         BinarySinkIntegrationTest.class,
         JsonSinkIntegrationTest.class,
         TextSinkIntegrationTest.class,
-        BuildEventSinkProcessorIntegrationTest.class,
+        DatabaseEventProcessorIntegrationTest.class,
 })
 @RunWith(Suite.class)
 public interface IntegrationTestSuite

@@ -13,13 +13,13 @@ import java.util.function.Consumer;
 
 public interface SinkFactory
 {
-    static Consumer<Message> createSink(final URI uri, final BiConsumer<Message, OutputStream> writer)
+    static OutputStream createSink(final URI uri)
     {
         assert uri.isAbsolute() : "sink URI's must have a scheme";
         return switch (uri.getScheme())
         {
             case "file":
-                yield createFile(uri, writer);
+                yield createFile(uri);
             case "jdbc":
                 yield createJdbc(uri);
             case "redis":
@@ -29,23 +29,21 @@ public interface SinkFactory
         };
     }
 
-    private static Consumer<Message> createJdbc(final URI uri)
+    private static OutputStream createJdbc(final URI uri)
     {
         throw new Error("JDBC not supported yet " + uri);
     }
 
-    private static Consumer<Message> createRedis(final URI uri)
+    private static OutputStream createRedis(final URI uri)
     {
         throw new Error("Redis not supported yet " + uri);
     }
 
-    private static Consumer<Message> createFile(final URI uri, final BiConsumer<Message, OutputStream> writer)
+    private static OutputStream createFile(final URI uri)
     {
         try
         {
-            @SuppressWarnings("resource") // it is used in the lambda, so we cannot try-with-resources
-            final OutputStream outputStream = new FileOutputStream(new File(uri));
-            return message -> writer.accept(message, outputStream);
+            return new FileOutputStream(new File(uri));
         }
         catch (FileNotFoundException e)
         {
