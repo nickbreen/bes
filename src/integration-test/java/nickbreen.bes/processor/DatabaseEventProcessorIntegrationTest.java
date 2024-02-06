@@ -8,11 +8,18 @@ import com.google.devtools.build.v1.StreamId;
 import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
+import nickbreen.bes.DataSourceFactory;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 import org.sqlite.SQLiteDataSource;
 
+import javax.sql.DataSource;
 import java.io.IOException;
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,20 +31,16 @@ import static com.google.protobuf.TypeRegistry.newBuilder;
 import static nickbreen.bes.Util.loadBinary;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
-import static org.hamcrest.Matchers.anything;
-import static org.hamcrest.Matchers.blankOrNullString;
-import static org.hamcrest.Matchers.blankString;
-import static org.hamcrest.Matchers.both;
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.emptyOrNullString;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
+@RunWith(Parameterized.class)
 public class DatabaseEventProcessorIntegrationTest
 {
     private static final String BUILD_ID = UUID.randomUUID().toString();
@@ -59,13 +62,27 @@ public class DatabaseEventProcessorIntegrationTest
             .add(BuildEventProto.getDescriptor().getMessageTypes())
             .add(BuildEventStreamProtos.getDescriptor().getMessageTypes())
             .build();
-    private final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
-    private final SQLiteDataSource dataSource = new SQLiteDataSource();
+    private DataSource dataSource;
+    private DatabaseEventProcessor processor;
+
+    @Parameters
+    public static Object[] parameters()
+    {
+        return new Object[] {
+                URI.create("jdbc:sqlite:memory:"),
+                URI.create("jdbc:h2:mem:"),
+        };
+    }
+
+    @Parameter
+    public URI jdbcUrl;
 
     @Before
     public void setUp()
     {
-        dataSource.setUrl("jdbc:sqlite:memory:");
+        final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
+        dataSource = DataSourceFactory.buildDataSource(jdbcUrl);
+        processor = new DatabaseEventProcessor(dataSource, printer);
     }
 
     @Test
@@ -83,7 +100,7 @@ public class DatabaseEventProcessorIntegrationTest
                                 .build()))
                         .build())
                 .build();
-        new DatabaseEventProcessor(dataSource, printer).accept(event);
+        processor.accept(event);
 
         try (final Connection connection = dataSource.getConnection())
         {
@@ -119,7 +136,6 @@ public class DatabaseEventProcessorIntegrationTest
                                 .build()))
                         .build())
                 .build();
-        final DatabaseEventProcessor processor = new DatabaseEventProcessor(dataSource, printer);
         processor.accept(event);
         processor.accept(event);
 
@@ -143,7 +159,6 @@ public class DatabaseEventProcessorIntegrationTest
     @Test
     public void shouldIngestEntireJournal() throws IOException, SQLException
     {
-        final DatabaseEventProcessor processor = new DatabaseEventProcessor(dataSource, printer);
         final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, DatabaseEventProcessorIntegrationTest.class::getResourceAsStream, "/jnl.bin");
         assertThat(events, not(empty()));
         events.forEach(processor::accept);

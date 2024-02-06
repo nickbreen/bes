@@ -13,7 +13,11 @@ import java.sql.Statement;
 
 public class DatabaseEventProcessor extends BuildEventProcessor
 {
-    public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS event (build_id TEXT, component INTEGER, invocation_id TEXT, sequence INTEGER, event TEXT, PRIMARY KEY (build_id, component, sequence, invocation_id))";
+    public static final String CREATE_TABLE_SQLITE = "CREATE TABLE IF NOT EXISTS event (build_id TEXT, component INTEGER, invocation_id TEXT, sequence INTEGER, event TEXT, PRIMARY KEY (build_id, component, sequence, invocation_id))";
+    public static final String INSERT_SQLITE = "INSERT INTO event VALUES (?,?,?,?,jsonb(?)) ON CONFLICT DO NOTHING";
+    public static final String CREATE_TABLE_H2 = "CREATE TABLE IF NOT EXISTS event (build_id CHARACTER(36), component INTEGER, invocation_id CHARACTER(36), sequence INTEGER, event JSON, PRIMARY KEY (build_id, component, sequence, invocation_id))";
+    public static final String INSERT_H2 = "INSERT INTO event VALUES (?,?,?,?,? FORMAT JSON)";
+
     private final DataSource dataSource;
     private final JsonFormat.Printer printer;
 
@@ -29,7 +33,12 @@ public class DatabaseEventProcessor extends BuildEventProcessor
     {
         try (final Connection connection = dataSource.getConnection())
         {
-            try (final PreparedStatement insert = connection.prepareStatement("INSERT INTO event VALUES (?,?,?,?,jsonb(?)) ON CONFLICT DO NOTHING"))
+            try (final PreparedStatement insert = connection.prepareStatement(switch (connection.getMetaData().getDatabaseProductName())
+            {
+                case "SQLite" -> INSERT_SQLITE;
+                case "H2" -> INSERT_H2;
+                default -> throw new Error("Unknown DB");
+            }))
             {
                 insert.setString(1, orderedBuildEvent.getStreamId().getBuildId());
                 insert.setInt(2, orderedBuildEvent.getStreamId().getComponentValue());
@@ -49,13 +58,18 @@ public class DatabaseEventProcessor extends BuildEventProcessor
         }
     }
 
-    private static void initDb(final DataSource dataSource)
+    public static void initDb(final DataSource dataSource)
     {
         try (final Connection connection = dataSource.getConnection())
         {
             try (final Statement statement = connection.createStatement())
             {
-                statement.execute(CREATE_TABLE);
+                statement.execute(switch (connection.getMetaData().getDatabaseProductName())
+                {
+                    case "SQLite" -> CREATE_TABLE_SQLITE;
+                    case "H2" -> CREATE_TABLE_H2;
+                    default -> throw new Error("Unknown DB");
+                });
             }
         }
         catch (SQLException e)

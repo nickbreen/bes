@@ -30,6 +30,7 @@ java_library(
         "@com_google_protobuf//java/core",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.h2database:h2"),
     ],
 )
 
