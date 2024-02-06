@@ -46,7 +46,6 @@ maven_install(
         "org.glassfish:javax.json:1.1",
         "org.hamcrest:hamcrest:2.2",
         "org.xerial:sqlite-jdbc:3.45.1.0",
-        "com.h2database:h2:2.2.224",
         "redis.clients:jedis:5.1.0",
         "org.mockito:mockito-core:5.10.0",
     ],

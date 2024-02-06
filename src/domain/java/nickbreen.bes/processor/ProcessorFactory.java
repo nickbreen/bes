@@ -5,14 +5,16 @@ import com.google.devtools.build.v1.BuildEventProto;
 import com.google.protobuf.Message;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
-import nickbreen.bes.DataSourceFactory;
 import nickbreen.bes.sink.SinkFactory;
+import org.sqlite.javax.SQLiteConnectionPoolDataSource;
 
+import javax.sql.DataSource;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URI;
+import java.sql.DriverManager;
 import java.util.function.Consumer;
 
 public interface ProcessorFactory
@@ -30,9 +32,16 @@ public interface ProcessorFactory
             case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(new PrintWriter(sink)));
             case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(sink)));
             case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(sink));
-            case "jdbc" -> new DatabaseEventProcessor(DataSourceFactory.buildDataSource(uri), buildPrinter());
+            case "jdbc" -> new DatabaseEventProcessor(buildDataSource(uri), buildPrinter());
             default -> throw new Error("Unknown scheme " + uri);
         };
+    }
+
+    private static DataSource buildDataSource(final URI uri)
+    {
+        final SQLiteConnectionPoolDataSource ds = new SQLiteConnectionPoolDataSource();
+        ds.setUrl(uri.toString());
+        return ds;
     }
 
     private static JsonFormat.Printer buildPrinter()
