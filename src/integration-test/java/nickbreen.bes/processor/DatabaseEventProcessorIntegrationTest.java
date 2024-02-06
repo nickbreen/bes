@@ -9,13 +9,13 @@ import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.DataSourceFactory;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-import org.sqlite.SQLiteDataSource;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static com.google.protobuf.TypeRegistry.newBuilder;
+import static nickbreen.bes.DataSourceFactory.loadDbProperties;
 import static nickbreen.bes.Util.loadBinary;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
@@ -37,6 +38,7 @@ import static org.hamcrest.Matchers.emptyOrNullString;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
@@ -49,10 +51,11 @@ public class DatabaseEventProcessorIntegrationTest
     private DataSource dataSource;
     private DatabaseEventProcessor processor;
 
-    @Parameters
+    @Parameters(name = "{0}")
     public static Object[] parameters()
     {
         return new Object[]{
+                URI.create("jdbc:mysql://localhost/bes"),
                 URI.create("jdbc:sqlite:memory:"),
                 // URI.create("jdbc:h2:mem:"),
         };
@@ -70,7 +73,7 @@ public class DatabaseEventProcessorIntegrationTest
                 .build();
         final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
         dataSource = DataSourceFactory.buildDataSource(jdbcUrl);
-        processor = new DatabaseEventProcessor(dataSource, printer);
+        processor = new DatabaseEventProcessor(dataSource, printer, loadDbProperties(jdbcUrl)).init();
         dataSource.getConnection().createStatement().execute("DELETE FROM event"); // persists between runs
     }
 
@@ -134,12 +137,14 @@ public class DatabaseEventProcessorIntegrationTest
             {
                 try (final ResultSet resultSet = select.executeQuery())
                 {
+                    int i = 0;
                     while (resultSet.next())
                     {
                         assertThat("a row for UUID", resultSet.getString(1), equalTo(BUILD_ID));
                         assertThat("exactly one row counted", resultSet.getInt(2), equalTo(1));
+                        i++;
                     }
-                    assertThat("exactly one row", resultSet.getRow(), equalTo(1));
+                    assertThat(i, equalTo(1));
                 }
             }
         }
