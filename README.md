@@ -33,3 +33,4 @@ Sinks:
 - Message tp File as JSON
 - Message to Redis as JSON
 - Message to JDBC:SQLite as JSON
+- Message to JDBC:H2 can store JSON but cannot query into it :-(

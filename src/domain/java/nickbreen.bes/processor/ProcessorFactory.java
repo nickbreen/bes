@@ -5,8 +5,6 @@ import com.google.devtools.build.v1.BuildEventProto;
 import com.google.protobuf.Message;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
-import nickbreen.bes.DataSourceFactory;
-import nickbreen.bes.sink.SinkFactory;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -15,22 +13,24 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.util.function.Consumer;
 
+import static nickbreen.bes.DataSourceFactory.buildDataSource;
+import static nickbreen.bes.sink.SinkFactory.createSink;
+
 public interface ProcessorFactory
 {
     static PublishEventProcessor create(final URI uri)
     {
         assert uri.isOpaque() : "processor URI's must be opaque";
         final URI sinkUri = URI.create(uri.getSchemeSpecificPart());
-        final OutputStream sink = SinkFactory.createSink(sinkUri);
         return switch (uri.getScheme())
         {
-            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(new TextWriter(new PrintWriter(sink)));
-            case "bazel+json" -> new BazelBuildEventProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(sink)));
-            case "bazel+binary" -> new BazelBuildEventProcessor(new BinaryWriter(sink));
-            case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(new PrintWriter(sink)));
-            case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(sink)));
-            case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(sink));
-            case "jdbc" -> new DatabaseEventProcessor(DataSourceFactory.buildDataSource(uri), buildPrinter());
+            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(new TextWriter(new PrintWriter(createSink(sinkUri))));
+            case "bazel+json" -> new BazelBuildEventProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(createSink(sinkUri))));
+            case "bazel+binary" -> new BazelBuildEventProcessor(new BinaryWriter(createSink(sinkUri)));
+            case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(new PrintWriter(createSink(sinkUri))));
+            case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(createSink(sinkUri))));
+            case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(createSink(sinkUri)));
+            case "jdbc" -> new DatabaseEventProcessor(buildDataSource(uri), buildPrinter());
             default -> throw new Error("Unknown scheme " + uri);
         };
     }

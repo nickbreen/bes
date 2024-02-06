@@ -18,8 +18,8 @@ public interface DataSourceFactory
                 ds.setUrl(uri.toString());
                 yield ds;
             }
-//            case "h2" -> JdbcConnectionPool.create(uri.toString(), "", "");
-            default -> throw new Error("Unsupported JDBC driver");
+            // case "h2" -> JdbcConnectionPool.create(uri.toString(), "", "");
+            default -> throw new Error("Unsupported JDBC URI " + uri);
         };
     }
 }
