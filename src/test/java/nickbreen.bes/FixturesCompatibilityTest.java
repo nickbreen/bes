@@ -13,9 +13,8 @@ import java.util.List;
 
 import static nickbreen.bes.AnyMatcher.anyThat;
 import static nickbreen.bes.MessageMatcher.messageThat;
-import static nickbreen.bes.Util.loadBinary;
-import static nickbreen.bes.Util.loadJsonl;
-import static nickbreen.bes.Util.unpack;
+import static nickbreen.bes.TestUtil.loadBinary;
+import static nickbreen.bes.TestUtil.loadJsonl;
 import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;

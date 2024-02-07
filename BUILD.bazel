@@ -41,9 +41,7 @@ java_library(
     srcs = glob(["src/support/java/**/*.java"]),
     resources = glob(["src/support/resources/**"]),
     deps = [
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_protobuf//java/core",
-        artifact("com.google.protobuf:protobuf-java-util"),
     ],
 )
 
@@ -54,7 +52,9 @@ java_library(
     resources = glob(["src/test-support/resources/**"]),
     deps = [
         ":support",
+        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_protobuf//java/core",
+        artifact("com.google.protobuf:protobuf-java-util"),
         artifact("org.hamcrest:hamcrest"),
     ],
 )

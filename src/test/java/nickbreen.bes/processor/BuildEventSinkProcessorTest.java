@@ -5,15 +5,13 @@ import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 import nickbreen.bes.FixturesCompatibilityTest;
-import nickbreen.bes.processor.BuildEventProcessor;
-import nickbreen.bes.processor.BuildEventSinkProcessor;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nickbreen.bes.Util.loadBinary;
+import static nickbreen.bes.TestUtil.loadBinary;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
