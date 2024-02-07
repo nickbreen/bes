@@ -33,9 +33,6 @@ java_library(
         "@com_google_protobuf//java/core",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("com.mchange:c3p0"),
-        artifact("org.postgresql:postgresql"),
-        artifact("org.mariadb.jdbc:mariadb-java-client"),
-        artifact("org.xerial:sqlite-jdbc"),
     ],
 )
 
@@ -78,8 +75,6 @@ java_test(
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
-        "@io_grpc_grpc_java//api",
-        artifact("com.google.protobuf:protobuf-java-util"),
         artifact("javax.json:javax.json-api"),
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
