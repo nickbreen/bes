@@ -117,15 +117,5 @@ java_test(
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
         artifact("org.testcontainers:testcontainers"),
-    ] + [
-        # moving these to runtime_deps seems to upset grpc/protobuf somehow (and ends up with NoSuchMethod errors
-        artifact("org.xerial:sqlite-jdbc"),
-        artifact("com.mysql:mysql-connector-j"),
-        artifact("org.mariadb.jdbc:mariadb-java-client"),
-        artifact("org.postgresql:postgresql"),
-        artifact("org.testcontainers:mariadb"),
-        artifact("org.testcontainers:mysql"),
-        artifact("org.testcontainers:postgresql"),
-        "@io_grpc_grpc_java//api",
     ],
 )
