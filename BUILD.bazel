@@ -23,9 +23,6 @@ java_library(
     name = "domain",
     srcs = glob(["src/domain/java/**/*.java"]),
     resources = glob(["src/domain/resources/**"]),
-    runtime_deps = [
-        artifact("com.mysql:mysql-connector-j"),
-    ],
     deps = [
         ":support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
