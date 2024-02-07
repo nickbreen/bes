@@ -32,7 +32,7 @@ public interface ProcessorFactory
             case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(new PrintWriter(createSink(sinkUri))));
             case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(createSink(sinkUri))));
             case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(createSink(sinkUri)));
-            case "jdbc" -> new DatabaseEventProcessor(buildDataSource(uri), buildPrinter(), loadDbProperties(uri)).init();
+            case "jdbc" -> new DatabaseEventProcessor(buildDataSource(uri), buildPrinter());
             default -> throw new Error("Unknown scheme " + uri);
         };
     }

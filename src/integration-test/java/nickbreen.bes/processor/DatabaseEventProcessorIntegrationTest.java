@@ -9,7 +9,6 @@ import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.DataSourceFactory;
-import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +24,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.google.protobuf.TypeRegistry.newBuilder;
@@ -32,13 +33,13 @@ import static nickbreen.bes.DataSourceFactory.loadDbProperties;
 import static nickbreen.bes.Util.loadBinary;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.blankString;
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.emptyOrNullString;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
@@ -52,17 +53,21 @@ public class DatabaseEventProcessorIntegrationTest
     private DatabaseEventProcessor processor;
 
     @Parameters(name = "{0}")
-    public static Object[] parameters()
+    public static Object[][] parameters()
     {
-        return new Object[]{
-                URI.create("jdbc:mysql://localhost/bes"),
-                URI.create("jdbc:sqlite:memory:"),
+        return new Object[][]{
+                new Object[]{URI.create("jdbc:tc:mysql:///bes?TC_INITSCRIPT=init.sql"), null},
+                new Object[]{URI.create("jdbc:tc:mariadb:///bes?TC_INITSCRIPT=init.sql"), null},
+                new Object[]{URI.create("jdbc:tc:postgresql:///bes?TC_INITSCRIPT=init.postgresql.sql"), null},
+                new Object[]{URI.create("jdbc:sqlite:memory:"), "/init.sqlite.sql"},
                 // URI.create("jdbc:h2:mem:"),
         };
     }
 
     @Parameter
     public URI jdbcUrl;
+    @Parameter(1)
+    public String initSql;
 
     @Before
     public void setUp() throws SQLException
@@ -73,7 +78,8 @@ public class DatabaseEventProcessorIntegrationTest
                 .build();
         final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
         dataSource = DataSourceFactory.buildDataSource(jdbcUrl);
-        processor = new DatabaseEventProcessor(dataSource, printer, loadDbProperties(jdbcUrl)).init();
+        processor = new DatabaseEventProcessor(dataSource, printer);
+        Optional.ofNullable(initSql).ifPresent(uri -> DatabaseEventProcessor.init(dataSource, uri));
         dataSource.getConnection().createStatement().execute("DELETE FROM event"); // persists between runs
     }
 
@@ -96,7 +102,13 @@ public class DatabaseEventProcessorIntegrationTest
 
         try (final Connection connection = dataSource.getConnection())
         {
-            try (final PreparedStatement select = connection.prepareStatement("SELECT *, event ->> '$.bazelEvent.started.uuid' as started_uuid FROM event"))
+            final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
+            {
+                case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event";
+                case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event";
+                default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event";
+            };
+            try (final PreparedStatement select = connection.prepareStatement(sql))
             {
                 try (final ResultSet resultSet = select.executeQuery())
                 {
@@ -159,7 +171,13 @@ public class DatabaseEventProcessorIntegrationTest
 
         try (final Connection connection = dataSource.getConnection())
         {
-            try (final PreparedStatement select = connection.prepareStatement("SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event WHERE build_id = ?"))
+            final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
+            {
+                case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event WHERE build_id = ?";
+                case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event WHERE build_id = ?";
+                default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event WHERE build_id = ?";
+            };
+            try (final PreparedStatement select = connection.prepareStatement(sql))
             {
                 select.setString(1, "c07753e2-5660-40ba-a3d0-8cd932a74fb8");
                 try (final ResultSet resultSet = select.executeQuery())
@@ -167,7 +185,7 @@ public class DatabaseEventProcessorIntegrationTest
                     while (resultSet.next())
                     {
                         assertThat(String.format("%3d.%s", resultSet.getRow(), "build_id"), resultSet.getString("build_id"), equalToIgnoringCase("c07753e2-5660-40ba-a3d0-8cd932a74fb8"));
-                        assertThat(String.format("%3d.%s", resultSet.getRow(), "invocation_id"), resultSet.getString("invocation_id"), either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(emptyString()));
+                        assertThat(String.format("%3d.%s", resultSet.getRow(), "invocation_id"), resultSet.getString("invocation_id"), either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(blankString()));
                         // TODO Why does this not work the same way? Hunch: it cannot type-safe match null.
                         // assertThat(String.format("%3d.%s", resultSet.getRow(), "started_uuid"), resultSet.getString("started_uuid"), either(nullValue(String.class)).or(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")));
                         assertThat(String.format("%3d.%s", resultSet.getRow(), "started_uuid"), resultSet.getString("started_uuid"), anyOf(emptyOrNullString(), equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")));

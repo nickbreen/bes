@@ -88,11 +88,24 @@ java_test(
 
 java_test(
     name = "integration-test",
-    size = "small",
+    size = "medium",
     srcs = glob(["src/integration-test/java/**/*.java"]),
+    data = glob(["src/integration-test/resources/**"]),
     resources = glob(["src/integration-test/resources/**"]),
-    tags = ["requires-network"],
+    tags = [
+        "no-sandbox",  # need to talk to docker socket
+    ],
     test_class = "nickbreen.bes.IntegrationTestSuite",
+    runtime_deps = [
+        artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.mysql:mysql-connector-j"),
+        artifact("org.mariadb.jdbc:mariadb-java-client"),
+        artifact("org.postgresql:postgresql"),
+        artifact("org.testcontainers:mariadb"),
+        artifact("org.testcontainers:mysql"),
+        artifact("org.testcontainers:postgresql"),
+        "@io_grpc_grpc_java//api",
+    ],
     deps = [
         ":domain",
         ":support",
@@ -100,10 +113,19 @@ java_test(
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
-        "@io_grpc_grpc_java//api",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
+        artifact("org.testcontainers:testcontainers"),
+    ] + [
+        # moving these to runtime_deps seems to upset grpc/protobuf somehow (and ends up with NoSuchMethod errors
         artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.mysql:mysql-connector-j"),
+        artifact("org.mariadb.jdbc:mariadb-java-client"),
+        artifact("org.postgresql:postgresql"),
+        artifact("org.testcontainers:mariadb"),
+        artifact("org.testcontainers:mysql"),
+        artifact("org.testcontainers:postgresql"),
+        "@io_grpc_grpc_java//api",
     ],
 )

@@ -5,42 +5,55 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
 
 import javax.sql.DataSource;
+import java.io.BufferedReader;
 import java.io.IOError;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class DatabaseEventProcessor extends BuildEventProcessor
 {
     private final DataSource dataSource;
     private final JsonFormat.Printer printer;
-    private final String create;
-    private final String insert;
 
-    public DatabaseEventProcessor(final DataSource dataSource, final JsonFormat.Printer printer, final Properties properties)
+    public DatabaseEventProcessor(final DataSource dataSource, final JsonFormat.Printer printer)
     {
         this.dataSource = dataSource;
         this.printer = printer;
-        this.create = properties.getProperty("sql.create");
-        this.insert = properties.getProperty("sql.insert");
     }
 
-    public DatabaseEventProcessor init()
+    public static void init(final DataSource dataSource, final String name)
     {
-        try (final Connection connection = dataSource.getConnection())
+        // TODO FlyWay?
+        try (final InputStream is = Objects.requireNonNull(DatabaseEventProcessor.class.getResourceAsStream(name)))
         {
-            try (final Statement statement = connection.createStatement())
+            try (final Reader reader = new InputStreamReader(is); final BufferedReader bufferedReader = new BufferedReader(reader))
             {
-                statement.execute(create);
+                final String sql = bufferedReader.lines().collect(Collectors.joining(System.lineSeparator()));
+                try (final Connection connection = dataSource.getConnection())
+                {
+                    try (final Statement statement = connection.createStatement())
+                    {
+                        statement.execute(sql);
+                    }
+                }
+                catch (SQLException e)
+                {
+                    throw new Error(e);
+                }
             }
         }
-        catch (SQLException e)
+        catch (IOException e)
         {
-            throw new Error(e);
+            throw new IOError(e);
         }
-        return this;
     }
 
     @Override
@@ -48,14 +61,24 @@ public class DatabaseEventProcessor extends BuildEventProcessor
     {
         try (final Connection connection = dataSource.getConnection())
         {
-            try (final PreparedStatement insert = connection.prepareStatement(this.insert))
+            try
             {
-                insert.setString(1, orderedBuildEvent.getStreamId().getBuildId());
-                insert.setInt(2, orderedBuildEvent.getStreamId().getComponentValue());
-                insert.setString(3, orderedBuildEvent.getStreamId().getInvocationId());
-                insert.setLong(4, orderedBuildEvent.getSequenceNumber());
-                insert.setString(5, printer.print(orderedBuildEvent.getEvent()));
-                insert.execute();
+                final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
+                {
+                    case "h2" -> "INSERT INTO event VALUES (?,?,?,?,? FORMAT JSON)";
+                    case "sqlite" -> "INSERT INTO event VALUES (?,?,?,?,JSONB(?)) ON CONFLICT DO NOTHING";
+                    case "postgresql" -> "INSERT INTO event VALUES (?,?,?,?,CAST(? AS JSONB)) ON CONFLICT DO NOTHING";
+                    default -> "INSERT IGNORE INTO event VALUES (?,?,?,?,?)";
+                };
+                try (final PreparedStatement insert = connection.prepareStatement(sql))
+                {
+                    insert.setString(1, orderedBuildEvent.getStreamId().getBuildId());
+                    insert.setInt(2, orderedBuildEvent.getStreamId().getComponentValue());
+                    insert.setString(3, orderedBuildEvent.getStreamId().getInvocationId());
+                    insert.setLong(4, orderedBuildEvent.getSequenceNumber());
+                    insert.setString(5, printer.print(orderedBuildEvent.getEvent()));
+                    insert.execute();
+                }
             }
             catch (InvalidProtocolBufferException e)
             {
