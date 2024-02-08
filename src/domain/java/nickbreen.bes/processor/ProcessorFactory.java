@@ -5,7 +5,7 @@ import com.google.devtools.build.v1.BuildEventProto;
 import com.google.protobuf.Message;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
-import nickbreen.bes.DataSourceFactory;
+import nickbreen.bes.data.EventDAO;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -14,8 +14,7 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.util.function.Consumer;
 
-import static nickbreen.bes.DataSourceFactory.buildDataSource;
-import static nickbreen.bes.DataSourceFactory.loadDbProperties;
+import static nickbreen.bes.data.DataSourceFactory.buildDataSource;
 import static nickbreen.bes.sink.SinkFactory.createSink;
 
 public interface ProcessorFactory
@@ -32,7 +31,7 @@ public interface ProcessorFactory
             case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(new PrintWriter(createSink(sinkUri))));
             case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildPrinter(), new PrintWriter(createSink(sinkUri))));
             case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(createSink(sinkUri)));
-            case "jdbc" -> new DatabaseEventProcessor(buildDataSource(uri), buildPrinter());
+            case "jdbc" -> new DatabaseEventProcessor(new EventDAO(buildDataSource(uri)), buildPrinter());
             default -> throw new Error("Unknown scheme " + uri);
         };
     }

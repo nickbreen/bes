@@ -8,7 +8,10 @@ import com.google.devtools.build.v1.StreamId;
 import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
-import nickbreen.bes.DataSourceFactory;
+import nickbreen.bes.data.DataSourceFactory;
+import nickbreen.bes.data.EventDAO;
+import nickbreen.bes.data.IntegrationTestDAO;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +22,7 @@ import org.junit.runners.Parameterized.Parameters;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.net.URI;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,8 +37,8 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.emptyOrNullString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
 
 @RunWith(Parameterized.class)
 public class DatabaseEventProcessorIntegrationTest
@@ -46,42 +46,56 @@ public class DatabaseEventProcessorIntegrationTest
     private static final String BUILD_ID = UUID.randomUUID().toString();
     private static final String INVOCATION_ID = UUID.randomUUID().toString();
     public static final long SEQUENCE_NUMBER = 1L;
-    private DataSource dataSource;
     private DatabaseEventProcessor processor;
+    private IntegrationTestDAO dao;
+
+    public record TestParameter(URI jdbcUrl, Optional<String> initSql)
+    {
+        @Override
+        public String toString()
+        {
+            return jdbcUrl.toString().split("\\?")[0];
+        }
+    }
 
     @Parameters(name = "{0}")
-    public static Object[][] parameters()
+    public static TestParameter[] parameters()
     {
-        return new Object[][]{
-                new Object[]{URI.create("jdbc:tc:mysql:///bes?TC_INITSCRIPT=init.sql"), null},
-                new Object[]{URI.create("jdbc:tc:mariadb:///bes?TC_INITSCRIPT=init.sql"), null},
-                new Object[]{URI.create("jdbc:tc:postgresql:///bes?TC_INITSCRIPT=init.postgresql.sql"), null},
-                new Object[]{URI.create("jdbc:sqlite:memory:"), "/init.sqlite.sql"},
+        return new TestParameter[]{
+                new TestParameter(URI.create("jdbc:tc:mysql:///bes?TC_INITSCRIPT=init.sql"), Optional.empty()),
+                new TestParameter(URI.create("jdbc:tc:mariadb:///bes?TC_INITSCRIPT=init.sql"), Optional.empty()),
+                new TestParameter(URI.create("jdbc:tc:postgresql:///bes?TC_INITSCRIPT=init.postgresql.sql"), Optional.empty()),
+                new TestParameter(URI.create("jdbc:sqlite:memory:"), Optional.of("/init.sqlite.sql")),
                 // URI.create("jdbc:h2:mem:"),
         };
     }
 
     @Parameter
-    public URI jdbcUrl;
-    @Parameter(1)
-    public String initSql;
+    public TestParameter testParameter;
 
     @Before
-    public void setUp() throws SQLException
+    public void setUp()
     {
         final TypeRegistry typeRegistry = newBuilder()
                 .add(BuildEventProto.getDescriptor().getMessageTypes())
                 .add(BuildEventStreamProtos.getDescriptor().getMessageTypes())
                 .build();
         final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
-        dataSource = DataSourceFactory.buildDataSource(jdbcUrl);
-        processor = new DatabaseEventProcessor(dataSource, printer);
-        Optional.ofNullable(initSql).ifPresent(uri -> DatabaseEventProcessor.init(dataSource, uri));
-        dataSource.getConnection().createStatement().execute("DELETE FROM event"); // persists between runs
+        DataSource dataSource = DataSourceFactory.buildDataSource(testParameter.jdbcUrl());
+        dao = new IntegrationTestDAO(dataSource);
+        processor = new DatabaseEventProcessor(new EventDAO(dataSource), printer);
+        testParameter.initSql().ifPresent(dao::init);
+    }
+
+    @After
+    public void tearDown()
+    {
+        dao.clear(); // persists between runs
+        // TODO run test in transaction?
     }
 
     @Test
-    public void shouldEncodeAsJsonAndInsertIntoTable() throws SQLException
+    public void shouldEncodeAsJsonAndInsertIntoTable()
     {
         final OrderedBuildEvent event = OrderedBuildEvent.newBuilder()
                 .setSequenceNumber(SEQUENCE_NUMBER)
@@ -97,33 +111,17 @@ public class DatabaseEventProcessorIntegrationTest
                 .build();
         processor.accept(event);
 
-        try (final Connection connection = dataSource.getConnection())
-        {
-            final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
-            {
-                case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event";
-                case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event";
-                default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event";
-            };
-            try (final PreparedStatement select = connection.prepareStatement(sql))
-            {
-                try (final ResultSet resultSet = select.executeQuery())
-                {
-                    while (resultSet.next())
-                    {
-                        assertThat(resultSet.getString("build_id"), equalTo(BUILD_ID));
-                        assertThat(resultSet.getInt("component"), equalTo(StreamId.BuildComponent.CONTROLLER.getNumber()));
-                        assertThat(resultSet.getString("invocation_id"), equalTo(INVOCATION_ID));
-                        assertThat(resultSet.getLong("sequence"), equalTo(SEQUENCE_NUMBER));
-                        assertThat(resultSet.getString("started_uuid"), equalTo(INVOCATION_ID));
-                    }
-                }
-            }
-        }
+        dao.allEvents(actualEvent -> {
+            assertThat(actualEvent.sequence(), equalTo(SEQUENCE_NUMBER));
+            assertThat(actualEvent.buildId(), equalTo(BUILD_ID));
+            assertThat(actualEvent.component(), equalTo(StreamId.BuildComponent.CONTROLLER.getNumber()));
+            assertThat(actualEvent.invocationId(), equalTo(INVOCATION_ID));
+            assertThat(actualEvent.bazelEventStartedUuid(), equalTo(INVOCATION_ID));
+        });
     }
 
     @Test
-    public void willNotInsertDuplicates() throws SQLException
+    public void willNotInsertDuplicates()
     {
         final OrderedBuildEvent event = OrderedBuildEvent.newBuilder()
                 .setSequenceNumber(SEQUENCE_NUMBER)
@@ -134,62 +132,40 @@ public class DatabaseEventProcessorIntegrationTest
                 .setEvent(BuildEvent.newBuilder()
                         .setBazelEvent(Any.pack(BuildEventStreamProtos.BuildEvent.newBuilder()
                                 .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder().setUuid(INVOCATION_ID))
-                                .build()))
-                        .build())
+                                .build())))
                 .build();
         processor.accept(event);
         processor.accept(event);
 
-        try (final Connection connection = dataSource.getConnection())
-        {
-            try (final PreparedStatement select = connection.prepareStatement("SELECT build_id, COUNT(1) FROM event GROUP BY build_id"))
-            {
-                try (final ResultSet resultSet = select.executeQuery())
-                {
-                    int i = 0;
-                    while (resultSet.next())
-                    {
-                        assertThat("a row for UUID", resultSet.getString(1), equalTo(BUILD_ID));
-                        assertThat("exactly one row counted", resultSet.getInt(2), equalTo(1));
-                        i++;
-                    }
-                    assertThat(i, equalTo(1));
-                }
-            }
-        }
+        final List<IntegrationTestDAO.Event> events = new ArrayList<>();
+        dao.allEvents(events::add);
+        assertThat(events, hasSize(1));
+        dao.allEvents(actualEvent -> {
+            assertThat(actualEvent.sequence(), equalTo(SEQUENCE_NUMBER));
+            assertThat(actualEvent.buildId(), equalTo(BUILD_ID));
+            assertThat(actualEvent.component(), equalTo(StreamId.BuildComponent.CONTROLLER.getNumber()));
+            assertThat(actualEvent.invocationId(), equalTo(INVOCATION_ID));
+            assertThat(actualEvent.bazelEventStartedUuid(), equalTo(INVOCATION_ID));
+        });
     }
 
     @Test
-    public void shouldIngestEntireJournal() throws IOException, SQLException
+    public void shouldIngestEntireJournal() throws IOException
     {
-        final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, DatabaseEventProcessorIntegrationTest.class::getResourceAsStream, "/jnl.bin");
-        assertThat(events, not(empty()));
-        events.forEach(processor::accept);
+        final List<OrderedBuildEvent> sourceEvents = loadBinary(OrderedBuildEvent::parseDelimitedFrom, DatabaseEventProcessorIntegrationTest.class::getResourceAsStream, "/jnl.bin");
+        assertThat(sourceEvents, not(empty()));
+        sourceEvents.forEach(processor::accept);
 
-        try (final Connection connection = dataSource.getConnection())
-        {
-            final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
-            {
-                case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event WHERE build_id = ?";
-                case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event WHERE build_id = ?";
-                default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event WHERE build_id = ?";
-            };
-            try (final PreparedStatement select = connection.prepareStatement(sql))
-            {
-                select.setString(1, "c07753e2-5660-40ba-a3d0-8cd932a74fb8");
-                try (final ResultSet resultSet = select.executeQuery())
-                {
-                    while (resultSet.next())
-                    {
-                        assertThat(String.format("%3d.%s", resultSet.getRow(), "build_id"), resultSet.getString("build_id"), equalToIgnoringCase("c07753e2-5660-40ba-a3d0-8cd932a74fb8"));
-                        assertThat(String.format("%3d.%s", resultSet.getRow(), "invocation_id"), resultSet.getString("invocation_id"), either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(blankString()));
-                        // TODO Why does this not work the same way? Hunch: it cannot type-safe match null.
-                        // assertThat(String.format("%3d.%s", resultSet.getRow(), "started_uuid"), resultSet.getString("started_uuid"), either(nullValue(String.class)).or(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")));
-                        assertThat(String.format("%3d.%s", resultSet.getRow(), "started_uuid"), resultSet.getString("started_uuid"), anyOf(emptyOrNullString(), equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")));
-                        assertThat(String.format("%3d.%s", resultSet.getRow(), "started_uuid"), resultSet.getString("started_uuid"), resultSet.wasNull() ? nullValue(String.class) : equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa"));
-                    }
-                }
-            }
-        }
+        final List<IntegrationTestDAO.Event> actualEvents = new ArrayList<>();
+        dao.allEvents(actualEvents::add);
+        assertThat(actualEvents, hasSize(sourceEvents.size()));
+        dao.allEvents(actualEvent -> {
+            // There are two builds in the journal... check for either of them
+            assertThat(actualEvent.buildId(), either(equalToIgnoringCase("c07753e2-5660-40ba-a3d0-8cd932a74fb8")).or(equalToIgnoringCase("4d16d0f2-6337-4a12-9129-52097ea30e63")));
+            assertThat(actualEvent.invocationId(), either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(equalToIgnoringCase("584d2774-aab7-4ce9-8a9a-32ac493b0f6e")).or(blankString()));
+            // This looks like it should work, but it won't as the null fails early somewhere
+            // assertThat(actualEvent.bazelEventStartedUuid(), either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(equalToIgnoringCase("584d2774-aab7-4ce9-8a9a-32ac493b0f6e")).or(emptyOrNullString()));
+            assertThat(actualEvent.bazelEventStartedUuid(), anyOf(either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(equalToIgnoringCase("584d2774-aab7-4ce9-8a9a-32ac493b0f6e")), emptyOrNullString()));
+        });
     }
 }
