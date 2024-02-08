@@ -14,7 +14,9 @@ jobs:
     steps:
       - name: Bazel RC
         run: |
-          echo "build --config=ci --disk_cache=${{runner.temp}}/bazel.disk --remote_download_outputs=all" > ~/.bazelrc
+          exec > ~/.bazelrc
+          echo "common --disk_cache=${{runner.temp}}/bazel.disk --remote_download_outputs=all"
+          echo "test --test_output=all"
       - uses: actions/cache@v4
         with:
           path: ${{runner.temp}}/bazel.disk
