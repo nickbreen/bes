@@ -1,4 +1,4 @@
-package nickbreen.bes.sink;
+package nickbreen.bes;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -2,6 +2,7 @@ package nickbreen.bes.processor;
 
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
+import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.Message;
 
@@ -17,7 +18,13 @@ public class BazelBuildEventProcessor extends BuildEventSinkProcessor
         super(sink);
     }
 
-    public void accept(final BuildEvent buildEvent)
+    @Override
+    protected void accept(final OrderedBuildEvent orderedBuildEvent)
+    {
+        testAndConsume(orderedBuildEvent::hasEvent, orderedBuildEvent::getEvent, this::accept);
+    }
+
+    private void accept(final BuildEvent buildEvent)
     {
         testAndConsume(buildEvent::hasInvocationAttemptStarted, buildEvent::getInvocationAttemptStarted, sink);
         testAndConsume(buildEvent::hasInvocationAttemptFinished, buildEvent::getInvocationAttemptFinished, sink);
@@ -58,7 +65,7 @@ public class BazelBuildEventProcessor extends BuildEventSinkProcessor
         testAndConsume(buildEvent::hasOptionsParsed, buildEvent::getOptionsParsed, sink);
         testAndConsume(buildEvent::hasProgress, buildEvent::getProgress, sink);
         testAndConsume(buildEvent::hasStarted, buildEvent::getStarted, sink);
-//        demux(buildEvent::hasStructuredCommandLine, buildEvent::getStructuredCommandLine, consumer);
+        // testAndConsume(buildEvent::hasStructuredCommandLine, buildEvent::getStructuredCommandLine, sink); // requires some runtime.proto
         testAndConsume(buildEvent::hasTargetSummary, buildEvent::getTargetSummary, sink);
         testAndConsume(buildEvent::hasTestResult, buildEvent::getTestResult, sink);
         testAndConsume(buildEvent::hasTestSummary, buildEvent::getTestResult, sink);

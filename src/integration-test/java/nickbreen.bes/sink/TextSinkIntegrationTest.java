@@ -3,18 +3,19 @@ package nickbreen.bes.sink;
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
-import nickbreen.bes.sink.TextSink;
+import com.google.protobuf.TextFormat;
+import com.google.protobuf.TypeRegistry;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static com.google.protobuf.TypeRegistry.newBuilder;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -26,22 +27,20 @@ public class TextSinkIntegrationTest
                     .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder().setUuid(UUID))
                     .build()))
             .build();
-    private static final String EXPECTED_TEXT = "bazel_event {\n" +
-            "  type_url: \"type.googleapis.com/build_event_stream.BuildEvent\"\n" +
-            "  value: \"*&\\n" +
-            "$cbf29d13-9dd2-41bd-92dc-06ab2d704990\"\n" +
-            "}\n";
+    private static final String EXPECTED_TEXT = "bazel_event {\n  [type.googleapis.com/build_event_stream.BuildEvent] {\n    started {\n      uuid: \"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"\n    }\n  }\n}\n";
+
+    private final TypeRegistry typeRegistry = newBuilder().add(BuildEventStreamProtos.getDescriptor().getMessageTypes()).build();
+    private final TextFormat.Printer printer = TextFormat.printer().usingTypeRegistry(typeRegistry);
 
     @Test
-    public void shouldEncodeAsText() throws IOException
+    public void shouldEncodeAsText()
     {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        final Writer writer = new OutputStreamWriter(out);
-        new TextSink(writer).accept(EVENT);
+        final PrintWriter writer = new PrintWriter(out);
+        new TextWriter(printer, writer).accept(EVENT);
         writer.flush();
 
         final String actualText = out.toString();
-        assertThat("to strings are equivalent", actualText, equalTo(EVENT.toString()));
         assertThat("literal to string exact", actualText, equalTo(EXPECTED_TEXT));
     }
 
@@ -51,9 +50,9 @@ public class TextSinkIntegrationTest
         final Path tmpPath = Files.createTempFile("bes", ".txt");
         final File tmpFile = tmpPath.toFile();
         tmpFile.deleteOnExit();
-        final Writer writer = new OutputStreamWriter(new FileOutputStream(tmpFile));
+        final PrintWriter writer = new PrintWriter(new FileOutputStream(tmpFile));
 
-        new TextSink(writer).accept(EVENT);
+        new TextWriter(printer, writer).accept(EVENT);
         writer.flush();
 
         final String actualText = Files.readString(tmpPath);

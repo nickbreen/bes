@@ -5,17 +5,18 @@ import com.google.protobuf.util.JsonFormat;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.function.Consumer;
 
-public class JsonSink implements Consumer<Message>
+public class JsonlWriter implements Consumer<Message>
 {
     private final JsonFormat.Printer printer;
-    private final Appendable writer;
+    private final PrintWriter sink;
 
-    public JsonSink(final JsonFormat.Printer printer, final Appendable writer)
+    public JsonlWriter(final JsonFormat.Printer printer, final PrintWriter sink)
     {
         this.printer = printer;
-        this.writer = writer;
+        this.sink = sink;
     }
 
     @Override
@@ -23,7 +24,8 @@ public class JsonSink implements Consumer<Message>
     {
         try
         {
-            printer.appendTo(message, writer);
+            printer.appendTo(message, sink);
+            sink.println();
         }
         catch (IOException e)
         {

@@ -8,7 +8,7 @@ import com.google.devtools.build.v1.StreamId;
 import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
-import nickbreen.bes.data.DataSourceFactory;
+import nickbreen.bes.DataSourceFactory;
 import nickbreen.bes.data.EventDAO;
 import nickbreen.bes.data.IntegrationTestDAO;
 import org.junit.After;

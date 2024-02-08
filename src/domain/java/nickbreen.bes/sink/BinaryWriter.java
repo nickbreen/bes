@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.function.Consumer;
 
-class BinarySink implements Consumer<Message>
+public class BinaryWriter implements Consumer<Message>
 {
-    private final OutputStream out;
+    private final OutputStream sink;
 
-    public BinarySink(final OutputStream out)
+    public BinaryWriter(final OutputStream sink)
     {
-        this.out = out;
+        this.sink = sink;
     }
 
     @Override
@@ -21,7 +21,7 @@ class BinarySink implements Consumer<Message>
     {
         try
         {
-            message.writeDelimitedTo(out);
+            message.writeDelimitedTo(sink);
         }
         catch (IOException e)
         {

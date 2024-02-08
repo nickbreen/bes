@@ -5,15 +5,13 @@ import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
-import nickbreen.bes.sink.JsonSink;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -29,17 +27,17 @@ public class JsonSinkIntegrationTest
                     .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder().setUuid(UUID))
                     .build()))
             .build();
-    private static final String EXPECTED_JSON = "{\"bazelEvent\":{\"@type\":\"type.googleapis.com/build_event_stream.BuildEvent\",\"started\":{\"uuid\":\"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"}}}";
+    private static final String EXPECTED_JSON = "{\"bazelEvent\":{\"@type\":\"type.googleapis.com/build_event_stream.BuildEvent\",\"started\":{\"uuid\":\"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"}}}\n";
 
     private final TypeRegistry typeRegistry = newBuilder().add(BuildEventStreamProtos.getDescriptor().getMessageTypes()).build();
     private final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
 
     @Test
-    public void shouldEncodeAsJson() throws IOException
+    public void shouldEncodeAsJson()
     {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        final Writer writer = new OutputStreamWriter(out);
-        new JsonSink(printer, writer).accept(EVENT);
+        final PrintWriter writer = new PrintWriter(out);
+        new JsonlWriter(printer, writer).accept(EVENT);
         writer.flush();
 
         final String actualJson = out.toString();
@@ -52,9 +50,9 @@ public class JsonSinkIntegrationTest
         final Path tmpPath = Files.createTempFile("bes", ".json");
         final File tmpFile = tmpPath.toFile();
         tmpFile.deleteOnExit();
-        final Writer writer = new OutputStreamWriter(new FileOutputStream(tmpFile));
+        final PrintWriter writer = new PrintWriter(new FileOutputStream(tmpFile));
 
-        new JsonSink(printer, writer).accept(EVENT);
+        new JsonlWriter(printer, writer).accept(EVENT);
         writer.flush();
 
         final String actualJson = Files.readString(tmpPath);

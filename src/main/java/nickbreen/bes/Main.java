@@ -1,7 +1,6 @@
 package nickbreen.bes;
 
 import io.grpc.ServerBuilder;
-import nickbreen.bes.processor.ProcessorFactory;
 
 import java.io.IOException;
 import java.net.URI;

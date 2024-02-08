@@ -3,7 +3,6 @@ package nickbreen.bes.sink;
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.protobuf.Any;
-import nickbreen.bes.sink.BinarySink;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -44,7 +43,7 @@ public class BinarySinkIntegrationTest
     public void shouldEncodeAsDelimitedBinary() throws IOException
     {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        new BinarySink(out).accept(EVENT);
+        new BinaryWriter(out).accept(EVENT);
         out.flush();
 
         final byte[] delimitedBytes = out.toByteArray();
@@ -63,7 +62,7 @@ public class BinarySinkIntegrationTest
         tmpFile.deleteOnExit();
 
         final OutputStream out = new FileOutputStream(tmpFile);
-        new BinarySink(out).accept(EVENT);
+        new BinaryWriter(out).accept(EVENT);
         out.flush();
 
         final byte[] delimitedBytes = Files.readAllBytes(tmpPath);
