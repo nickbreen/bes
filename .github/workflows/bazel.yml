@@ -18,7 +18,9 @@ jobs:
           echo "build --disk_cache=${{runner.temp}}/bazel.disk" >> ~/.bazelrc
       - uses: actions/cache@v4
         with:
-          path: ${{runner.temp}}/bazel.disk
+          path: |
+            ${{runner.temp}}/bazel.disk
+            ~/.cache/bazel
           key: bazel
       - uses: actions/checkout@v4
       - name: Bazel Test
