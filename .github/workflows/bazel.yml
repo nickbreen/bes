@@ -17,13 +17,13 @@ jobs:
           exec > ~/.bazelrc
           echo "common --disk_cache=${{runner.temp}}/bazel.disk --remote_download_outputs=all"
           echo "test --test_output=all"
+      - uses: actions/checkout@v4
       - uses: actions/cache@v4
         with:
           path: ${{runner.temp}}/bazel.disk
           key: bazel-${{ hashFiles('.bazelignore', '.bazelversion', '.bazelrc', 'WORKSPACE.bazel') }}
           restore-keys: |
             bazel-
-      - uses: actions/checkout@v4
       - name: Bazel Test
         run: bazel test ...
       - uses: actions/upload-artifact@v4
