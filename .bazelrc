@@ -1,6 +1,7 @@
 common --noenable_bzlmod
 test:ci --test_output=all
 build:ci --build_metadata=ROLE=CI
+build:ci --announce_rc
 
 build:bes --build_event_binary_file=src/test/resources/bes.bin
 build:bes --build_event_json_file=src/test/resources/bes.jsonl
