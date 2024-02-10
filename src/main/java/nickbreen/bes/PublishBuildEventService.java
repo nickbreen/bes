@@ -12,7 +12,7 @@ import nickbreen.bes.processor.PublishEventProcessor;
 
 import java.util.Collection;
 
-class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventImplBase
+public class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventImplBase
 {
     private final Collection<PublishEventProcessor> buildEventProcessors;
 
@@ -25,7 +25,7 @@ class PublishBuildEventService extends PublishBuildEventGrpc.PublishBuildEventIm
     public void publishLifecycleEvent(final PublishLifecycleEventRequest request, final StreamObserver<Empty> responseObserver)
     {
         buildEventProcessors.forEach(p -> p.accept(request));
-        responseObserver.onNext(Empty.newBuilder().getDefaultInstanceForType());
+        responseObserver.onNext(Empty.getDefaultInstance());
         responseObserver.onCompleted();
     }
 

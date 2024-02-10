@@ -28,11 +28,11 @@ public interface ProcessorFactory
         final URI sinkUri = URI.create(uri.getSchemeSpecificPart());
         return switch (uri.getScheme())
         {
-            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(new TextWriter(buildTextPrinter(), new PrintWriter(createSink(sinkUri))));
-            case "bazel+json" -> new BazelBuildEventProcessor(new JsonlWriter(buildJsonPrinter(), new PrintWriter(createSink(sinkUri))));
+            case "bazel+text", "bazel" -> new BazelBuildEventProcessor(new TextWriter(buildTextPrinter(), new PrintWriter(createSink(sinkUri), true)));
+            case "bazel+json" -> new BazelBuildEventProcessor(new JsonlWriter(buildJsonPrinter(), new PrintWriter(createSink(sinkUri), true)));
             case "bazel+binary" -> new BazelBuildEventProcessor(new BinaryWriter(createSink(sinkUri)));
-            case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(buildTextPrinter(), new PrintWriter(createSink(sinkUri))));
-            case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildJsonPrinter(), new PrintWriter(createSink(sinkUri))));
+            case "journal+text" -> new BuildEventSinkProcessor(new TextWriter(buildTextPrinter(), new PrintWriter(createSink(sinkUri), true)));
+            case "journal+json" -> new BuildEventSinkProcessor(new JsonlWriter(buildJsonPrinter(), new PrintWriter(createSink(sinkUri), true)));
             case "journal+binary", "journal" -> new BuildEventSinkProcessor(new BinaryWriter(createSink(sinkUri)));
             case "jdbc" -> new DatabaseEventProcessor(new EventDAO(buildDataSource(uri)), buildJsonPrinter());
             default -> throw new Error("Unknown scheme " + uri);

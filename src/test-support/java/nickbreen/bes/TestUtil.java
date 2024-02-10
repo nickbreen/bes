@@ -13,17 +13,12 @@ import java.util.function.Function;
 
 public interface TestUtil
 {
-    static <T> List<T> loadBinary(final ParseDelimitedFrom<T> parseDelimitedFrom, final Function<String, InputStream> loader, final String name) throws IOException
+    static <T> List<T> loadBinary(final Util.ParseDelimitedFrom<T> parseDelimitedFrom, final Function<String, InputStream> loader, final String name) throws IOException
     {
-        final List<T> events = new ArrayList<>();
         try (final InputStream bes = loader.apply(name))
         {
-            for (T message = parseDelimitedFrom.parseDelimitedFrom(bes); null != message; message = parseDelimitedFrom.parseDelimitedFrom(bes))
-            {
-                events.add(message);
-            }
+            return Util.parseBinary(parseDelimitedFrom, bes).toList();
         }
-        return events;
     }
 
     static List<BuildEventStreamProtos.BuildEvent> loadJsonl(final BuildEventStreamProtos.BuildEvent.Builder builder, final Function<String, InputStream> loader, final String name) throws IOException
@@ -41,9 +36,4 @@ public interface TestUtil
         return events;
     }
 
-    @FunctionalInterface
-    interface ParseDelimitedFrom<T>
-    {
-        T parseDelimitedFrom(InputStream is) throws IOException;
-    }
 }

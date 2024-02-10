@@ -25,6 +25,7 @@ public class TextWriter implements Consumer<Message>
         try
         {
             printer.print(message, sink);
+            sink.println();
         }
         catch (IOException e)
         {
