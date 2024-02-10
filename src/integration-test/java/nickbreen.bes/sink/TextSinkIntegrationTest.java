@@ -27,7 +27,7 @@ public class TextSinkIntegrationTest
                     .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder().setUuid(UUID))
                     .build()))
             .build();
-    private static final String EXPECTED_TEXT = "bazel_event {\n  [type.googleapis.com/build_event_stream.BuildEvent] {\n    started {\n      uuid: \"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"\n    }\n  }\n}\n";
+    private static final String EXPECTED_TEXT = "bazel_event {\n  [type.googleapis.com/build_event_stream.BuildEvent] {\n    started {\n      uuid: \"cbf29d13-9dd2-41bd-92dc-06ab2d704990\"\n    }\n  }\n}\n\n";
 
     private final TypeRegistry typeRegistry = newBuilder().add(BuildEventStreamProtos.getDescriptor().getMessageTypes()).build();
     private final TextFormat.Printer printer = TextFormat.printer().usingTypeRegistry(typeRegistry);
