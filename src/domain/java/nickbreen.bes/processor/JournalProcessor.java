@@ -5,13 +5,11 @@ import com.google.protobuf.Message;
 
 import java.util.function.Consumer;
 
-import static nickbreen.bes.Util.testAndConsume;
-
-public class BuildEventSinkProcessor extends BuildEventProcessor
+public class JournalProcessor extends BuildEventProcessor
 {
     protected final Consumer<Message> sink;
 
-    public BuildEventSinkProcessor(final Consumer<Message> sink)
+    public JournalProcessor(final Consumer<Message> sink)
     {
         this.sink = sink;
     }

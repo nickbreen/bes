@@ -1,4 +1,4 @@
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
 http_archive(
     name = "rules_jvm_external",
@@ -41,22 +41,23 @@ load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_ARTIFACTS", "IO
 maven_install(
     artifacts = [
         "com.google.protobuf:protobuf-java-util:4.26.0-RC1",
+        "com.mchange:c3p0:0.9.5.5",
+        "com.mysql:mysql-connector-j:8.3.0",
         "javax.json:javax.json-api:1.1",
-        "junit:junit:4.13",
+        "junit:junit:4.12",
         "org.glassfish:javax.json:1.1",
         "org.hamcrest:hamcrest:2.2",
-        "com.mchange:c3p0:0.9.5.5",
-        # "com.h2database:h2:2.2.224",  # unused
-        "org.xerial:sqlite-jdbc:3.45.1.0",
-        "com.mysql:mysql-connector-j:8.3.0",
+        "org.jcommander:jcommander:1.83",
         "org.mariadb.jdbc:mariadb-java-client:3.3.2",
         "org.postgresql:postgresql:42.7.1",
-        # "redis.clients:jedis:5.1.0",
-        # "org.mockito:mockito-core:5.10.0",
-        "org.testcontainers:testcontainers:1.19.4",
         "org.testcontainers:mariadb:1.19.4",
         "org.testcontainers:mysql:1.19.4",
         "org.testcontainers:postgresql:1.19.4",
+        "org.testcontainers:testcontainers:1.19.4",
+        "org.xerial:sqlite-jdbc:3.45.1.0",
+        # "com.h2database:h2:2.2.224",  # unused
+        # "org.mockito:mockito-core:5.10.0",
+        # "redis.clients:jedis:5.1.0",
     ] + IO_GRPC_GRPC_JAVA_ARTIFACTS,
     generate_compat_repositories = True,
     override_targets = IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS,

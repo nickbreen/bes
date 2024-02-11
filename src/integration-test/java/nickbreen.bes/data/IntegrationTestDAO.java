@@ -1,7 +1,5 @@
 package nickbreen.bes.data;
 
-import nickbreen.bes.processor.DatabaseEventProcessor;
-
 import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.IOError;

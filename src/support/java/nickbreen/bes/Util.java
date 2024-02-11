@@ -1,17 +1,23 @@
 package nickbreen.bes;
 
+import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
+import com.google.devtools.build.v1.BuildEventProto;
+import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.TextFormat;
+import com.google.protobuf.TypeRegistry;
+import com.google.protobuf.util.JsonFormat;
 
+import java.io.BufferedReader;
+import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStreamReader;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -66,9 +72,55 @@ public interface Util
         return events.build();
     }
 
+    static JsonFormat.Printer buildJsonPrinter()
+    {
+        return JsonFormat.printer().usingTypeRegistry(buildTypeRegistry()).omittingInsignificantWhitespace();
+    }
+
+    static JsonFormat.Parser buildJsonParser()
+    {
+        return JsonFormat.parser().usingTypeRegistry(buildTypeRegistry());
+    }
+
+    static TextFormat.Printer buildTextPrinter()
+    {
+        return TextFormat.printer().usingTypeRegistry(buildTypeRegistry());
+    }
+
+    static TypeRegistry buildTypeRegistry()
+    {
+        return TypeRegistry.newBuilder()
+                .add(BuildEventProto.getDescriptor().getMessageTypes())
+                .add(BuildEventStreamProtos.getDescriptor().getMessageTypes())
+                .build();
+    }
+
     @FunctionalInterface
     interface ParseDelimitedFrom<T>
     {
         T parseDelimitedFrom(InputStream is) throws IOException;
+    }
+
+    static Stream<OrderedBuildEvent> parseDelimitedJson(final OrderedBuildEvent.Builder builder, final InputStream bes)
+    {
+        final JsonFormat.Parser parser = Util.buildJsonParser();
+        try (final BufferedReader r = new BufferedReader(new InputStreamReader(bes)))
+        {
+            return r.lines().map(json -> {
+                try
+                {
+                    parser.merge(json, builder.clear());
+                }
+                catch (InvalidProtocolBufferException e)
+                {
+                    throw new Error(e);
+                }
+                return builder.build();
+            });
+        }
+        catch (IOException e)
+        {
+            throw new IOError(e);
+        }
     }
 }

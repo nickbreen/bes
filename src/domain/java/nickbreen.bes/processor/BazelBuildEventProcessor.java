@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 import static nickbreen.bes.Util.testAndConsume;
 import static nickbreen.bes.Util.unpackAndConsume;
 
-public class BazelBuildEventProcessor extends BuildEventSinkProcessor
+public class BazelBuildEventProcessor extends JournalProcessor
 {
     public BazelBuildEventProcessor(final Consumer<Message> sink)
     {

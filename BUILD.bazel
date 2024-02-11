@@ -29,6 +29,7 @@ java_library(
         "@io_grpc_grpc_java//api",
         "@io_grpc_grpc_java//stub",
         artifact("com.google.protobuf:protobuf-java-util"),
+        artifact("org.jcommander:jcommander"),
         artifact("com.mchange:c3p0"),
     ],
 )
@@ -51,7 +52,10 @@ java_library(
     srcs = glob(["src/support/java/**/*.java"]),
     resources = glob(["src/support/resources/**"]),
     deps = [
+        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
+        artifact("com.google.protobuf:protobuf-java-util"),
     ],
 )
 
@@ -80,7 +84,6 @@ java_test(
     ],
     deps = [
         ":domain",
-        ":support",
         ":test-support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
@@ -114,7 +117,6 @@ java_test(
     deps = [
         ":domain",
         ":main",
-        ":support",
         ":test-support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
@@ -133,7 +135,6 @@ java_test(
     deps = [
         ":domain",
         ":main",
-        ":support",
         ":test-support",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",

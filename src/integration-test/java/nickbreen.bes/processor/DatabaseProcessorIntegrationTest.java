@@ -41,12 +41,12 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(Parameterized.class)
-public class DatabaseEventProcessorIntegrationTest
+public class DatabaseProcessorIntegrationTest
 {
     private static final String BUILD_ID = UUID.randomUUID().toString();
     private static final String INVOCATION_ID = UUID.randomUUID().toString();
     public static final long SEQUENCE_NUMBER = 1L;
-    private DatabaseEventProcessor processor;
+    private DatabaseProcessor processor;
     private IntegrationTestDAO dao;
 
     public record TestParameter(URI jdbcUrl, Optional<String> initSql)
@@ -83,7 +83,7 @@ public class DatabaseEventProcessorIntegrationTest
         final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
         DataSource dataSource = DataSourceFactory.buildDataSource(testParameter.jdbcUrl());
         dao = new IntegrationTestDAO(dataSource);
-        processor = new DatabaseEventProcessor(new EventDAO(dataSource), printer);
+        processor = new DatabaseProcessor(new EventDAO(dataSource), printer);
         testParameter.initSql().ifPresent(dao::init);
     }
 
@@ -152,7 +152,7 @@ public class DatabaseEventProcessorIntegrationTest
     @Test
     public void shouldIngestEntireJournal() throws IOException
     {
-        final List<OrderedBuildEvent> sourceEvents = loadBinary(OrderedBuildEvent::parseDelimitedFrom, DatabaseEventProcessorIntegrationTest.class::getResourceAsStream, "/jnl.bin");
+        final List<OrderedBuildEvent> sourceEvents = loadBinary(OrderedBuildEvent::parseDelimitedFrom, DatabaseProcessorIntegrationTest.class::getResourceAsStream, "/jnl.bin");
         assertThat(sourceEvents, not(empty()));
         sourceEvents.forEach(processor::accept);
 

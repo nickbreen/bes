@@ -25,7 +25,7 @@ public interface SinkFactory
     {
         try
         {
-            return new FileOutputStream(new File(uri));
+            return new FileOutputStream(new File(uri), true);
         }
         catch (FileNotFoundException e)
         {

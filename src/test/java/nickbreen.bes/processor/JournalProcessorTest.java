@@ -17,14 +17,14 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 
-public class BuildEventSinkProcessorTest
+public class JournalProcessorTest
 {
     @Test
     public void shouldSendEverythingToSink() throws IOException
     {
         final List<OrderedBuildEvent> expected = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
         final List<Message> actual = new ArrayList<>();
-        final BuildEventProcessor processor = new BuildEventSinkProcessor(actual::add);
+        final BuildEventProcessor processor = new JournalProcessor(actual::add);
         expected.forEach(processor::accept);
 
         assertThat("same size", actual, hasSize(expected.size()));
@@ -35,7 +35,7 @@ public class BuildEventSinkProcessorTest
     public void shouldSendOneBuildEventWithABazelEventToSink()
     {
         final List<Message> actuals = new ArrayList<>();
-        final BuildEventProcessor processor = new BuildEventSinkProcessor(actuals::add);
+        final BuildEventProcessor processor = new JournalProcessor(actuals::add);
         processor.accept(OrderedBuildEvent.newBuilder().setEvent(BuildEvent.newBuilder().setBazelEvent(Any.newBuilder())).build());
         final OrderedBuildEvent expected = OrderedBuildEvent.newBuilder().setEvent(BuildEvent.newBuilder().setBazelEvent(Any.newBuilder()).build()).build();
 

@@ -9,7 +9,7 @@ Build and run the BES.
 ```shell
 bazel run bes \
       journal+binary:file:$PWD/src/test-support/resources/jnl.bin \
-      journal+json:file:$PWD/src/test-support/resources/jnl.json \
+      journal+json:file:$PWD/src/test-support/resources/jnl.jsonl \
       journal+text:file:$PWD/src/test-support/resources/jnl.text
 ```
 
