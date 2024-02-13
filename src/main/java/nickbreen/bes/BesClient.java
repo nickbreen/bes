@@ -85,7 +85,7 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
         return new BesClient(Grpc.newChannelBuilderForAddress(host, port, InsecureChannelCredentials.create()));
     }
 
-    static class Args
+    private static class Args
     {
         @Parameter(names = {"-p", "--port"}, description = "Destination TCP port, defaults to 8888")
         int port = 8888;

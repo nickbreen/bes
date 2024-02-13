@@ -6,6 +6,7 @@ import nickbreen.bes.processor.JournalProcessor;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -31,6 +32,27 @@ public class AcceptanceTest
         assertThat(sink, hasSize(events.size()));
         assertThat(sink.stream().map(OrderedBuildEvent.class::cast).toList(), equalTo(events));
 
+        serverThread.interrupt();
+    }
+
+    @Test
+    public void shouldProxyAndWriteEquivalentJournal() throws IOException
+    {
+        final List<Message> sink = new ArrayList<>();
+        final PublishBuildEventService service = new PublishBuildEventService(Collections.singleton(new JournalProcessor(sink::add)));
+        final Thread serverThread = new Thread(new BesServer(8888, service));
+        serverThread.start();
+
+        final Thread proxyThread = new Thread(new BesProxy(18888, URI.create("grpc://localhost:8888")));
+        proxyThread.start();
+
+        final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, AcceptanceTest.class::getResourceAsStream, "/jnl.bin");
+        BesClient.create("localhost", 18888).accept(events.stream());
+
+        assertThat(sink, hasSize(events.size()));
+        assertThat(sink.stream().map(OrderedBuildEvent.class::cast).toList(), equalTo(events));
+
+        proxyThread.interrupt();
         serverThread.interrupt();
     }
 }

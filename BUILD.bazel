@@ -8,7 +8,18 @@ java_binary(
 
 java_binary(
     name = "bec",
+    args = [
+        "-p",
+        "18888",
+    ],
     main_class = "nickbreen.bes.BesClient",
+    runtime_deps = [":main"],
+)
+
+java_binary(
+    name = "beproxy",
+    args = ["grpc://localhost:8888"],
+    main_class = "nickbreen.bes.BesProxy",
     runtime_deps = [":main"],
 )
 
