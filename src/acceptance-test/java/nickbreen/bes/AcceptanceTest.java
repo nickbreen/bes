@@ -40,10 +40,10 @@ public class AcceptanceTest
     {
         final List<Message> sink = new ArrayList<>();
         final PublishBuildEventService service = new PublishBuildEventService(Collections.singleton(new JournalProcessor(sink::add)));
-        final Thread serverThread = new Thread(new BesServer(8888, service));
+        final Thread serverThread = new Thread(new BesServer(28888, service));
         serverThread.start();
 
-        final Thread proxyThread = new Thread(new BesProxy(18888, URI.create("grpc://localhost:8888")));
+        final Thread proxyThread = new Thread(new BesProxy(18888, URI.create("grpc://localhost:28888")));
         proxyThread.start();
 
         final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, AcceptanceTest.class::getResourceAsStream, "/jnl.bin");
