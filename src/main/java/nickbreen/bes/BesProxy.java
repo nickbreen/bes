@@ -2,6 +2,7 @@ package nickbreen.bes;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.converters.URIConverter;
 import com.google.devtools.build.v1.PublishBuildEventGrpc;
 import io.grpc.BindableService;
 import io.grpc.Grpc;
@@ -10,7 +11,6 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import nickbreen.bes.args.UriConverter;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -31,8 +31,7 @@ public class BesProxy implements Runnable
     @Override
     public void run()
     {
-        final ManagedChannelBuilder<?> builder = Grpc.newChannelBuilder(proxy.getAuthority(), InsecureChannelCredentials.create());
-        final ManagedChannel channel = builder.build();
+        final ManagedChannel channel = Grpc.newChannelBuilder(proxy.getAuthority(), InsecureChannelCredentials.create()).build();
         Runtime.getRuntime().addShutdownHook(new Thread(channel::shutdownNow));
         final PublishBuildEventGrpc.PublishBuildEventStub stub = PublishBuildEventGrpc.newStub(channel);
         final BindableService service = new PublishBuildEventProxy(stub);
@@ -59,7 +58,7 @@ public class BesProxy implements Runnable
         @Parameter(names = {"-p", "--port"}, description = "GRPC TCP port to listen on, also system property 'port' or environment variable 'PORT', defaults to 18888")
         int port = Optional.ofNullable(System.getProperty("port", System.getenv("PORT"))).map(Integer::parseInt).orElse(18888);
 
-        @Parameter(converter = UriConverter.class)
+        @Parameter(converter = URIConverter.class)
         URI proxy;
     }
 

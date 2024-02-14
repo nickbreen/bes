@@ -7,7 +7,7 @@ import com.google.devtools.build.v1.PublishLifecycleEventRequest;
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 
-class PublishBuildEventProxy extends PublishBuildEventGrpc.PublishBuildEventImplBase
+public class PublishBuildEventProxy extends PublishBuildEventGrpc.PublishBuildEventImplBase
 {
     private final PublishBuildEventGrpc.PublishBuildEventStub stub;
 

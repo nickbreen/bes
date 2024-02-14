@@ -4,6 +4,7 @@ package nickbreen.bes;
 import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.converters.URIConverter;
 import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.devtools.build.v1.PublishBuildEventGrpc;
 import com.google.devtools.build.v1.PublishBuildToolEventStreamRequest;
@@ -19,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -44,19 +46,19 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
                 @Override
                 public void onNext(final PublishBuildToolEventStreamResponse value)
                 {
-                    // TODO if anything
+                    // nothing
                 }
 
                 @Override
                 public void onError(final Throwable t)
                 {
-                    channel.shutdownNow();
+                    // nothing
                 }
 
                 @Override
                 public void onCompleted()
                 {
-                    channel.shutdown();
+                    // nothing
                 }
             });
             final PublishBuildToolEventStreamRequest.Builder builder = PublishBuildToolEventStreamRequest.newBuilder();
@@ -71,7 +73,7 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
         {
             try
             {
-                channel.awaitTermination(5, TimeUnit.SECONDS);
+                channel.shutdown().awaitTermination(15, TimeUnit.SECONDS);
             }
             catch (InterruptedException e)
             {
@@ -80,40 +82,18 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
         }
     }
 
-    public static BesClient create(final String host, final int port)
+    public static BesClient create(final URI uri)
     {
-        return new BesClient(Grpc.newChannelBuilderForAddress(host, port, InsecureChannelCredentials.create()));
+        return new BesClient(Grpc.newChannelBuilder(uri.getAuthority(), InsecureChannelCredentials.create()));
     }
 
     private static class Args
     {
-        @Parameter(names = {"-p", "--port"}, description = "Destination TCP port, defaults to 8888")
-        int port = 8888;
-
-        @Parameter(names = {"-h", "--host"}, description = "Destination host, defaults to localhost")
-        String host = "localhost";
-
         @Parameter(names = {"-t", "--type"}, description = "Journal type, defaults to binary")
         JournalType journalType = JournalType.binary;
 
-        @Parameter(converter = InputStreamConverter.class, description = "Journal file, defaults to stdin")
-        InputStream journal = System.in;
-
-        static class InputStreamConverter implements IStringConverter<InputStream>
-        {
-            @Override
-            public InputStream convert(final String value)
-            {
-                try
-                {
-                    return new FileInputStream(value);
-                }
-                catch (FileNotFoundException e)
-                {
-                    throw new IOError(e);
-                }
-            }
-        }
+        @Parameter(converter = URIConverter.class, description = "GRPC destination")
+        URI destination;
     }
 
     public static void main(final String[] args)
@@ -123,11 +103,11 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
 
         try
         {
-            BesClient.create(parsedArgs.host, parsedArgs.port)
+            BesClient.create(parsedArgs.destination)
                     .accept(switch (parsedArgs.journalType)
                     {
-                        case binary -> Util.parseBinary(OrderedBuildEvent::parseDelimitedFrom, parsedArgs.journal);
-                        case json -> Util.parseDelimitedJson(OrderedBuildEvent.newBuilder(), parsedArgs.journal);
+                        case binary -> Util.parseBinary(OrderedBuildEvent::parseDelimitedFrom, System.in);
+                        case json -> Util.parseDelimitedJson(OrderedBuildEvent.newBuilder(), System.in);
                         case text -> throw new UnsupportedOperationException("text format not supported");
                     });
         }

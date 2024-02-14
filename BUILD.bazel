@@ -8,17 +8,12 @@ java_binary(
 
 java_binary(
     name = "bec",
-    args = [
-        "-p",
-        "18888",
-    ],
     main_class = "nickbreen.bes.BesClient",
     runtime_deps = [":main"],
 )
 
 java_binary(
-    name = "beproxy",
-    args = ["grpc://localhost:8888"],
+    name = "bep",
     main_class = "nickbreen.bes.BesProxy",
     runtime_deps = [":main"],
 )
@@ -142,14 +137,17 @@ java_test(
 java_test(
     name = "acceptance-test",
     srcs = glob(["src/acceptance-test/java/**"]),
+    tags = ["exclusive"],
     test_class = "nickbreen.bes.AcceptanceTestSuite",
     deps = [
         ":domain",
         ":main",
         ":test-support",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
+        "@io_grpc_grpc_java//api",
     ],
 )
