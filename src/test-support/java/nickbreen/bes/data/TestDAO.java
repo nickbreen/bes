@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-public class IntegrationTestDAO
+public class TestDAO
 {
     public record Event(String buildId, int component, String invocationId, long sequence, String bazelEventStartedUuid)
     {
@@ -24,17 +24,18 @@ public class IntegrationTestDAO
     }
     private final DataSource ds;
 
-    public IntegrationTestDAO(final DataSource ds)
+    public TestDAO(final DataSource ds)
     {
         this.ds = ds;
     }
 
     public void init(final String name)
     {
-        try (final InputStream is = Objects.requireNonNull(IntegrationTestDAO.class.getResourceAsStream(name)))
+        try (final InputStream is = Objects.requireNonNull(TestDAO.class.getResourceAsStream(name)))
         {
             try (final Reader reader = new InputStreamReader(is); final BufferedReader bufferedReader = new BufferedReader(reader))
             {
+                // new String(is.readAllBytes())?
                 final String sql = bufferedReader.lines().collect(Collectors.joining(System.lineSeparator()));
                 try (final Connection connection = ds.getConnection())
                 {
@@ -108,9 +109,9 @@ public class IntegrationTestDAO
         {
             final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
             {
-                case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event";
-                case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event";
-                default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event";
+                case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event WHERE build_id = ?";
+                case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event WHERE build_id = ?";
+                default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event WHERE build_id = ?";
             };
             try (final PreparedStatement select = connection.prepareStatement(sql))
             {

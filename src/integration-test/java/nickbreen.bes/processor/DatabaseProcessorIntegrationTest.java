@@ -10,7 +10,7 @@ import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.DataSourceFactory;
 import nickbreen.bes.data.EventDAO;
-import nickbreen.bes.data.IntegrationTestDAO;
+import nickbreen.bes.data.TestDAO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +47,7 @@ public class DatabaseProcessorIntegrationTest
     private static final String INVOCATION_ID = UUID.randomUUID().toString();
     public static final long SEQUENCE_NUMBER = 1L;
     private DatabaseProcessor processor;
-    private IntegrationTestDAO dao;
+    private TestDAO dao;
 
     public record TestParameter(URI jdbcUrl, Optional<String> initSql)
     {
@@ -82,7 +82,7 @@ public class DatabaseProcessorIntegrationTest
                 .build();
         final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
         DataSource dataSource = DataSourceFactory.buildDataSource(testParameter.jdbcUrl());
-        dao = new IntegrationTestDAO(dataSource);
+        dao = new TestDAO(dataSource);
         processor = new DatabaseProcessor(new EventDAO(dataSource), printer);
         testParameter.initSql().ifPresent(dao::init);
     }
@@ -137,7 +137,7 @@ public class DatabaseProcessorIntegrationTest
         processor.accept(event);
         processor.accept(event);
 
-        final List<IntegrationTestDAO.Event> events = new ArrayList<>();
+        final List<TestDAO.Event> events = new ArrayList<>();
         dao.allEvents(events::add);
         assertThat(events, hasSize(1));
         dao.allEvents(actualEvent -> {
@@ -156,7 +156,7 @@ public class DatabaseProcessorIntegrationTest
         assertThat(sourceEvents, not(empty()));
         sourceEvents.forEach(processor::accept);
 
-        final List<IntegrationTestDAO.Event> actualEvents = new ArrayList<>();
+        final List<TestDAO.Event> actualEvents = new ArrayList<>();
         dao.allEvents(actualEvents::add);
         assertThat(actualEvents, hasSize(sourceEvents.size()));
         dao.allEvents(actualEvent -> {

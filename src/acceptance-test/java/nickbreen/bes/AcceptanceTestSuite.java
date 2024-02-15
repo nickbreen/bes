@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @SuiteClasses({
-        AcceptanceTest.class
+        AcceptanceTest.class,
+        ContainerAcceptanceTest.class,
 })
 @RunWith(Suite.class)
 public interface AcceptanceTestSuite

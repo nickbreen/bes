@@ -3,7 +3,13 @@ load("@rules_jvm_external//:defs.bzl", "artifact")
 java_binary(
     name = "bes",
     main_class = "nickbreen.bes.BesServer",
-    runtime_deps = [":main"],
+    runtime_deps = [
+        ":main",
+        artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.mysql:mysql-connector-j"),
+        artifact("org.mariadb.jdbc:mariadb-java-client"),
+        artifact("org.postgresql:postgresql"),
+    ],
 )
 
 java_binary(
@@ -137,8 +143,23 @@ java_test(
 java_test(
     name = "acceptance-test",
     srcs = glob(["src/acceptance-test/java/**"]),
-    tags = ["exclusive"],
+    data = [
+        ":bec_deploy.jar",
+        ":bep_deploy.jar",
+        ":bes_deploy.jar",
+    ],
+    jvm_flags = [
+        "-Dbec.uber.jar=$(rootpath :bec_deploy.jar)",
+        "-Dbep.uber.jar=$(rootpath :bep_deploy.jar)",
+        "-Dbes.uber.jar=$(rootpath :bes_deploy.jar)",
+    ],
+    tags = [
+        "exclusive",
+        "no-sandbox",  # need to talk to docker socket
+    ],
     test_class = "nickbreen.bes.AcceptanceTestSuite",
+    runtime_deps = [
+    ],
     deps = [
         ":domain",
         ":main",
@@ -146,8 +167,11 @@ java_test(
         "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
+        "@io_grpc_grpc_java//api",
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
-        "@io_grpc_grpc_java//api",
+        artifact("org.testcontainers:testcontainers"),
+        artifact("org.postgresql:postgresql"),
+        artifact("org.testcontainers:postgresql"),
     ],
 )
