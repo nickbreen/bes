@@ -154,7 +154,6 @@ java_test(
         "-Dbes.uber.jar=$(rootpath :bes_deploy.jar)",
     ],
     tags = [
-        "exclusive",
         "no-sandbox",  # need to talk to docker socket
     ],
     test_class = "nickbreen.bes.AcceptanceTestSuite",
