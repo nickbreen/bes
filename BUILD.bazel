@@ -73,6 +73,7 @@ java_library(
     deps = [
         ":support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("org.hamcrest:hamcrest"),
@@ -152,10 +153,12 @@ java_test(
     deps = [
         ":domain",
         ":main",
+        ":support",
         ":test-support",
         "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
+        "@com_google_protobuf//java/util",
         "@io_grpc_grpc_java//api",
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),

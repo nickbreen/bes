@@ -107,7 +107,7 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
                     .accept(switch (parsedArgs.journalType)
                     {
                         case binary -> Util.parseBinary(OrderedBuildEvent::parseDelimitedFrom, System.in);
-                        case json -> Util.parseDelimitedJson(OrderedBuildEvent.newBuilder(), System.in);
+                        case json -> Util.parseDelimitedJson(OrderedBuildEvent.newBuilder(), Util.buildJsonParser(), System.in).stream();
                         case text -> throw new UnsupportedOperationException("text format not supported");
                     });
         }

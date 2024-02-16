@@ -1,7 +1,8 @@
 package nickbreen.bes;
 
+import com.google.devtools.build.v1.OrderedBuildEvent;
+import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.data.TestDAO;
-import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,16 +13,21 @@ import org.testcontainers.containers.startupcheck.IndefiniteWaitOneShotStartupCh
 import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.utility.MountableFile;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
 
 public class ContainerAcceptanceTest
 {
@@ -42,7 +48,7 @@ public class ContainerAcceptanceTest
             .withNetwork(Network.SHARED)
             .withNetworkAliases("bes")
             .withCopyFileToContainer(BES_JAR, "/bes.jar")
-            .withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", "jdbc:postgresql://db/bes?user=test&password=test");
+            .withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", "jdbc:postgresql://db/bes?user=test&password=test", "--json-journal", "/tmp/jnl.jsonl");
 
     @SuppressWarnings("resource")
     final GenericContainer<?> bec = new GenericContainer<>(DockerImageName.parse(JRE_IMAGE))
@@ -80,7 +86,24 @@ public class ContainerAcceptanceTest
         final List<TestDAO.Event> events = new ArrayList<>();
         dao.allEventsByBuild(events::add, "c07753e2-5660-40ba-a3d0-8cd932a74fb8");
 
-        MatcherAssert.assertThat(events, hasSize(48));
+        assertThat(events, hasSize(48));
+
+        bes.stop();
+    }
+
+    @Test
+    public void shouldSimulateBuildEventsToServerAndJsonJournal() throws IOException
+    {
+        bes.start();
+
+        bec.start();
+
+        final OrderedBuildEvent.Builder builder = OrderedBuildEvent.newBuilder();
+        final JsonFormat.Parser parser = Util.buildJsonParser();
+        final List<OrderedBuildEvent> actualEvents = bes.copyFileFromContainer("/tmp/jnl.jsonl", inputStream -> Util.parseDelimitedJson(builder, parser, inputStream));
+        final List<OrderedBuildEvent> expectedEvents = TestUtil.loadJsonl(builder, parser, ContainerAcceptanceTest.class::getResourceAsStream, "/jnl.jsonl");
+
+        assertThat(actualEvents, equalTo(expectedEvents));
 
         bes.stop();
     }

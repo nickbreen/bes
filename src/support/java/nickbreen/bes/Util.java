@@ -15,10 +15,13 @@ import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Stream;
 
 public interface Util
@@ -101,9 +104,8 @@ public interface Util
         T parseDelimitedFrom(InputStream is) throws IOException;
     }
 
-    static Stream<OrderedBuildEvent> parseDelimitedJson(final OrderedBuildEvent.Builder builder, final InputStream bes)
+    static List<OrderedBuildEvent> parseDelimitedJson(final OrderedBuildEvent.Builder builder, final JsonFormat.Parser parser, final InputStream bes)
     {
-        final JsonFormat.Parser parser = Util.buildJsonParser();
         try (final BufferedReader r = new BufferedReader(new InputStreamReader(bes)))
         {
             return r.lines().map(json -> {
@@ -116,7 +118,7 @@ public interface Util
                     throw new Error(e);
                 }
                 return builder.build();
-            });
+            }).toList();
         }
         catch (IOException e)
         {
