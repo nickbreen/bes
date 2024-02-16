@@ -40,27 +40,6 @@ public class AcceptanceTest
     }
 
     @Test
-    public void shouldProxyAndWriteEquivalentJournal() throws IOException
-    {
-        final List<Message> sink = new ArrayList<>();
-        final PublishBuildEventProcessor service = new PublishBuildEventProcessor(Optional.empty(), List.of(new JournalProcessor(sink::add)));
-        final Thread serverThread = new Thread(new BesServer(28888, service));
-        serverThread.start();
-
-        final Thread proxyThread = new Thread(new BesProxy(18888, URI.create("grpc://localhost:28888")));
-        proxyThread.start();
-
-        final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, AcceptanceTest.class::getResourceAsStream, "/jnl.bin");
-        BesClient.create(URI.create("grpc://localhost:28888")).accept(events.stream());
-
-        assertThat(sink, hasSize(events.size()));
-        assertThat(sink.stream().map(OrderedBuildEvent.class::cast).toList(), equalTo(events));
-
-        proxyThread.interrupt();
-        serverThread.interrupt();
-    }
-
-    @Test
     public void shouldWriteEquivalentJournalAndProxyAndWriteEquivalentJournal() throws IOException
     {
         final List<Message> sink2 = new ArrayList<>();

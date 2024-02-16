@@ -27,12 +27,11 @@ public class ContainerAcceptanceTest
 {
     private static final String JRE_IMAGE = "eclipse-temurin:17-jre";
     private static final MountableFile BEC_JAR = Optional.of(System.getProperty("bec.uber.jar")).map(Path::of).filter(Files::exists).map(MountableFile::forHostPath).orElseThrow();
-    private static final MountableFile BEP_JAR = Optional.of(System.getProperty("bep.uber.jar")).map(Path::of).filter(Files::exists).map(MountableFile::forHostPath).orElseThrow();
     private static final MountableFile BES_JAR = Optional.of(System.getProperty("bes.uber.jar")).map(Path::of).filter(Files::exists).map(MountableFile::forHostPath).orElseThrow();
     private static final MountableFile BINARY_JOURNAL = MountableFile.forClasspathResource("/jnl.bin");
 
     @SuppressWarnings("resource")
-    final PostgreSQLContainer<?> db = new PostgreSQLContainer<>("postgres")
+    final PostgreSQLContainer<?> db = new PostgreSQLContainer<>(DockerImageName.parse(PostgreSQLContainer.IMAGE).withTag(PostgreSQLContainer.DEFAULT_TAG))
             .withDatabaseName("bes")
             .withNetworkAliases("db")
             .withNetwork(Network.SHARED);
@@ -43,14 +42,7 @@ public class ContainerAcceptanceTest
             .withNetwork(Network.SHARED)
             .withNetworkAliases("bes")
             .withCopyFileToContainer(BES_JAR, "/bes.jar")
-            .withPrivilegedMode(true); // needs to start the DB test container
-
-    @SuppressWarnings("resource")
-    public final GenericContainer<?> bep = new GenericContainer<>(DockerImageName.parse(JRE_IMAGE))
-            .dependsOn(bes)
-            .withNetwork(Network.SHARED)
-            .withNetworkAliases("bep")
-            .withCopyFileToContainer(BEP_JAR, "/bep.jar");
+            .withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", "jdbc:postgres://db/bes?user=test&password=test");
 
     @SuppressWarnings("resource")
     final GenericContainer<?> bec = new GenericContainer<>(DockerImageName.parse(JRE_IMAGE))
@@ -61,7 +53,6 @@ public class ContainerAcceptanceTest
             .withCommand("sh", "-c", "java -jar bec.jar grpc://bes:8888 < jnl.bin")
             .withStartupCheckStrategy(new IndefiniteWaitOneShotStartupCheckStrategy());
 
-    private String jdbc;
     private TestDAO dao;
 
     @Before
@@ -69,10 +60,6 @@ public class ContainerAcceptanceTest
     {
         db.start();
 
-        jdbc = db.getJdbcUrl()
-                .replace(db.getHost(), db.getNetworkAliases().get(0))
-                .replace(db.getFirstMappedPort().toString(), db.getExposedPorts().get(0).toString())
-                + String.format("&user=%s&password=%s", db.getUsername(), db.getPassword());
         dao = new TestDAO(DataSourceFactory.buildDataSource(URI.create(db.getJdbcUrl()), db.getUsername(), db.getPassword()));
         dao.init("/init.postgresql.sql");
     }
@@ -86,7 +73,7 @@ public class ContainerAcceptanceTest
     @Test
     public void shouldSimulateBuildEventsToServerAndDB()
     {
-        bes.withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", jdbc).start();
+        bes.start();
 
         bec.start();
 

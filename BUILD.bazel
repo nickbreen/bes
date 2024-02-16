@@ -18,12 +18,6 @@ java_binary(
     runtime_deps = [":main"],
 )
 
-java_binary(
-    name = "bep",
-    main_class = "nickbreen.bes.BesProxy",
-    runtime_deps = [":main"],
-)
-
 java_library(
     name = "main",
     srcs = glob(["src/main/java/**/*.java"]),
@@ -145,20 +139,16 @@ java_test(
     srcs = glob(["src/acceptance-test/java/**"]),
     data = [
         ":bec_deploy.jar",
-        ":bep_deploy.jar",
         ":bes_deploy.jar",
     ],
     jvm_flags = [
         "-Dbec.uber.jar=$(rootpath :bec_deploy.jar)",
-        "-Dbep.uber.jar=$(rootpath :bep_deploy.jar)",
         "-Dbes.uber.jar=$(rootpath :bes_deploy.jar)",
     ],
     tags = [
         "no-sandbox",  # need to talk to docker socket
     ],
     test_class = "nickbreen.bes.AcceptanceTestSuite",
-    runtime_deps = [
-    ],
     deps = [
         ":domain",
         ":main",
