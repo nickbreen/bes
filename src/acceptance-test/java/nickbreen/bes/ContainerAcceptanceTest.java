@@ -42,7 +42,7 @@ public class ContainerAcceptanceTest
             .withNetwork(Network.SHARED)
             .withNetworkAliases("bes")
             .withCopyFileToContainer(BES_JAR, "/bes.jar")
-            .withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", "jdbc:postgres://db/bes?user=test&password=test");
+            .withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", "jdbc:postgresql://db/bes?user=test&password=test");
 
     @SuppressWarnings("resource")
     final GenericContainer<?> bec = new GenericContainer<>(DockerImageName.parse(JRE_IMAGE))
