@@ -5,6 +5,7 @@ import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.data.TestDAO;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
@@ -32,12 +33,14 @@ public class ContainerAcceptanceTest
     private static final MountableFile BES_JAR = Optional.of(System.getProperty("bes.uber.jar")).map(Path::of).filter(Files::exists).map(MountableFile::forHostPath).orElseThrow();
 
     @SuppressWarnings("resource")
-    final PostgreSQLContainer<?> db = new PostgreSQLContainer<>(DockerImageName.parse(PostgreSQLContainer.IMAGE).withTag(PostgreSQLContainer.DEFAULT_TAG))
+    @Rule
+    public final PostgreSQLContainer<?> db = new PostgreSQLContainer<>(DockerImageName.parse(PostgreSQLContainer.IMAGE).withTag(PostgreSQLContainer.DEFAULT_TAG))
             .withDatabaseName("bes")
             .withNetworkAliases("db")
             .withNetwork(Network.SHARED);
 
     @SuppressWarnings("resource")
+    @Rule
     public final GenericContainer<?> bes = new GenericContainer<>(DockerImageName.parse(JRE_IMAGE))
             .dependsOn(db)
             .withNetwork(Network.SHARED)
@@ -51,8 +54,6 @@ public class ContainerAcceptanceTest
     @Before
     public void setUp()
     {
-        db.start();
-
         dao = new TestDAO(DataSourceFactory.buildDataSource(URI.create(db.getJdbcUrl()), db.getUsername(), db.getPassword()));
         dao.init("/init.postgresql.sql");
     }
@@ -66,8 +67,6 @@ public class ContainerAcceptanceTest
     @Test
     public void shouldSimulateBuildEventsToServerAndDB() throws IOException, URISyntaxException
     {
-        bes.start();
-
         final List<OrderedBuildEvent> expectedEvents = loadBinary(OrderedBuildEvent::parseDelimitedFrom, AcceptanceTest.class::getResourceAsStream, "/jnl.bin");
         final URI grpc = new URI("grpc", null, bes.getHost(), bes.getFirstMappedPort(), null, null, null);
         BesClient.create(grpc).accept(expectedEvents.stream());
@@ -75,16 +74,12 @@ public class ContainerAcceptanceTest
         final List<TestDAO.Event> actualEvents = new ArrayList<>();
         dao.allEventsByBuild(actualEvents::add, "c07753e2-5660-40ba-a3d0-8cd932a74fb8");
 
-        bes.stop();
-
         assertThat(actualEvents, hasSize(48));
     }
 
     @Test
     public void shouldSimulateBuildEventsToServerAndJsonJournal() throws IOException, URISyntaxException
     {
-        bes.start();
-
         final OrderedBuildEvent.Builder builder = OrderedBuildEvent.newBuilder();
         final JsonFormat.Parser parser = Util.buildJsonParser();
         final List<OrderedBuildEvent> expectedEvents = TestUtil.loadJsonl(builder, parser, ContainerAcceptanceTest.class::getResourceAsStream, "/jnl.jsonl");
@@ -92,7 +87,6 @@ public class ContainerAcceptanceTest
         BesClient.create(grpc).accept(expectedEvents.stream());
 
         final List<OrderedBuildEvent> actualEvents = bes.copyFileFromContainer("/tmp/jnl.jsonl", inputStream -> Util.parseDelimitedJson(builder, parser, inputStream));
-        bes.stop();
 
         assertThat(actualEvents, equalTo(expectedEvents));
     }

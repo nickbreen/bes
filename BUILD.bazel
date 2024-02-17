@@ -50,12 +50,6 @@ java_binary(
     ],
 )
 
-java_binary(
-    name = "bec",
-    main_class = "nickbreen.bes.BesClient",
-    runtime_deps = [":main"],
-)
-
 java_library(
     name = "main",
     srcs = glob(["src/main/java/**/*.java"]),
@@ -103,6 +97,13 @@ java_library(
     ],
 )
 
+java_binary(
+    name = "bec",
+    testonly = True,
+    main_class = "nickbreen.bes.BesClient",
+    runtime_deps = [":test-support"],
+)
+
 java_library(
     name = "test-support",
     testonly = True,
@@ -111,10 +112,14 @@ java_library(
     deps = [
         ":support",
         "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
         "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
         "@com_google_protobuf//java/core",
+        "@io_grpc_grpc_java//api",
+        "@io_grpc_grpc_java//stub",
         artifact("com.google.protobuf:protobuf-java-util"),
         artifact("org.hamcrest:hamcrest"),
+        artifact("org.jcommander:jcommander"),
     ],
 )
 

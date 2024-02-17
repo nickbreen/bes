@@ -1,7 +1,6 @@
 package nickbreen.bes;
 
 
-import com.beust.jcommander.IStringConverter;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.URIConverter;
@@ -15,11 +14,8 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOError;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -115,5 +111,10 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
         {
             throw new IOError(e);
         }
+    }
+
+    private enum JournalType
+    {
+        binary, json, text
     }
 }
