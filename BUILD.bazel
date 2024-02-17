@@ -1,4 +1,42 @@
 load("@rules_jvm_external//:defs.bzl", "artifact")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+oci_push(
+    name = "bes.push",
+    image = ":bes.img",
+    remote_tags = ["latest"],
+    repository = "ghcr.io/nickbreen/bes",
+)
+
+# Note: the docker snap has access to ~, but not hidden files/dirs, so it
+# cannot see ~/.cache which is where bazel-bin/bes.load/tarball.tar really is.
+# So when using the docker snap, one must load it via stdin:
+#     docker load < bazel-bin/bes.load/tarball.tar
+# Rather than with:
+#     bazel run bes.load
+oci_tarball(
+    name = "bes.load",
+    image = ":bes.img",
+    repo_tags = ["ghcr.io/nickbreen/bes:latest"],
+)
+
+oci_image(
+    name = "bes.img",
+    base = "@jre",
+    cmd = [],
+    entrypoint = [
+        "java",
+        "-jar",
+        "bes_deploy.jar",
+    ],
+    tars = [":bes.tar"],
+)
+
+pkg_tar(
+    name = "bes.tar",
+    srcs = [":bes_deploy.jar"],
+)
 
 java_binary(
     name = "bes",

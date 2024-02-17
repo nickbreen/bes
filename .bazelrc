@@ -1,4 +1,4 @@
-common --noenable_bzlmod
+common --enable_bzlmod
 common --announce_rc
 
 build:bes --build_event_binary_file=src/test/resources/bes.bin

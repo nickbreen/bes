@@ -1,0 +1,28 @@
+#bazel_dep(name = "rules_jvm_external", version = "6.0")
+
+#maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+#maven.install(
+#    artifacts = [
+#        # This line is an example coordinate, you'd copy-paste your actual dependencies here
+#        # from your build.gradle or pom.xml file.
+#        "org.seleniumhq.selenium:selenium-java:4.4.0",
+#    ],
+#)
+#use_repo(maven, "maven")
+
+bazel_dep(name = "rules_oci", version = "1.7.2")
+# For testing, we also recommend https://registry.bazel.build/modules/container_structure_test
+
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+oci.pull(
+    name = "jre",
+    digest = "sha256:e61416273c1390e9d2850c084d6879554725bee3564bbe0ce280b826a6945222",
+    image = "eclipse-temurin",
+    platforms = ["linux/amd64"],
+    #    tag = "17-jre",
+)
+
+# For each oci.pull call, repeat the "name" here to expose them as dependencies.
+use_repo(oci, "jre")
+
+bazel_dep(name = "rules_pkg", version = "0.10.1")

@@ -5,7 +5,7 @@ Run tests.
 bazel test --test_output all ...
 ```
 
-Build and run the sserver (`bes`) and generate binary, json, and text journals.
+Build and run the server (`bes`) and generate binary, json, and text journals.
 ```shell
 truncate --size 0 src/test-support/resources/jnl.{bin,jsonl,text}
 bazel run bes -- \
