@@ -1,5 +1,9 @@
 A Bazel Build Event Service.
 
+[![Bazel CI](https://github.com/nickbreen/bes/actions/workflows/bazel.yml/badge.svg)](https://github.com/nickbreen/bes/actions/workflows/bazel.yml)
+
+---
+
 Run tests.
 ```shell
 bazel test --test_output all ...
