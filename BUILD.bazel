@@ -1,6 +1,23 @@
+load("@rules_java//java:java_single_jar.bzl", "java_single_jar")
+load("@rules_java//java:java_import.bzl", "java_import")
 load("@rules_jvm_external//:defs.bzl", "artifact")
-load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_load")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+# Hack to get the transitive dependencies of the buildeventstream proto
+java_single_jar(
+    name = "buildeventstream-uber",
+    deps = [
+        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
+        "@googleapis//google/devtools/build/v1:build_java_grpc",
+        "@com_google_protobuf//java/util:util",  # JSON formatter
+    ],
+)
+
+java_import(
+    name = "buildeventstream",
+    jars = [":buildeventstream-uber"],
+)
 
 oci_push(
     name = "bes.push",
@@ -15,7 +32,7 @@ oci_push(
 #     docker load < bazel-bin/bes.load/tarball.tar
 # Rather than with:
 #     bazel run bes.load
-oci_tarball(
+oci_load(
     name = "bes.load",
     image = ":bes.img",
     repo_tags = ["ghcr.io/nickbreen/bes:latest"],
@@ -53,20 +70,13 @@ java_binary(
 java_library(
     name = "main",
     srcs = glob(["src/main/java/**/*.java"]),
-    resources = glob(["src/main/resources/**"]),
     runtime_deps = [
-        "@io_grpc_grpc_java//netty",
+        artifact("io.grpc:grpc-netty")
     ],
     deps = [
         ":domain",
         ":support",
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        "@io_grpc_grpc_java//api",
-        "@io_grpc_grpc_java//stub",
-        artifact("com.google.protobuf:protobuf-java-util"),
+        ":buildeventstream",
         artifact("org.jcommander:jcommander"),
         artifact("com.mchange:c3p0"),
     ],
@@ -75,25 +85,17 @@ java_library(
 java_library(
     name = "domain",
     srcs = glob(["src/domain/java/**/*.java"]),
-    resources = glob(["src/domain/resources/**"]),
     deps = [
         ":support",
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        artifact("com.google.protobuf:protobuf-java-util"),
+        ":buildeventstream",
     ],
 )
 
 java_library(
     name = "support",
     srcs = glob(["src/support/java/**/*.java"]),
-    resources = glob(["src/support/resources/**"]),
     deps = [
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        artifact("com.google.protobuf:protobuf-java-util"),
+        ":buildeventstream",
     ],
 )
 
@@ -111,13 +113,7 @@ java_library(
     resources = glob(["src/test-support/resources/**"]),
     deps = [
         ":support",
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        "@io_grpc_grpc_java//api",
-        "@io_grpc_grpc_java//stub",
-        artifact("com.google.protobuf:protobuf-java-util"),
+        ":buildeventstream",
         artifact("org.hamcrest:hamcrest"),
         artifact("org.jcommander:jcommander"),
     ],
@@ -127,7 +123,6 @@ java_test(
     name = "test",
     size = "small",
     srcs = glob(["src/test/java/**/*.java"]),
-    resources = glob(["src/test/resources/**"]),
     test_class = "nickbreen.bes.TestSuite",
     runtime_deps = [
         artifact("org.glassfish:javax-json"),
@@ -135,9 +130,7 @@ java_test(
     deps = [
         ":domain",
         ":test-support",
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
+        ":buildeventstream",
         artifact("javax.json:javax.json-api"),
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
@@ -148,8 +141,6 @@ java_test(
     name = "integration-test",
     size = "medium",
     srcs = glob(["src/integration-test/java/**/*.java"]),
-    data = glob(["src/integration-test/resources/**"]),
-    resources = glob(["src/integration-test/resources/**"]),
     tags = [
         "no-sandbox",  # need to talk to docker socket
     ],
@@ -162,16 +153,12 @@ java_test(
         artifact("org.testcontainers:mariadb"),
         artifact("org.testcontainers:mysql"),
         artifact("org.testcontainers:postgresql"),
-        "@io_grpc_grpc_java//api",
     ],
     deps = [
         ":domain",
         ":main",
         ":test-support",
-        "@bazel//src/main/java/com/google/devtools/build/lib/buildeventstream/proto:build_event_stream_java_proto",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        artifact("com.google.protobuf:protobuf-java-util"),
+        ":buildeventstream",
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
         artifact("org.testcontainers:testcontainers"),
@@ -198,11 +185,7 @@ java_test(
         ":main",
         ":support",
         ":test-support",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_grpc",
-        "@com_google_googleapis//google/devtools/build/v1:build_java_proto",
-        "@com_google_protobuf//java/core",
-        "@com_google_protobuf//java/util",
-        "@io_grpc_grpc_java//api",
+        ":buildeventstream",
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
         artifact("org.testcontainers:testcontainers"),

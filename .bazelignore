@@ -1,2 +1,4 @@
-.ijwb
-.github
+.ijwb/
+.github/
+.idea/
+.bazelbsp/

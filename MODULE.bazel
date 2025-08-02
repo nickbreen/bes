@@ -1,28 +1,72 @@
-#bazel_dep(name = "rules_jvm_external", version = "6.0")
+module(
+    name = "bes",
+    compatibility_level = 1,
+)
 
-#maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
-#maven.install(
-#    artifacts = [
-#        # This line is an example coordinate, you'd copy-paste your actual dependencies here
-#        # from your build.gradle or pom.xml file.
-#        "org.seleniumhq.selenium:selenium-java:4.4.0",
-#    ],
-#)
-#use_repo(maven, "maven")
+bazel_dep(name = "rules_java", version = "8.14.0", dev_dependency = True)
+bazel_dep(name = "rules_jvm_external", version = "6.8", dev_dependency = True)
+bazel_dep(name = "rules_oci", version = "2.2.6", dev_dependency = True)
+bazel_dep(name = "rules_pkg", version = "1.1.0", dev_dependency = True)
+bazel_dep(name = "googleapis-grpc-java", version = "1.0.0", dev_dependency = True)
+bazel_dep(name = "googleapis", version = "0.0.0-20250703-f9d6fe4a", dev_dependency = True)
+bazel_dep(name = "protobuf", version = "29.0", dev_dependency = True, repo_name = "com_google_protobuf")
+bazel_dep(name = "rules_cc", version = "0.1.4", dev_dependency = True)
+bazel_dep(name = "rules_license", version = "1.0.0", dev_dependency = True)
+bazel_dep(name = "bazel_skylib", version = "1.8.1", dev_dependency = True)
+bazel_dep(name = "rules_python", version = "1.5.1", dev_dependency = True)
+bazel_dep(name = "hermetic_cc_toolchain", version = "4.0.1", dev_dependency = True)
+bazel_dep(name = "platforms", version = "1.0.0", dev_dependency = True)
 
-bazel_dep(name = "rules_oci", version = "1.7.2")
-# For testing, we also recommend https://registry.bazel.build/modules/container_structure_test
+toolchains = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
+use_repo(toolchains, "zig_sdk")
+
+register_toolchains(
+    "@zig_sdk//toolchain/...",
+    "@zig_sdk//libc_aware/toolchain/...",
+)
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "com.mchange:c3p0:0.9.5.5",
+        "com.mysql:mysql-connector-j:8.3.0",
+        "io.grpc:grpc-netty:1.74.0",
+        "javax.json:javax.json-api:1.1",
+        "junit:junit:4.12",
+        "org.glassfish:javax.json:1.1",
+        "org.hamcrest:hamcrest:2.2",
+        "org.jcommander:jcommander:1.83",
+        "org.mariadb.jdbc:mariadb-java-client:3.3.2",
+        "org.postgresql:postgresql:42.7.1",
+        "org.testcontainers:mariadb:1.21.3",
+        "org.testcontainers:mysql:1.21.3",
+        "org.testcontainers:postgresql:1.21.3",
+        "org.testcontainers:testcontainers:1.21.3",
+        "org.xerial:sqlite-jdbc:3.45.1.0",
+        # "com.h2database:h2:2.2.224",  # unused
+        # "org.mockito:mockito-core:5.10.0",
+        # "redis.clients:jedis:5.1.0",
+    ],
+    fetch_javadoc = True,
+    fetch_sources = True,
+)
+use_repo(maven, "maven")
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
 oci.pull(
     name = "jre",
-    digest = "sha256:e61416273c1390e9d2850c084d6879554725bee3564bbe0ce280b826a6945222",
+    digest = "sha256:7b5c88eb4182a92aab3a4b10550061a6e18639bf176e7ebca21f866b19f853c1",
     image = "eclipse-temurin",
     platforms = ["linux/amd64"],
-    #    tag = "17-jre",
+    #    tag = "21-jre-alpine",
 )
+use_repo(oci, "jre", "jre_linux_amd64")
 
-# For each oci.pull call, repeat the "name" here to expose them as dependencies.
-use_repo(oci, "jre")
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-bazel_dep(name = "rules_pkg", version = "0.10.1")
+http_archive(
+    name = "bazel",
+    sha256 = "341d62c0f6ce84429c657eac8a43397f447c64a58c1a61f56b5503b721caa612",
+    strip_prefix = "bazel-8.3.1",
+    url = "https://github.com/bazelbuild/bazel/archive/refs/tags/8.3.1.tar.gz",
+)

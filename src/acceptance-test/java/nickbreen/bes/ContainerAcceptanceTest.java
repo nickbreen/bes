@@ -29,12 +29,18 @@ import static org.hamcrest.Matchers.hasSize;
 
 public class ContainerAcceptanceTest
 {
-    private static final String JRE_IMAGE = "eclipse-temurin:17-jre";
-    private static final MountableFile BES_JAR = Optional.of(System.getProperty("bes.uber.jar")).map(Path::of).filter(Files::exists).map(MountableFile::forHostPath).orElseThrow();
+    private static final String JRE_IMAGE = "eclipse-temurin:21-jre-alpine";
+    private static final MountableFile BES_JAR = Optional.of(System.getProperty("bes.uber.jar"))
+            .map(Path::of)
+            .filter(Files::exists)
+            .map(MountableFile::forHostPath)
+            .orElseThrow();
 
     @SuppressWarnings("resource")
     @Rule
-    public final PostgreSQLContainer<?> db = new PostgreSQLContainer<>(DockerImageName.parse(PostgreSQLContainer.IMAGE).withTag(PostgreSQLContainer.DEFAULT_TAG))
+    public final PostgreSQLContainer<?> db = new PostgreSQLContainer<>(
+            DockerImageName.parse(PostgreSQLContainer.IMAGE)
+                    .withTag(PostgreSQLContainer.DEFAULT_TAG))
             .withDatabaseName("bes")
             .withNetworkAliases("db")
             .withNetwork(Network.SHARED);
