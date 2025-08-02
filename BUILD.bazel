@@ -57,7 +57,7 @@ pkg_tar(
 
 java_binary(
     name = "bes",
-    main_class = "nickbreen.bes.BesServer",
+    main_class = "kiwi.breen.bes.BesServer",
     runtime_deps = [
         ":main",
         artifact("org.xerial:sqlite-jdbc"),
@@ -103,7 +103,7 @@ java_library(
 java_binary(
     name = "bec",
     testonly = True,
-    main_class = "nickbreen.bes.BesClient",
+    main_class = "kiwi.breen.bes.BesClient",
     runtime_deps = [":test-support"],
 )
 
@@ -124,7 +124,7 @@ java_test(
     name = "test",
     size = "small",
     srcs = glob(["src/test/java/**/*.java"]),
-    test_class = "nickbreen.bes.TestSuite",
+    test_class = "kiwi.breen.bes.TestSuite",
     runtime_deps = [
         artifact("org.glassfish:javax-json"),
     ],
@@ -142,10 +142,7 @@ java_test(
     name = "integration-test",
     size = "medium",
     srcs = glob(["src/integration-test/java/**/*.java"]),
-    tags = [
-        "no-sandbox",  # need to talk to docker socket
-    ],
-    test_class = "nickbreen.bes.IntegrationTestSuite",
+    test_class = "kiwi.breen.bes.IntegrationTestSuite",
     runtime_deps = [
         artifact("org.testcontainers:mariadb"),
         artifact("org.testcontainers:mysql"),
@@ -177,10 +174,7 @@ java_test(
         "-Dbec.uber.jar=$(rootpath :bec_deploy.jar)",
         "-Dbes.uber.jar=$(rootpath :bes_deploy.jar)",
     ],
-    tags = [
-        "no-sandbox",  # need to talk to docker socket
-    ],
-    test_class = "nickbreen.bes.AcceptanceTestSuite",
+    test_class = "kiwi.breen.bes.AcceptanceTestSuite",
     deps = [
         ":domain",
         ":main",
