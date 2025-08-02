@@ -69,7 +69,9 @@ public class ContainerAcceptanceTest
     @Before
     public void setUp()
     {
-        dao = new TestDAO(DataSourceFactory.buildDataSource(URI.create(db.getJdbcUrl()), db.getUsername(), db.getPassword()));
+        final URI uri = URI.create(db.getJdbcUrl());
+        final String username = db.getUsername();
+        dao = new TestDAO(DataSourceFactory.buildDataSource(uri, username, db.getPassword()));
         dao.init("/init.postgresql.sql");
     }
 

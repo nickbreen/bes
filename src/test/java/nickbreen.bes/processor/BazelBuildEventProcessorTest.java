@@ -42,6 +42,6 @@ public class BazelBuildEventProcessorTest
                                 .build())))
                 .build());
 
-        assertThat("has bazel build started event for UUID", actual, hasItem(messageThat(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid, is(uuid))));
+        assertThat("has bazel build started json for UUID", actual, hasItem(messageThat(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid, is(uuid))));
     }
 }

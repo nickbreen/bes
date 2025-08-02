@@ -9,7 +9,6 @@ import com.google.protobuf.Any;
 import com.google.protobuf.TypeRegistry;
 import com.google.protobuf.util.JsonFormat;
 import nickbreen.bes.DataSourceFactory;
-import nickbreen.bes.data.EventDAO;
 import nickbreen.bes.data.TestDAO;
 import org.junit.After;
 import org.junit.Before;
@@ -47,7 +46,7 @@ public class DatabaseProcessorIntegrationTest
     private static final String INVOCATION_ID = UUID.randomUUID().toString();
     public static final long SEQUENCE_NUMBER = 1L;
     private DatabaseProcessor processor;
-    private TestDAO dao;
+    private TestDAO testDao;
 
     public record TestParameter(URI jdbcUrl, Optional<String> initSql)
     {
@@ -76,21 +75,16 @@ public class DatabaseProcessorIntegrationTest
     @Before
     public void setUp()
     {
-        final TypeRegistry typeRegistry = newBuilder()
-                .add(BuildEventProto.getDescriptor().getMessageTypes())
-                .add(BuildEventStreamProtos.getDescriptor().getMessageTypes())
-                .build();
-        final JsonFormat.Printer printer = JsonFormat.printer().usingTypeRegistry(typeRegistry).omittingInsignificantWhitespace();
-        DataSource dataSource = DataSourceFactory.buildDataSource(testParameter.jdbcUrl());
-        dao = new TestDAO(dataSource);
-        processor = new DatabaseProcessor(new EventDAO(dataSource), printer);
-        testParameter.initSql().ifPresent(dao::init);
+        final DataSource dataSource = DataSourceFactory.buildDataSource(testParameter.jdbcUrl());
+        testDao = new TestDAO(dataSource);
+        processor = DatabaseProcessorFactory.create(dataSource);
+        testParameter.initSql().ifPresent(testDao::init);
     }
 
     @After
     public void tearDown()
     {
-        dao.clear(); // persists between runs
+        testDao.clear(); // persists between runs
         // TODO run test in transaction?
     }
 
@@ -111,7 +105,7 @@ public class DatabaseProcessorIntegrationTest
                 .build();
         processor.accept(event);
 
-        dao.allEvents(actualEvent -> {
+        testDao.allEvents(actualEvent -> {
             assertThat(actualEvent.sequence(), equalTo(SEQUENCE_NUMBER));
             assertThat(actualEvent.buildId(), equalTo(BUILD_ID));
             assertThat(actualEvent.component(), equalTo(StreamId.BuildComponent.CONTROLLER.getNumber()));
@@ -138,9 +132,9 @@ public class DatabaseProcessorIntegrationTest
         processor.accept(event);
 
         final List<TestDAO.Event> events = new ArrayList<>();
-        dao.allEvents(events::add);
+        testDao.allEvents(events::add);
         assertThat(events, hasSize(1));
-        dao.allEvents(actualEvent -> {
+        testDao.allEvents(actualEvent -> {
             assertThat(actualEvent.sequence(), equalTo(SEQUENCE_NUMBER));
             assertThat(actualEvent.buildId(), equalTo(BUILD_ID));
             assertThat(actualEvent.component(), equalTo(StreamId.BuildComponent.CONTROLLER.getNumber()));
@@ -157,9 +151,9 @@ public class DatabaseProcessorIntegrationTest
         sourceEvents.forEach(processor::accept);
 
         final List<TestDAO.Event> actualEvents = new ArrayList<>();
-        dao.allEvents(actualEvents::add);
+        testDao.allEvents(actualEvents::add);
         assertThat(actualEvents, hasSize(sourceEvents.size()));
-        dao.allEvents(actualEvent -> {
+        testDao.allEvents(actualEvent -> {
             // There are two builds in the journal... check for either of them
             assertThat(actualEvent.buildId(), either(equalToIgnoringCase("c07753e2-5660-40ba-a3d0-8cd932a74fb8")).or(equalToIgnoringCase("4d16d0f2-6337-4a12-9129-52097ea30e63")));
             assertThat(actualEvent.invocationId(), either(equalToIgnoringCase("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")).or(equalToIgnoringCase("584d2774-aab7-4ce9-8a9a-32ac493b0f6e")).or(blankString()));

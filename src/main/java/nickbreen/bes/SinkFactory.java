@@ -7,17 +7,15 @@ import java.io.IOError;
 import java.io.OutputStream;
 import java.net.URI;
 
-public interface SinkFactory
+interface SinkFactory
 {
     static OutputStream createSink(final URI uri)
     {
         assert uri.isAbsolute() : "sink URI's must have a scheme";
         return switch (uri.getScheme())
         {
-            case "file":
-                yield createFile(uri);
-            default:
-                throw new Error("Unknown scheme " + uri);
+            case "file" -> createFile(uri);
+            default -> throw new Error("Unknown scheme " + uri);
         };
     }
 

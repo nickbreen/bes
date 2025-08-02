@@ -84,7 +84,7 @@ public class FixturesCompatibilityTest
     {
         final List<OrderedBuildEvent> events = loadBinary(OrderedBuildEvent::parseDelimitedFrom, FixturesCompatibilityTest.class::getResourceAsStream, "/jnl.bin");
 
-        assertThat("an event", events, hasItem(
+        assertThat("an json", events, hasItem(
                 messageThat(OrderedBuildEvent.class, OrderedBuildEvent::hasEvent, OrderedBuildEvent::getEvent,
                         anyThat(BuildEvent.class, BuildEventStreamProtos.BuildEvent.class, BuildEvent::hasBazelEvent, BuildEvent::getBazelEvent,
                                 messageThat(BuildEventStreamProtos.BuildEvent.class, BuildEventStreamProtos.BuildEvent::hasStarted, BuildEventStreamProtos.BuildEvent::getStarted,

@@ -57,8 +57,6 @@ public class BesServer implements Runnable
         Path textJournal;
         @Parameter(names = {"-d", "--db", "--database"}, description = "JDBC URL to store JSON documents.", converter = URIConverter.class)
         URI jdbc;
-        @Parameter(names = {"-x", "--proxy"}, converter = URIConverter.class)
-        URI proxy;
     }
 
     public static void main(final String[] args)
@@ -67,12 +65,12 @@ public class BesServer implements Runnable
         JCommander.newBuilder().addObject(parsedArgs).build().parse(args);
 
         final PublishBuildEventProcessor service = new PublishBuildEventProcessor.Builder()
-                .proxy(parsedArgs.proxy)
                 .jdbc(parsedArgs.jdbc)
                 .binaryJournal(parsedArgs.binaryJournal)
                 .jsonJournal(parsedArgs.jsonJournal)
                 .textJournal(parsedArgs.textJournal)
                 .build();
+
         new BesServer(parsedArgs.port, service).run();
     }
 
