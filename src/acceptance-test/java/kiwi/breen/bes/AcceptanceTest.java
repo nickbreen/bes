@@ -1,7 +1,9 @@
 package kiwi.breen.bes;
 
 import com.google.devtools.build.v1.OrderedBuildEvent;
+import com.google.devtools.build.v1.PublishBuildEventGrpc;
 import com.google.protobuf.Message;
+import io.grpc.BindableService;
 import kiwi.breen.bes.processor.JournalProcessor;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class AcceptanceTest
     public void shouldWriteJournalEquivalentToSource() throws IOException
     {
         final List<Message> sink = new ArrayList<>();
-        final PublishBuildEventProcessor service = new PublishBuildEventProcessor(
+        final BindableService service = new PublishBuildEventProcessor(
                 List.of(new JournalProcessor(sink::add)));
         final Thread serverThread = new Thread(new BesServer(8888, service));
         serverThread.start();

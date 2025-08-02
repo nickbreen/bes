@@ -6,6 +6,7 @@ import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.devtools.build.v1.StreamId;
 import com.google.protobuf.Any;
 import kiwi.breen.bes.DataSourceFactory;
+import kiwi.breen.bes.DatabaseProcessorFactory;
 import kiwi.breen.bes.TestDAO;
 import org.junit.After;
 import org.junit.Before;
@@ -57,11 +58,21 @@ public class DatabaseProcessorIntegrationTest
     public static TestParameter[] parameters()
     {
         return new TestParameter[]{
-                new TestParameter(URI.create("jdbc:tc:mysql:///bes?TC_INITSCRIPT=init.sql"), Optional.empty()),
-                new TestParameter(URI.create("jdbc:tc:mariadb:///bes?TC_INITSCRIPT=init.sql"), Optional.empty()),
-                new TestParameter(URI.create("jdbc:tc:postgresql:///bes?TC_INITSCRIPT=init.postgresql.sql"), Optional.empty()),
-                new TestParameter(URI.create("jdbc:sqlite:memory:"), Optional.of("/init.sqlite.sql")),
-                // URI.create("jdbc:h2:mem:"),
+                new TestParameter(
+                        URI.create("jdbc:tc:mysql:///bes?TC_INITSCRIPT=init.mysql.sql"),
+                        Optional.empty()),
+                new TestParameter(
+                        URI.create("jdbc:tc:mariadb:///bes?TC_INITSCRIPT=init.mariadb.sql"),
+                        Optional.empty()),
+                new TestParameter(
+                        URI.create("jdbc:tc:postgresql:///bes?TC_INITSCRIPT=init.postgresql.sql"),
+                        Optional.empty()),
+                new TestParameter(
+                        URI.create("jdbc:sqlite:memory:bes"),
+                        Optional.of("/init.sqlite.sql")),
+                new TestParameter(
+                        URI.create("jdbc:h2:mem:bes"),
+                        Optional.of("/init.h2.sql")),
         };
     }
 

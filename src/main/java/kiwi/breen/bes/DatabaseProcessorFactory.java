@@ -1,4 +1,7 @@
-package kiwi.breen.bes.processor;
+package kiwi.breen.bes;
+
+import kiwi.breen.bes.processor.DatabaseProcessor;
+import kiwi.breen.bes.processor.DatabaseProcessorFactoryException;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,7 +17,7 @@ public class DatabaseProcessorFactory
         {
             final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
             {
-                case "h2" -> "INSERT INTO event VALUES (?,?,?,?,? FORMAT JSON)";
+                case "h2" -> "MERGE INTO event VALUES (?,?,?,?,? FORMAT JSON)";
                 case "sqlite" -> "INSERT INTO event VALUES (?,?,?,?,JSONB(?)) ON CONFLICT DO NOTHING";
                 case "postgresql" -> "INSERT INTO event VALUES (?,?,?,?,CAST(? AS JSONB)) ON CONFLICT DO NOTHING";
                 default -> "INSERT IGNORE INTO event VALUES (?,?,?,?,?)";

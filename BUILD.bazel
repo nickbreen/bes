@@ -70,6 +70,7 @@ java_binary(
 java_library(
     name = "main",
     srcs = glob(["src/main/java/**/*.java"]),
+    resources = glob(["src/main/resources/**"]),
     runtime_deps = [
         artifact("io.grpc:grpc-netty"),
     ],
@@ -85,7 +86,6 @@ java_library(
 java_library(
     name = "domain",
     srcs = glob(["src/domain/java/**/*.java"]),
-    resources = glob(["src/domain/resources/**"]),
     deps = [
         ":support",
         ":buildeventstream",
@@ -147,6 +147,11 @@ java_test(
         artifact("org.testcontainers:mariadb"),
         artifact("org.testcontainers:mysql"),
         artifact("org.testcontainers:postgresql"),
+        artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.mysql:mysql-connector-j"),
+        artifact("org.mariadb.jdbc:mariadb-java-client"),
+        artifact("org.postgresql:postgresql"),
+        artifact("com.h2database:h2"),
     ],
     deps = [
         ":domain",
@@ -156,10 +161,6 @@ java_test(
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
         artifact("org.testcontainers:testcontainers"),
-        artifact("org.xerial:sqlite-jdbc"),
-        artifact("com.mysql:mysql-connector-j"),
-        artifact("org.mariadb.jdbc:mariadb-java-client"),
-        artifact("org.postgresql:postgresql"),
     ],
 )
 

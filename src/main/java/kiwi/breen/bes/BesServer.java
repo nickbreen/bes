@@ -4,6 +4,8 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.PathConverter;
 import com.beust.jcommander.converters.URIConverter;
+import com.google.devtools.build.v1.PublishBuildEventGrpc;
+import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -16,9 +18,9 @@ import java.util.Optional;
 public class BesServer implements Runnable
 {
     private final int port;
-    private final PublishBuildEventProcessor service;
+    private final BindableService service;
 
-    public BesServer(final int port, final PublishBuildEventProcessor service)
+    public BesServer(final int port, final BindableService service)
     {
         this.port = port;
         this.service = service;
@@ -47,15 +49,30 @@ public class BesServer implements Runnable
 
     private static class Args
     {
-        @Parameter(names = {"-p", "--port"}, description = "TCP port to listen on, also system property 'port' or environment variable 'PORT'")
-        int port = Optional.ofNullable(System.getProperty("port", System.getenv("PORT"))).map(Integer::parseInt).orElse(8888);;
-        @Parameter(names = {"-b", "--binary-journal"}, description = "Path to write a binary journal.", converter = PathConverter.class)
+        @Parameter(
+                names = {"-p", "--port"},
+                description = "TCP port to listen on, also system property 'port' or environment variable 'PORT'")
+        int port = Optional.ofNullable(System.getProperty("port", System.getenv("PORT")))
+                .map(Integer::parseInt).orElse(8888);
+        @Parameter(
+                names = {"-b", "--binary-journal"},
+                description = "Path to write a binary journal.",
+                converter = PathConverter.class)
         Path binaryJournal;
-        @Parameter(names = {"-j", "--json-journal"}, description = "Path to write a binary journal.", converter = PathConverter.class)
+        @Parameter(
+                names = {"-j", "--json-journal"},
+                description = "Path to write a binary journal.",
+                converter = PathConverter.class)
         Path jsonJournal;
-        @Parameter(names = {"-t", "--text-journal"}, description = "Path to write a binary journal.", converter = PathConverter.class)
+        @Parameter(
+                names = {"-t", "--text-journal"},
+                description = "Path to write a binary journal.",
+                converter = PathConverter.class)
         Path textJournal;
-        @Parameter(names = {"-d", "--db", "--database"}, description = "JDBC URL to store JSON documents.", converter = URIConverter.class)
+        @Parameter(
+                names = {"-d", "--db", "--database"},
+                description = "JDBC URL to store JSON documents.",
+                converter = URIConverter.class)
         URI jdbc;
     }
 
@@ -64,7 +81,7 @@ public class BesServer implements Runnable
         final Args parsedArgs = new Args();
         JCommander.newBuilder().addObject(parsedArgs).build().parse(args);
 
-        final PublishBuildEventProcessor service = new PublishBuildEventProcessor.Builder()
+        final BindableService service = new PublishBuildEventProcessor.Builder()
                 .jdbc(parsedArgs.jdbc)
                 .binaryJournal(parsedArgs.binaryJournal)
                 .jsonJournal(parsedArgs.jsonJournal)

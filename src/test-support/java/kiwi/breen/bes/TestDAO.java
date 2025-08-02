@@ -79,6 +79,7 @@ public class TestDAO
             {
                 case "mariadb" -> "SELECT *, JSON_VALUE(event, '$.bazelEvent.started.uuid') AS started_uuid FROM event";
                 case "postgresql" -> "SELECT *, event #>> '{bazelEvent,started,uuid}' AS started_uuid FROM event";
+                case "h2" -> "SELECT *, BTRIM((event).\"bazelEvent\".\"started\".\"uuid\", '\"') AS started_uuid FROM event";
                 default -> "SELECT *, event ->> '$.bazelEvent.started.uuid' AS started_uuid FROM event";
             };
             try (final PreparedStatement select = connection.prepareStatement(sql))
