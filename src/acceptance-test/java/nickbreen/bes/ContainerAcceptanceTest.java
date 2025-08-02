@@ -53,7 +53,16 @@ public class ContainerAcceptanceTest
             .withNetworkAliases("bes")
             .withCopyFileToContainer(BES_JAR, "/bes.jar")
             .withExposedPorts(8888)
-            .withCommand("java", "-jar", "/bes.jar", "--port", "8888", "--database", "jdbc:postgresql://db/bes?user=test&password=test", "--json-journal", "/tmp/jnl.jsonl");
+            .withCommand(
+                    "java",
+                    "-jar",
+                    "/bes.jar",
+                    "--port",
+                    "8888",
+                    "--database",
+                    "jdbc:postgresql://db/bes?user=test&password=test",
+                    "--json-journal",
+                    "/tmp/jnl.jsonl");
 
     private TestDAO dao;
 
