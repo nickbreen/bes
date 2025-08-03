@@ -50,4 +50,26 @@ public class DatabaseProcessor extends BuildEventProcessor
             throw new IOError(e);
         }
     }
+
+    public static DatabaseProcessor create(final DataSource ds)
+    {
+        try (final Connection connection = ds.getConnection())
+        {
+            final String sql = switch (connection.getMetaData().getDatabaseProductName().toLowerCase())
+            {
+                case "h2" -> "MERGE INTO event VALUES (?,?,?,?,? FORMAT JSON)";
+                case "sqlite" -> "INSERT INTO event VALUES (?,?,?,?,JSONB(?)) ON CONFLICT DO NOTHING";
+                case "postgresql" -> "INSERT INTO event VALUES (?,?,?,?,CAST(? AS JSONB)) ON CONFLICT DO NOTHING";
+                default -> "INSERT IGNORE INTO event VALUES (?,?,?,?,?)";
+            };
+            final JsonFormat.Printer printer = JsonFormat.printer()
+                    .usingTypeRegistry(buildTypeRegistry())
+                    .omittingInsignificantWhitespace();
+            return new DatabaseProcessor(printer, ds, sql);
+        }
+        catch (final SQLException e)
+        {
+            throw new DatabaseProcessorFactoryException(e);
+        }
+    }
 }

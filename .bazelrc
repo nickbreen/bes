@@ -15,5 +15,3 @@ test --test_output=errors
 common --enable_platform_specific_config
 build:linux --sandbox_add_mount_pair=/tmp
 build --sandbox_add_mount_pair=/var/run/docker.sock  # for testcontainers
-
-build --disk_cache=~/.cache/bazel.cache

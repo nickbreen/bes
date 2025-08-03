@@ -4,16 +4,21 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.PathConverter;
 import com.beust.jcommander.converters.URIConverter;
-import com.google.devtools.build.v1.PublishBuildEventGrpc;
 import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import kiwi.breen.bes.processor.BinaryJournalProcessor;
+import kiwi.breen.bes.processor.DatabaseProcessor;
+import kiwi.breen.bes.processor.JsonlJournalProcessor;
+import kiwi.breen.bes.processor.PublishEventProcessor;
+import kiwi.breen.bes.processor.TextJournalProcessor;
 
 import java.io.IOError;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class BesServer implements Runnable
 {
@@ -81,7 +86,7 @@ public class BesServer implements Runnable
         final Args parsedArgs = new Args();
         JCommander.newBuilder().addObject(parsedArgs).build().parse(args);
 
-        final BindableService service = new PublishBuildEventProcessor.Builder()
+        final BindableService service = new Builder()
                 .jdbc(parsedArgs.jdbc)
                 .binaryJournal(parsedArgs.binaryJournal)
                 .jsonJournal(parsedArgs.jsonJournal)
@@ -91,4 +96,72 @@ public class BesServer implements Runnable
         new BesServer(parsedArgs.port, service).run();
     }
 
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+    public static class Builder
+    {
+        private Optional<PublishEventProcessor> jdbc;
+        private Optional<PublishEventProcessor> binaryJournal;
+        private Optional<PublishEventProcessor> jsonJournal;
+        private Optional<PublishEventProcessor> textJournal;
+
+        public Builder jdbc(final URI jdbc)
+        {
+            return jdbc(Optional.ofNullable(jdbc));
+        }
+
+        public Builder jdbc(final Optional<URI> jdbc)
+        {
+            this.jdbc = jdbc
+                    .map(DataSourceFactory::buildDataSource)
+                    .map(DatabaseProcessor::create);
+            return this;
+        }
+
+        public Builder binaryJournal(final Path path)
+        {
+            return binaryJournal(Optional.ofNullable(path));
+        }
+
+        private Builder binaryJournal(final Optional<Path> path)
+        {
+            this.binaryJournal = path.map(BinaryJournalProcessor::create);
+            return this;
+        }
+
+        public Builder jsonJournal(final Path path)
+        {
+            return jsonJournal(Optional.ofNullable(path));
+        }
+
+        public Builder jsonJournal(final Optional<Path> path)
+        {
+            this.jsonJournal = path.map(JsonlJournalProcessor::create);
+            return this;
+        }
+
+        public Builder textJournal(final Path path)
+        {
+            return textJournal(Optional.ofNullable(path));
+        }
+
+        public Builder textJournal(final Optional<Path> path)
+        {
+            this.textJournal = path.map(TextJournalProcessor::create);
+            return this;
+        }
+
+        public PublishBuildEventProcessor build()
+        {
+            return new PublishBuildEventProcessor(
+                    Stream.of(
+                                    jdbc,
+                                    binaryJournal,
+                                    jsonJournal,
+                                    textJournal)
+                            .filter(Optional::isPresent)
+                            .map(Optional::get)
+                            .toList());
+        }
+
+    }
 }

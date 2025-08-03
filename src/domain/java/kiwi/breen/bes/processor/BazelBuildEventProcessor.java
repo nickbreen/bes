@@ -4,18 +4,33 @@ import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.BuildEvent;
 import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.protobuf.Any;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 
 import java.util.function.Consumer;
 
-import static kiwi.breen.bes.Util.testAndConsume;
-import static kiwi.breen.bes.Util.unpackAndConsume;
-
-public class BazelBuildEventProcessor extends JournalProcessor
+public class BazelBuildEventProcessor extends BuildEventProcessor
 {
+    protected final Consumer<Message> sink;
+
     public BazelBuildEventProcessor(final Consumer<Message> sink)
     {
-        super(sink);
+        this.sink = sink;
+    }
+
+    public static <T extends Message> void unpackAndConsume(final Class<T> type, final Any any, final Consumer<T> consume)
+    {
+        try
+        {
+            if (any.is(type))
+            {
+                consume.accept(any.unpack(type));
+            }
+        }
+        catch (final InvalidProtocolBufferException e)
+        {
+            throw new Error(e);
+        }
     }
 
     @Override

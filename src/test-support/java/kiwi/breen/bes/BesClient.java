@@ -8,11 +8,13 @@ import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.devtools.build.v1.PublishBuildEventGrpc;
 import com.google.devtools.build.v1.PublishBuildToolEventStreamRequest;
 import com.google.devtools.build.v1.PublishBuildToolEventStreamResponse;
+import com.google.protobuf.util.JsonFormat;
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import kiwi.breen.bes.processor.BuildEventProcessor;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -97,13 +99,19 @@ public class BesClient implements Consumer<Stream<OrderedBuildEvent>>
         final Args parsedArgs = new Args();
         JCommander.newBuilder().addObject(parsedArgs).args(args).build();
 
+        final JsonFormat.Parser parser = JsonFormat.parser().usingTypeRegistry(BuildEventProcessor.buildTypeRegistry());
         try
         {
             BesClient.create(parsedArgs.destination)
                     .accept(switch (parsedArgs.journalType)
                     {
-                        case binary -> Util.parseBinary(OrderedBuildEvent::parseDelimitedFrom, System.in);
-                        case json -> Util.parseDelimitedJson(OrderedBuildEvent.newBuilder(), Util.buildJsonParser(), System.in).stream();
+                        case binary -> TestUtil.parseBinary(
+                                OrderedBuildEvent::parseDelimitedFrom,
+                                System.in);
+                        case json -> TestUtil.parseDelimitedJson(
+                                OrderedBuildEvent.newBuilder(),
+                                parser,
+                                System.in).stream();
                         case text -> throw new UnsupportedOperationException("text format not supported");
                     });
         }

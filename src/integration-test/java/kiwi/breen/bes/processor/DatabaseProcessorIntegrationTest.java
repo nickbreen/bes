@@ -6,7 +6,6 @@ import com.google.devtools.build.v1.OrderedBuildEvent;
 import com.google.devtools.build.v1.StreamId;
 import com.google.protobuf.Any;
 import kiwi.breen.bes.DataSourceFactory;
-import kiwi.breen.bes.DatabaseProcessorFactory;
 import kiwi.breen.bes.TestDAO;
 import org.junit.After;
 import org.junit.Before;
@@ -84,7 +83,7 @@ public class DatabaseProcessorIntegrationTest
     {
         final DataSource dataSource = DataSourceFactory.buildDataSource(testParameter.jdbcUrl());
         testDao = new TestDAO(dataSource);
-        processor = DatabaseProcessorFactory.create(dataSource);
+        processor = DatabaseProcessor.create(dataSource);
         testParameter.initSql().ifPresent(testDao::init);
     }
 

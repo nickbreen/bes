@@ -33,6 +33,7 @@ maven.install(
         "io.grpc:grpc-netty:1.74.0",
         "javax.json:javax.json-api:1.1",
         "junit:junit:4.12",
+        "org.assertj:assertj-core:3.27.3",
         "org.glassfish:javax.json:1.1",
         "org.hamcrest:hamcrest:2.2",
         "org.jcommander:jcommander:1.83",

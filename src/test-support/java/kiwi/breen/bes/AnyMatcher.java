@@ -1,11 +1,13 @@
 package kiwi.breen.bes;
 
 import com.google.protobuf.Any;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -33,12 +35,28 @@ public class AnyMatcher<T extends Message, U extends Message> extends TypeSafeMa
     @Override
     protected boolean matchesSafely(final T t)
     {
-        return filter.test(t) && Util.unpack(this.any, transform.apply(t)).map(matcher::matches).orElse(false);
+        return filter.test(t) && unpack(this.any, transform.apply(t)).map(matcher::matches).orElse(false);
     }
 
     @Override
     public void describeTo(final Description description)
     {
         description.appendText(" with an Any of type ").appendValue(any.getCanonicalName()).appendText(" that ").appendDescriptionOf(matcher);
+    }
+
+    public static <T extends Message> Optional<T> unpack(final Class<T> type, final Any any)
+    {
+        try
+        {
+            if (any.is(type))
+            {
+                return Optional.of(any.unpack(type));
+            }
+        }
+        catch (final InvalidProtocolBufferException e)
+        {
+            throw new Error(e);
+        }
+        return Optional.empty();
     }
 }

@@ -2,23 +2,27 @@ package kiwi.breen.bes;
 
 import com.google.devtools.build.lib.buildeventstream.BuildEventStreamProtos;
 import com.google.devtools.build.v1.OrderedBuildEvent;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
 
 import java.io.BufferedReader;
+import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public interface TestUtil
 {
-    static <T> List<T> loadBinary(final Util.ParseDelimitedFrom<T> parseDelimitedFrom, final Function<String, InputStream> loader, final String name) throws IOException
+    static <T, U> List<T> loadBinary(final ParseDelimitedFrom<T> parseDelimitedFrom, final Function<U, InputStream> loader, final U name) throws IOException
     {
         try (final InputStream bes = loader.apply(name))
         {
-            return Util.parseBinary(parseDelimitedFrom, bes).toList();
+            return parseBinary(parseDelimitedFrom, bes).toList();
         }
     }
 
@@ -51,4 +55,41 @@ public interface TestUtil
         return events;
     }
 
+    static <T> Stream<T> parseBinary(final ParseDelimitedFrom<T> parseDelimitedFrom, final InputStream bes) throws IOException
+    {
+        final Stream.Builder<T> events = Stream.builder();
+        for (T message = parseDelimitedFrom.parseDelimitedFrom(bes); null != message; message = parseDelimitedFrom.parseDelimitedFrom(bes))
+        {
+            events.add(message);
+        }
+        return events.build();
+    }
+
+    static List<OrderedBuildEvent> parseDelimitedJson(final OrderedBuildEvent.Builder builder, final JsonFormat.Parser parser, final InputStream bes)
+    {
+        try (final BufferedReader r = new BufferedReader(new InputStreamReader(bes)))
+        {
+            return r.lines().map(json -> {
+                try
+                {
+                    parser.merge(json, builder.clear());
+                }
+                catch (InvalidProtocolBufferException e)
+                {
+                    throw new Error(e);
+                }
+                return builder.build();
+            }).toList();
+        }
+        catch (IOException e)
+        {
+            throw new IOError(e);
+        }
+    }
+
+    @FunctionalInterface
+    interface ParseDelimitedFrom<T>
+    {
+        T parseDelimitedFrom(InputStream is) throws IOException;
+    }
 }

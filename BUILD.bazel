@@ -76,7 +76,6 @@ java_library(
     ],
     deps = [
         ":domain",
-        ":support",
         ":buildeventstream",
         artifact("org.jcommander:jcommander"),
         artifact("com.mchange:c3p0"),
@@ -86,15 +85,6 @@ java_library(
 java_library(
     name = "domain",
     srcs = glob(["src/domain/java/**/*.java"]),
-    deps = [
-        ":support",
-        ":buildeventstream",
-    ],
-)
-
-java_library(
-    name = "support",
-    srcs = glob(["src/support/java/**/*.java"]),
     deps = [
         ":buildeventstream",
     ],
@@ -113,7 +103,7 @@ java_library(
     srcs = glob(["src/test-support/java/**/*.java"]),
     resources = glob(["src/test-support/resources/**"]),
     deps = [
-        ":support",
+        ":domain",
         ":buildeventstream",
         artifact("org.hamcrest:hamcrest"),
         artifact("org.jcommander:jcommander"),
@@ -134,6 +124,7 @@ java_test(
         ":buildeventstream",
         artifact("javax.json:javax.json-api"),
         artifact("junit:junit"),
+        artifact("org.assertj:assertj-core"),
         artifact("org.hamcrest:hamcrest"),
     ],
 )
@@ -179,7 +170,6 @@ java_test(
     deps = [
         ":domain",
         ":main",
-        ":support",
         ":test-support",
         ":buildeventstream",
         artifact("junit:junit"),

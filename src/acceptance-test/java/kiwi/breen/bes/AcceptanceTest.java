@@ -1,10 +1,9 @@
 package kiwi.breen.bes;
 
 import com.google.devtools.build.v1.OrderedBuildEvent;
-import com.google.devtools.build.v1.PublishBuildEventGrpc;
 import com.google.protobuf.Message;
 import io.grpc.BindableService;
-import kiwi.breen.bes.processor.JournalProcessor;
+import kiwi.breen.bes.processor.BuildEventProcessor;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -24,7 +23,14 @@ public class AcceptanceTest
     {
         final List<Message> sink = new ArrayList<>();
         final BindableService service = new PublishBuildEventProcessor(
-                List.of(new JournalProcessor(sink::add)));
+                List.of(new BuildEventProcessor()
+                {
+                    @Override
+                    protected void accept(final OrderedBuildEvent orderedBuildEvent)
+                    {
+                        sink.add(orderedBuildEvent);
+                    }
+                }));
         final Thread serverThread = new Thread(new BesServer(8888, service));
         serverThread.start();
 
