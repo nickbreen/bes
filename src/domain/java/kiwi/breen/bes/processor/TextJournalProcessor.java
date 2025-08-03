@@ -35,8 +35,9 @@ public class TextJournalProcessor extends BuildEventProcessor
 
     public static TextJournalProcessor create(final Writer sink)
     {
-        final TextFormat.Printer textPrinter = TextFormat.printer().usingTypeRegistry(buildTypeRegistry());
-        return new TextJournalProcessor(textPrinter, sink);
+        final TextFormat.Printer printer = TextFormat.printer()
+                .usingTypeRegistry(buildTypeRegistry());
+        return new TextJournalProcessor(printer, sink);
     }
 
     public static TextJournalProcessor create(final Path sink)
