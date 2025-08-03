@@ -26,22 +26,36 @@ public class BazelBuildEventProcessorTest
         final List<Message> actual = new ArrayList<>();
         final BuildEventProcessor processor = new BazelBuildEventProcessor(actual::add);
         processor.accept(OrderedBuildEvent.newBuilder()
-                .setStreamId(StreamId.newBuilder().setInvocationId(uuid).setComponent(StreamId.BuildComponent.CONTROLLER))
+                .setStreamId(StreamId.newBuilder()
+                        .setInvocationId(uuid)
+                        .setComponent(StreamId.BuildComponent.CONTROLLER))
                 .setSequenceNumber(1)
                 .setEvent(BuildEvent.newBuilder()
                         .setBazelEvent(Any.pack(BuildEventStreamProtos.BuildEvent.newBuilder()
-                                .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder().setUuid(uuid))
+                                .setStarted(BuildEventStreamProtos.BuildStarted.newBuilder()
+                                        .setUuid(uuid))
                                 .build())))
                 .build());
         processor.accept(OrderedBuildEvent.newBuilder()
-                .setStreamId(StreamId.newBuilder().setInvocationId(uuid).setComponent(StreamId.BuildComponent.CONTROLLER))
+                .setStreamId(StreamId.newBuilder()
+                        .setInvocationId(uuid)
+                        .setComponent(StreamId.BuildComponent.CONTROLLER))
                 .setSequenceNumber(1)
                 .setEvent(BuildEvent.newBuilder()
                         .setBazelEvent(Any.pack(BuildEventStreamProtos.BuildEvent.newBuilder()
-                                .setFinished(BuildEventStreamProtos.BuildFinished.newBuilder().setExitCode(BuildEventStreamProtos.BuildFinished.ExitCode.newBuilder().setCode(0)))
+                                .setFinished(BuildEventStreamProtos.BuildFinished.newBuilder()
+                                        .setExitCode(BuildEventStreamProtos.BuildFinished.ExitCode.newBuilder()
+                                                .setCode(0)))
                                 .build())))
                 .build());
 
-        assertThat("has bazel build started json for UUID", actual, hasItem(messageThat(BuildEventStreamProtos.BuildStarted.class, BuildEventStreamProtos.BuildStarted::getUuid, is(uuid))));
+        assertThat(
+                "has bazel build started json for UUID",
+                actual,
+                hasItem(
+                        messageThat(
+                                BuildEventStreamProtos.BuildStarted.class,
+                                BuildEventStreamProtos.BuildStarted::getUuid,
+                                is(uuid))));
     }
 }

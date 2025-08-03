@@ -3,6 +3,7 @@ load("@rules_java//java:java_import.bzl", "java_import")
 load("@rules_jvm_external//:defs.bzl", "artifact")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_load")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
+load("@rules_unused_deps//:rules.bzl", "unused_deps_test")
 
 # Hack to get the transitive dependencies of the buildeventstream proto
 java_single_jar(
@@ -60,10 +61,11 @@ java_binary(
     main_class = "kiwi.breen.bes.BesServer",
     runtime_deps = [
         ":main",
-        artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.h2database:h2"),
         artifact("com.mysql:mysql-connector-j"),
         artifact("org.mariadb.jdbc:mariadb-java-client"),
         artifact("org.postgresql:postgresql"),
+        artifact("org.xerial:sqlite-jdbc"),
     ],
 )
 
@@ -82,12 +84,22 @@ java_library(
     ],
 )
 
+unused_deps_test(
+    name = "main_unused_deps",
+    subject = ":main",
+)
+
 java_library(
     name = "domain",
     srcs = glob(["src/domain/java/**/*.java"]),
     deps = [
         ":buildeventstream",
     ],
+)
+
+unused_deps_test(
+    name = "domain_unused_deps",
+    subject = ":domain",
 )
 
 java_binary(
@@ -110,6 +122,11 @@ java_library(
     ],
 )
 
+unused_deps_test(
+    name = "test-support_unused_deps",
+    subject = ":test-support",
+)
+
 java_test(
     name = "test",
     size = "small",
@@ -129,20 +146,26 @@ java_test(
     ],
 )
 
+unused_deps_test(
+    name = "test_unused_deps",
+    subject = ":test",
+)
+
 java_test(
     name = "integration-test",
     size = "medium",
     srcs = glob(["src/integration-test/java/**/*.java"]),
     test_class = "kiwi.breen.bes.IntegrationTestSuite",
     runtime_deps = [
-        artifact("org.testcontainers:mariadb"),
-        artifact("org.testcontainers:mysql"),
-        artifact("org.testcontainers:postgresql"),
-        artifact("org.xerial:sqlite-jdbc"),
+        artifact("com.h2database:h2"),
         artifact("com.mysql:mysql-connector-j"),
         artifact("org.mariadb.jdbc:mariadb-java-client"),
         artifact("org.postgresql:postgresql"),
-        artifact("com.h2database:h2"),
+        artifact("org.testcontainers:mariadb"),
+        artifact("org.testcontainers:mysql"),
+        artifact("org.testcontainers:postgresql"),
+        artifact("org.testcontainers:testcontainers"),
+        artifact("org.xerial:sqlite-jdbc"),
     ],
     deps = [
         ":domain",
@@ -151,8 +174,12 @@ java_test(
         ":buildeventstream",
         artifact("junit:junit"),
         artifact("org.hamcrest:hamcrest"),
-        artifact("org.testcontainers:testcontainers"),
     ],
+)
+
+unused_deps_test(
+    name = "integration-test_unused_deps",
+    subject = ":integration-test",
 )
 
 java_test(
@@ -182,5 +209,11 @@ java_test(
         artifact("com.mysql:mysql-connector-j"),
         artifact("org.mariadb.jdbc:mariadb-java-client"),
         artifact("org.postgresql:postgresql"),
+        artifact("com.h2database:h2"),
     ],
+)
+
+unused_deps_test(
+    name = "acceptance-test_unused_deps",
+    subject = ":acceptance-test",
 )

@@ -84,7 +84,10 @@ public class FixturesCompatibilityTest
         assertThat("not empty", events, not(empty()));
         final BuildEventStreamProtos.BuildEvent first = events.get(0);
         assertThat("hasStarted", first.hasStarted());
-        assertThat("has invocation id", first.getStarted().getUuid(), is("f6a5e727-0032-4a84-a959-61e4ecb294e9"));
+        assertThat(
+                "has invocation id",
+                first.getStarted().getUuid(),
+                is("f6a5e727-0032-4a84-a959-61e4ecb294e9"));
     }
 
     @Test
@@ -134,6 +137,4 @@ public class FixturesCompatibilityTest
                                                 BuildEventStreamProtos.BuildStarted::getUuid,
                                                 is("e15c3cc2-e9df-4ac0-96c8-e12129bc7caa")))))));
     }
-
-
 }

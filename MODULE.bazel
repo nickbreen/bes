@@ -73,3 +73,15 @@ http_archive(
     strip_prefix = "bazel-8.3.1",
     url = "https://github.com/bazelbuild/bazel/archive/refs/tags/8.3.1.tar.gz",
 )
+
+bazel_dep(name = "rules_unused_deps", version = "0.0.9")
+archive_override(
+    module_name = "rules_unused_deps",
+    urls = [
+        "https://github.com/nickbreen/rules_unused_deps/archive/refs/tags/v0.0.9.tar.gz",
+    ],
+    strip_prefix = "rules_unused_deps-0.0.9",
+    integrity = "sha256-1v9iedNPS7/OWLcSpmyE23hZY7zxmK9M2eYdhRP+v9U=",
+)
+# Register the toolchain, it will build automatically.
+register_toolchains("@rules_unused_deps//:all")
