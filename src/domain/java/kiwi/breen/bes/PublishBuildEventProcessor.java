@@ -29,15 +29,13 @@ public class PublishBuildEventProcessor extends PublishBuildEventGrpc.PublishBui
     @Override
     public StreamObserver<PublishBuildToolEventStreamRequest> publishBuildToolEventStream(final StreamObserver<PublishBuildToolEventStreamResponse> responseObserver)
     {
+        final PublishBuildToolEventStreamResponse.Builder builder = PublishBuildToolEventStreamResponse.newBuilder();
         return new StreamObserver<>()
         {
-            private final PublishBuildToolEventStreamResponse.Builder builder = PublishBuildToolEventStreamResponse.newBuilder();
-
             @Override
-            public void onNext(PublishBuildToolEventStreamRequest request)
+            public void onNext(final PublishBuildToolEventStreamRequest request)
             {
                 processors.forEach(processor -> processor.accept(request));
-
                 builder.clear()
                         .setStreamId(request.getOrderedBuildEvent().getStreamId())
                         .setSequenceNumber(request.getOrderedBuildEvent().getSequenceNumber());
@@ -51,7 +49,7 @@ public class PublishBuildEventProcessor extends PublishBuildEventGrpc.PublishBui
             }
 
             @Override
-            public void onError(Throwable t)
+            public void onError(final Throwable t)
             {
                 responseObserver.onError(t);
             }
