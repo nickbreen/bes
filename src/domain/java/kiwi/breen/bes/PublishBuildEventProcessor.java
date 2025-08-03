@@ -31,12 +31,14 @@ public class PublishBuildEventProcessor extends PublishBuildEventGrpc.PublishBui
     {
         return new StreamObserver<>()
         {
+            private final PublishBuildToolEventStreamResponse.Builder builder = PublishBuildToolEventStreamResponse.newBuilder();
+
             @Override
             public void onNext(PublishBuildToolEventStreamRequest request)
             {
                 processors.forEach(processor -> processor.accept(request));
 
-                final PublishBuildToolEventStreamResponse.Builder builder = PublishBuildToolEventStreamResponse.newBuilder()
+                builder.clear()
                         .setStreamId(request.getOrderedBuildEvent().getStreamId())
                         .setSequenceNumber(request.getOrderedBuildEvent().getSequenceNumber());
                 responseObserver.onNext(builder.build());
