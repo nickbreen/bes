@@ -1,0 +1,24 @@
+load("@rules_java//java:java_binary.bzl", "java_binary")
+load("@rules_jvm_external//:defs.bzl", "artifact")
+load("@rules_unused_deps//:rules.bzl", "unused_deps_test")
+
+java_binary(
+    name = "vertx",
+    srcs = glob(["src/main/java/**/*.java"]),
+    main_class = "kiwi.breen.bes.VertxMain",
+    deps = [
+        "//:buildeventstream",
+        artifact("org.slf4j:slf4j-api"),
+        artifact("io.vertx:vertx-grpc-server"),
+        artifact("io.vertx:vertx-core"),
+    ],
+    runtime_deps = [
+        artifact("org.slf4j:slf4j-simple"),
+    ],
+    jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=debug"],
+)
+
+unused_deps_test(
+    name = "unused_deps",
+    subject = ":vertx",
+)

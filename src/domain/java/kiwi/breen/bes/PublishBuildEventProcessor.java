@@ -24,6 +24,8 @@ public class PublishBuildEventProcessor extends PublishBuildEventGrpc.PublishBui
     public void publishLifecycleEvent(final PublishLifecycleEventRequest request, final StreamObserver<Empty> responseObserver)
     {
         processors.forEach(processor -> processor.accept(request));
+        responseObserver.onNext(Empty.getDefaultInstance());
+        responseObserver.onCompleted();
     }
 
     @Override

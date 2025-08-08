@@ -5,6 +5,8 @@ load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_load")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("@rules_unused_deps//:rules.bzl", "unused_deps_test")
 
+package(default_visibility = ["//visibility:public"])
+
 # Hack to get the transitive dependencies of the buildeventstream proto
 java_single_jar(
     name = "buildeventstream-uber",
