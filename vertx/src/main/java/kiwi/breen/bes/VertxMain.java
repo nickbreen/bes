@@ -1,12 +1,10 @@
 package kiwi.breen.bes;
 
-import com.google.devtools.build.v1.PublishBuildEventGrpc;
-import com.google.devtools.build.v1.PublishBuildToolEventStreamRequest;
-import com.google.devtools.build.v1.PublishBuildToolEventStreamResponse;
-import com.google.devtools.build.v1.PublishLifecycleEventRequest;
-import com.google.protobuf.Empty;
-import io.grpc.stub.StreamObserver;
+import com.google.devtools.build.v1.OrderedBuildEvent;
+import io.grpc.BindableService;
 import io.vertx.core.Vertx;
+import io.vertx.core.eventbus.MessageConsumerOptions;
+import io.vertx.core.eventbus.MessageProducer;
 import io.vertx.grpcio.server.GrpcIoServer;
 import io.vertx.grpcio.server.GrpcIoServiceBridge;
 import org.slf4j.Logger;
@@ -16,52 +14,25 @@ public class VertxMain
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(VertxMain.class);
 
+    private enum Address
+    {
+        obe();
+    }
+
     public static void main(String[] args)
     {
         final Vertx vertx = Vertx.vertx();
+
+        vertx.eventBus().registerDefaultCodec(
+                OrderedBuildEvent.class,
+                new GenericLocalCodec<>(OrderedBuildEvent.class));
+
+        vertx.eventBus().consumer(Address.obe.name()).handler(
+                obe -> LOGGER.debug("OBE\n{}", obe.body()));
+
+        final MessageProducer<OrderedBuildEvent> sender = vertx.eventBus().sender(Address.obe.name());
+        final BindableService service = new OrderedBuildEventService(sender::write);
         final GrpcIoServer server = GrpcIoServer.server(vertx);
-
-        final PublishBuildEventGrpc.PublishBuildEventImplBase service = new PublishBuildEventGrpc.PublishBuildEventImplBase()
-        {
-            @Override
-            public void publishLifecycleEvent(final PublishLifecycleEventRequest request, final StreamObserver<Empty> responseObserver)
-            {
-                responseObserver.onNext(Empty.getDefaultInstance());
-                responseObserver.onCompleted();
-                LOGGER.debug("BuildEvent {}", request.getBuildEvent());
-            }
-
-            @Override
-            public StreamObserver<PublishBuildToolEventStreamRequest> publishBuildToolEventStream(final StreamObserver<PublishBuildToolEventStreamResponse> responseObserver)
-            {
-                final PublishBuildToolEventStreamResponse.Builder builder = PublishBuildToolEventStreamResponse.newBuilder();
-                return new StreamObserver<>()
-                {
-                    @Override
-                    public void onNext(final PublishBuildToolEventStreamRequest request)
-                    {
-                        LOGGER.debug("StreamBuildEvent {}", request.getOrderedBuildEvent());
-                        builder.clear()
-                                .setStreamId(request.getOrderedBuildEvent().getStreamId())
-                                .setSequenceNumber(request.getOrderedBuildEvent().getSequenceNumber());
-                        responseObserver.onNext(builder.build());
-                    }
-
-                    @Override
-                    public void onCompleted()
-                    {
-                        responseObserver.onCompleted();
-                    }
-
-                    @Override
-                    public void onError(final Throwable t)
-                    {
-                        responseObserver.onError(t);
-                    }
-                };
-            }
-        };
-
         GrpcIoServiceBridge.bridge(service).bind(server);
 
         vertx.createHttpServer()
@@ -75,4 +46,5 @@ public class VertxMain
                             LOGGER.error("HTTP server failed", err);
                         });
     }
+
 }

@@ -8,6 +8,7 @@ java_binary(
     main_class = "kiwi.breen.bes.VertxMain",
     deps = [
         "//:buildeventstream",
+        "//:domain",
         artifact("org.slf4j:slf4j-api"),
         artifact("io.vertx:vertx-grpc-server"),
         artifact("io.vertx:vertx-core"),
